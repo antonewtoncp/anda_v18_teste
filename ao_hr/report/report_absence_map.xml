@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="absence_map_pdf" model="ir.actions.report">
+        <field name="name">Mapa de Ausência</field>
+        <field name="type">qweb-pdf</field>
+        <field name="model">hr.leave</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ao_hr.absence_map_template</field>
+        <field name="report_file">ao_hr.absence_map_template</field>
+        <field name="print_report_name">'Mapa de Ausência'</field>
+    </record>
+
+    <template id="absence_map_template">
+        <t t-call="web.html_container">
+            <!-- <t t-call="web.external_layout"> -->
+            <div class="page">
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <style>
+                    * { padding: 0; margin: 0; }
+                    @page {
+                    font-family: Arial, "DejaVu Sans", sans-serif;
+                    }
+                    body {
+                    font-family: Arial, "DejaVu Sans", sans-serif;
+                    }
+                    hr {
+                    display: block;
+                    height: 1px;
+                    border: 0;
+                    border-top: 1px solid #0B74CE;
+                    margin: 0;
+                    padding: 0;
+                    }
+                    .b_color { color: #0B74CE; }
+                    table {
+                    width: 100%;
+                    border-spacing: 3px;
+                    border-top: 2px solid #333;
+                    border-collapse: collapse;
+                    font-size: 10px;
+                    margin-top: 20px;
+                    }
+                    th, td {
+                    border-top: 1px solid #B2BABB;
+                    padding: 4px;
+                    text-align: center;
+                    }
+                    th {
+                    background-color: #f2f2f2;
+                    }
+                    .text-left { text-align: left; }
+                </style>
+                <head>
+                    <meta charset="utf-8" />
+                </head>
+                <div class="header" style="color: #0B74CE">
+                    <div class="row b_color">
+                        <div class="col-8">
+                            <b>
+                                <span class="text-left" t-field="user.company_id.name" />
+                            </b>
+                        </div>
+                        <div class="col-4">
+                            <ul class="list-inline text-right">
+                                <span
+                                    t-out="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')" />
+                                | Pag. <span class="page" />/<span class="topage" />
+                            </ul>
+                        </div>
+                    </div>
+                    <hr
+                        style="display: block; height: 1px; border: 0; border-top: 3px solid #0B74CE; margin: 0; padding: 0;" />
+                </div>
+                <t t-if="not docs">
+
+                </t>
+                <t t-else="">
+                    <div class="text-left">
+                        <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
+                            style="max-height:150px;" />
+                        <div>
+
+                        </div>
+                    </div>
+
+                    <div t-foreach="others" t-as="ot">
+                        <div class="row mt16" style="margin-top: 3rem !important;">
+                            <div class="col-6">
+                                <div align="center">
+                                    <b class="b_color">MAPA DE AUSÊNCIAS</b>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row mt16" style="margin-top: 1rem !important;">
+                            <div class="col-6">
+                                <div align="left">
+                                    <b class="b_color">TIPO DE AUSÊNCIA: <span
+                                            t-esc="ot.get('type','')" />
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt16" style="margin-top: 1rem !important;">
+                            <div class="col-6">
+                                <div align="left">
+                                    <b class="b_color">De: <span t-esc="ot.get('start','')" />
+                                    </b>
+                                    <b class="b_color"> À <span t-esc="ot.get('end','')" />
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="text-left">Funcionário</th>
+                                <th>Tipo de Ausência</th>
+                                <th>Data de Início</th>
+                                <th>Data de Fim</th>
+                                <th>Duração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="docs" t-as="o">
+                                <td class="text-left" t-esc="o.get('employee','')" />
+                                <td t-esc="o.get('leave_type','')" />
+                                <td t-esc="o.get('start_date','')" />
+                                <td t-esc="o.get('end_date','')" />
+                                <td t-esc="o.get('duration','')" />
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </div>
+            <!-- </t> -->
+        </t>
+    </template>
+</odoo>

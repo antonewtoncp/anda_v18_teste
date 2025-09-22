@@ -1,0 +1,2 @@
+"id","name","code","iso_code","direction","grouping","decimal_point","thousands_sep","date_format","time_format","short_time_format","week_start"
+"base.lang_pt_AO","Portuguese (AO) / Português (AO)","pt_AO","pt_AO","Left-to-Right","[3,3,3,3,3,3,3,3,3,3,3,3,3,3,2]",",",".","%d-%m-%Y","%H:%M:%S","%H:%M","1"

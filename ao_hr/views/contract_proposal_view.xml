@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ao_department_form_view" model="ir.ui.view">
+        <field name="name">ao_hr.proposal_contrat.form</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form" />
+        <field name="priority" eval="100" />
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <div class="o_col-6">
+                    <group>
+                        <field name="nationality" />
+                        <field name="experience_year_function" />
+                        <field name="job_id" />
+                        <field name="category" />
+                    </group>
+                </div>
+
+                <div class="o_col-6" style="margin-top:10px !important;">
+                    <group>
+                        <field name="report" />
+                        <field name="start_date" />
+                        <field name="time_experience" />
+                    </group>
+                </div>
+
+                <div class="o_col-6" style="margin-top:12px !important;">
+                    <group>
+                        <field name="food_subsidy" />
+                        <field name="transport_subsidy" />
+                    </group>
+                </div>
+
+                <div class="o_col-6" style="margin-top:10px !important;">
+                    <group>
+                        <field name="contract_type_id"/>
+                        <field name="vacation_allowance" />
+                        <field name="christmas_allowance" />
+                    </group>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

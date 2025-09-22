@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ao_localization_res_country_state_county_user,ao_localization.res.country.state.county.user,ao_localization.model_res_country_state_county,base.group_user,1,1,1,0
+access_ao_localization_res_country_state_county_district_user,ao_localization.res.country.state.county.district.user,ao_localization.model_res_country_state_county_district,base.group_user,1,1,1,0

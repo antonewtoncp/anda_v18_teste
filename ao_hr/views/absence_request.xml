@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="absence_request_psi_form_view" model="ir.ui.view">
+            <field name="name">absence.request.psi.form</field>
+            <field name="model">absence.request.psi</field>
+            <field name="arch" type="xml">
+                <form>
+                    <h1 style="text-align:center">Ficha de Pedido de Autorização e Justificação de Falta(s)</h1>
+                    <h3 style="text-align:center">(art.º 144, n.º1LGT) (art.°144 - Nr. 3 e 6, da Lei Nr.7/15 de
+                        15.06)
+                    </h3>
+                    <br/>
+                    <br/>
+                    <ul style="text-align:center;font-size:20px">
+                        <li>
+                            <span style="background-color:#9D9D9D">A</span>
+                            Com devida justificaçâo escrita e valída,
+                            medica, boletim obito e outros, sem perda de remuneraçâo.
+                        </li>
+                        <li>
+                            <span style="background-color:#9D9D9D">B</span>
+                            Sem justificativo escrito, mas autorizado
+                            pelo CD e a descontar no salario.
+                        </li>
+                        <li>
+                            <span style="background-color:#9D9D9D">C</span>
+                            Injustificadas, com perda de remuneraçâo e descontos nas ferias.
+                        </li>
+                        <li>
+                            <span style="background-color:#9D9D9D">D</span>
+                            Excepções, apenas autorizadas excepcionalemente pelo CD.
+                        </li>
+                    </ul>
+
+
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="department_boss"/>
+                            <h1>
+                                <field name="department_boss" required="1" placeholder="Nome do Chefe de departamento"/>
+                            </h1>
+                            <label for="employee_id"/>
+                            <h1>
+                                <field name="employee_id" required="1" placeholder="Nome do Trabalhador"/>
+                            </h1>
+                            <span>
+                                Venho por esta via solicitar ao chefe do departamento, que seja autorizado(a) a minha
+                                ausência do escritório, na(s) data(s) e com o proposito abaixo mencionado.
+                            </span>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="type_absence" string="Tipo"/>
+                                <field name="other_details" string="Motivo"/>
+                            </group>
+                            <group>
+                                <field name="qty_work_day" string="Nº Dias úteis"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="day_lack"/>
+                                <field name="day_lack_1"/>
+                            </group>
+                            <group>
+                                <field name="justified" widget="boolean_toggle"/>
+
+                                <field name="justified_2" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="participation_training" string="Participção em Formação"/>
+                                <field name="participation_training_2" string="Participação em eventos/ Outros."/>
+                                <field name="comments" string="Observaçõe"/>
+                            </group>
+
+                        </group>
+
+
+                        <span>
+                            <b>Assinale com X</b>
+                        </span>
+
+                        <table class="table table-condensed table-sm">
+                            <tr>
+                                <td rowspan="2" style="background-color:#9D9D9D">
+                                    MÊS
+                                </td>
+                                <td>
+                                    <label for="d1" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d2" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d3" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d4" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d5" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d6" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d7" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d8" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d9" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d10" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d11" readonly="1"/>
+                                </td>
+                                <td>
+                                    <label for="d12" readonly="1"/>
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <field name="d1"/>
+                                </td>
+                                <td>
+                                    <field name="d2"/>
+                                </td>
+                                <td>
+                                    <field name="d3"/>
+                                </td>
+                                <td>
+                                    <field name="d4"/>
+                                </td>
+                                <td>
+                                    <field name="d5"/>
+                                </td>
+                                <td>
+                                    <field name="d6"/>
+                                </td>
+                                <td>
+                                    <field name="d7"/>
+                                </td>
+                                <td>
+                                    <field name="d8"/>
+                                </td>
+                                <td>
+                                    <field name="d9"/>
+                                </td>
+                                <td>
+                                    <field name="d10"/>
+                                </td>
+                                <td>
+                                    <field name="d11"/>
+                                </td>
+                                <td>
+                                    <field name="d12"/>
+                                </td>
+                                <td>
+
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+
+                        <br/>
+                        <span>
+                            <b>Assinale com X</b>
+                        </span>
+                        <br/>
+
+
+                        <table class="table table-condensed table-sm">
+                            <tr>
+                                <td rowspan="2" style="background-color:#9D9D9D">
+                                    MÊS
+                                </td>
+                                <td>
+                                    16
+                                </td>
+                                <td>
+                                    17
+                                </td>
+                                <td>
+                                    18
+                                </td>
+                                <td>
+                                    19
+                                </td>
+                                <td>
+                                    20
+                                </td>
+                                <td>
+                                    21
+                                </td>
+                                <td>
+                                    22
+                                </td>
+                                <td>
+                                    23
+                                </td>
+                                <td>
+                                    24
+                                </td>
+                                <td>
+                                    25
+                                </td>
+                                <td>
+                                    26
+                                </td>
+                                <td>
+                                    27
+                                </td>
+
+
+                                <td>
+                                    28
+                                </td>
+                                <td>
+                                    29
+                                </td>
+                                <td>
+                                    30
+                                </td>
+                                <td>
+                                    31
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    2
+                                </td>
+                                <td>
+                                    3
+                                </td>
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    5
+                                </td>
+                                <td>
+                                    6
+                                </td>
+                                <td>
+                                    7
+                                </td>
+                                <td>
+                                    8
+                                </td>
+                                <td>
+                                    9
+                                </td>
+                                <td>
+                                    10
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                                <td>
+                                    12
+                                </td>
+
+                                <td>
+                                    13
+                                </td>
+                                <td>
+                                    14
+                                </td>
+                                <td>
+                                    15
+                                </td>
+                                <td>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <field name="b16"/>
+                                </td>
+                                <td>
+                                    <field name="b17"/>
+                                </td>
+                                <td>
+                                    <field name="b18"/>
+                                </td>
+                                <td>
+                                    <field name="b19"/>
+                                </td>
+                                <td>
+                                    <field name="b20"/>
+                                </td>
+                                <td>
+                                    <field name="b21"/>
+                                </td>
+                                <td>
+                                    <field name="b22"/>
+                                </td>
+                                <td>
+                                    <field name="b23"/>
+                                </td>
+                                <td>
+                                    <field name="b24"/>
+                                </td>
+                                <td>
+                                    <field name="b27"/>
+                                </td>
+                                <td>
+                                    <field name="b28"/>
+                                </td>
+                                <td>
+                                    <field name="b29"/>
+                                </td>
+                                <td>
+                                    <field name="b30"/>
+                                </td>
+                                <td>
+                                    <field name="b31"/>
+                                </td>
+                                <td>
+                                    <field name="b1"/>
+                                </td>
+                                <td>
+                                    <field name="b2"/>
+                                </td>
+                                <td>
+                                    <field name="b3"/>
+                                </td>
+                                <td>
+                                    <field name="b4"/>
+                                </td>
+                                <td>
+                                    <field name="b5"/>
+                                </td>
+                                <td>
+                                    <field name="b6"/>
+                                </td>
+                                <td>
+                                    <field name="b7"/>
+                                </td>
+                                <td>
+                                    <field name="b8"/>
+                                </td>
+                                <td>
+                                    <field name="b9"/>
+                                </td>
+                                <td>
+                                    <field name="b10"/>
+                                </td>
+                                <td>
+                                    <field name="b11"/>
+                                </td>
+                                <td>
+                                    <field name="b12"/>
+                                </td>
+                                <td>
+                                    <field name="b13"/>
+                                </td>
+                                <td>
+                                    <field name="b14"/>
+                                </td>
+                                <td>
+                                    <field name="b15"/>
+                                </td>
+
+
+                            </tr>
+
+
+                        </table>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <span>
+                            <b>Assinale com X</b>
+                        </span>
+
+                        <br/>
+                        <table class="table table-condensed table-sm">
+                            <tr>
+                                <td rowspan="2" style="background-color:#9D9D9D">
+                                    HORAS
+                                </td>
+                                <td>
+                                    7,30
+                                </td>
+                                <td>
+                                    8,30
+                                </td>
+                                <td>
+                                    10,30
+                                </td>
+                                <td>
+                                    11,30
+                                </td>
+                                <td colspan="2">
+                                    Intervalo (12:30)
+                                </td>
+                                <td>
+                                    13,30
+                                </td>
+                                <td>
+                                    14,30
+                                </td>
+                                <td>
+                                    15,00
+                                </td>
+                                <td>
+                                    15,30
+                                </td>
+                                <td>
+                                    16,30
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <field name="c1"/>
+
+                                </td>
+                                <td>
+                                  <field name="c2"/>
+                                </td>
+                                <td>
+                                    <field name="c3"/>
+                                </td>
+                                <td>
+                                 <field name="c4"/>
+                                </td>
+                                <td colspan="2">
+
+                                </td>
+                                <td>
+                                    <field name="c6"/>
+                                </td>
+                                <td>
+                                    <field name="c7"/>
+                                </td>
+                                <td>
+                                     <field name="c8"/>
+                                </td>
+                                <td>
+                                    <field name="c9"/>
+                                </td>
+                                <td>
+                                    <field name="c10"/>
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+
+                        <span>Na eventualidade de ser por um periodo de tempo inferior a um dia indique o tempo de
+                            ausência:
+                        </span>
+                        <br/>
+                        <span>
+                            <b>Assinale com X</b>
+                        </span>
+
+                        <h4 style="text-align:center; background-color:#9D9D9D">
+                            <b>Por favor, após aprovaçâo dos CD, submeter a apreciaçâo do RH.</b>
+                        </h4>
+                        <notebook>
+                            <page string="Outros Detalhes ">
+                                <h3 style="text-align:center; background-color:#9D9D9D">
+                                    <b>
+                                        Espaço Reservado ao Recursos Humanos
+                                    </b>
+                                </h3>
+                                <br/>
+                                <br/>
+                                <span>
+                                    1. A justificação deve ser submetida ao Recursos Humanos no dia de apresentação
+                                    ao serviço, com respectivo documento de suporte(justificativo), sujeito a
+                                    sansões na falta de justificativo.
+                                </span>
+
+                                <group>
+
+
+                                    <grou>
+
+                                        <group>
+                                            <field name="support" string="Documento de suporte" widget="boolean_toggle"
+                                                   required="1"/>
+
+                                            <field name="holiday_swing" string="Balanço de ferias ate a data"
+                                                   required="1"/>
+
+                                        </group>
+                                        <group>
+                                            <field name="authorized" string="Autorizado Pelo CD" widget="boolean_toggle"
+                                            />
+                                            <field name="number_low_medical" string="Nr. de Baixa Medica"
+                                            />
+                                        </group>
+                                    </grou>
+
+                                </group>
+                            </page>
+
+
+                        </notebook>
+
+
+                    </sheet>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="absence_request_psi_tree_view" model="ir.ui.view">
+            <field name="name">absence.request.psi.tree</field>
+            <field name="model">absence.request.psi</field>
+            <field name="arch" type="xml">
+                <tree string="Training Request">
+                    <field name="employee_id"/>
+                    <field name="department_boss"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="absence_request_psi_search_view" model="ir.ui.view">
+            <field name="name">absence.request.psi.search</field>
+            <field name="model">absence.request.psi</field>
+            <field name="arch" type="xml">
+                <search string="Training Request">
+                    <group expand="1" string="Group By">
+                        <filter string="Employee" name="employee_id" domain="[]"
+                                context="{'group_by':'employee_id'}"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="absence_request_psi_act_window" model="ir.actions.act_window">
+            <field name="name">Formulario de pedido de ausências</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">absence.request.psi</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Cria aqui a sua ficha de pedido de ausências
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem name="Formulario de pedido de ausências" id="absence_request_psi_menu"
+                  parent="hr_holidays.menu_hr_holidays_my_leaves"
+
+                  action="absence_request_psi_act_window"/>
+
+    </data>
+</odoo>

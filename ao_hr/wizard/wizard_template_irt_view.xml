@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Formulário do Wizard -->
+        <record id="view_template_irt_view" model="ir.ui.view">
+            <field name="name">wizard.template.irt.form</field>
+            <field name="model">wizard.template.irt</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="group_by" widget="radio" options="{'horizontal': true}" />
+
+                        <field name="group" widget="radio" options="{ 'horizontal': true }" />
+                        <field name="exercise_year"
+                            attrs="{'invisible': [('group', '!=', 'year_exercise') ]}" />
+
+                    </group>
+                    <group attrs="{'invisible': [('group', '==', 'year_exercise') ]}">
+                        <field name="slip_filter_by" />
+                        <field name="date_from"
+                            attrs="{'invisible': [('slip_filter_by', '!=', 'payslip_date')]}" />
+                        <field name="date_to"
+                            attrs="{'invisible': [('slip_filter_by', '!=', 'payslip_date')]}" />
+                        <field name="hr_payslip_run_id"
+                            attrs="{'invisible': [('slip_filter_by', '!=', 'payslip_batch')]}" />
+                    </group>
+                    <footer>
+                        <button name="export_payslip_to_excel" string="Baixar"
+                            type="object" class="oe_highlight" />
+                        <!-- <button name="export_payslip_to_excel_template_two" string="Baixar
+                        (Modelo 2)"
+                            type="object" class="oe_highlight" /> -->
+                        <!-- Descomente se quiser ativar o botão PDF -->
+                        <!-- <button name="export_pdf" string="Baixar PDF"
+                            type="object" class="oe_highlight" /> -->
+                        <button string="Cancelar" special="cancel" class="btn btn-secondary" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Ação do Wizard -->
+        <record id="action_hr_template_irt" model="ir.actions.act_window">
+            <field name="name">Mapa Salarial (IRT Actualizado)</field>
+            <field name="res_model">wizard.template.irt</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_template_irt_view" />
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menu item -->
+        <menuitem
+            id="menu_hr_report_template_irt"
+            name="Mapa Salarial (IRT Actualizado)"
+            parent="hr_payroll.menu_hr_payroll_report"
+            sequence="10"
+            action="action_hr_template_irt"
+        />
+    </data>
+</odoo>

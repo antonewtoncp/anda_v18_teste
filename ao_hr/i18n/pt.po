@@ -1,0 +1,3519 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* ao_hr
+#	* hr_contract
+#	* hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0-20190903\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-28 11:48+0000\n"
+"PO-Revision-Date: 2020-01-28 11:48+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr
+#: code:addons/hr/models/hr.py:75
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (cópia)"
+
+#. module: ao_hr
+#: constraint:wizard.bank:0
+msgid "'Start Date' must be less than 'End Date'."
+msgstr "A 'Data de Início' tem que ser menor que a 'Data de Fim'."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+msgid "(Assinatura e carimbo)"
+msgstr "(Assinatura e carimbo)"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "11% Total a Depositar"
+msgstr "11% Total a Depositar"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "3% Sobre o Salário Ilíquido/Trabalhadores"
+msgstr "3% Sobre o Salário Ilíquido/Trabalhadores"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "8% Sobre o Salário Ilíquido/Empresa"
+msgstr "8% Sobre o Salário Ilíquido/Empresa"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "<b style=\"font-size:8px\">Dentro de cada secção, um espaço extra é fornecido para se escrever\n"
+"                                comentário específicos sobre o trabalho\n"
+"                            </b>"
+msgstr "<b style=\"font-size:8px\">Dentro de cada secção, um espaço extra é fornecido para se escrever\n"
+"                                comentário específicos sobre o trabalho\n"
+"                            </b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<b>\n"
+"                                                    <font color=\"blue\">ORIGINAL</font>\n"
+"                                                </b>"
+msgstr "<b>\n"
+"                                                    <font color=\"blue\">ORIGINAL</font>\n"
+"                                                </b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Cidade</b>"
+msgstr "<b>Cidade</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Contacto de emergência</b>"
+msgstr "<b>Contacto de emergência</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Contacto de trabalho</b>"
+msgstr "<b>Contacto de trabalho</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Dados Pessoais</b>"
+msgstr "<b>Dados Pessoais</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Data de Nascimento:</b>"
+msgstr "<b>Data de Nascimento:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Data de admissão</b>"
+msgstr "<b>Data de admissão</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Data do último exame medico: </b>"
+msgstr "<b>Data do último exame medico: </b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Departamento:</b>"
+msgstr "<b>Departamento:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Distância do trabalho (Km): </b>"
+msgstr "<b>Distância do trabalho (Km): </b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>E de:</b>"
+msgstr "<b>E de:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Email pessoal:</b>"
+msgstr "<b>Email pessoal:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Email</b>"
+msgstr "<b>Email</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Endereços</b>"
+msgstr "<b>Endereços</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Estado Civil:</b>"
+msgstr "<b>Estado Civil:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Ficha do Funcionário</b>\n"
+"                                <br/>"
+msgstr "<b>Ficha do Funcionário</b>\n"
+"                                <br/>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Filho de:</b>"
+msgstr "<b>Filho de:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Filiação</b>"
+msgstr "<b>Filiação</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Gestor</b>"
+msgstr "<b>Gestor</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Género:</b>"
+msgstr "<b>Género:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Horas de trabalho:</b>"
+msgstr "<b>Horas de trabalho:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Informação do Contracto</b>"
+msgstr "<b>Informação do Contracto</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Local de nascimento:</b>"
+msgstr "<b>Local de nascimento:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Local de trabalho</b>"
+msgstr "<b>Local de trabalho</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Morada:</b>"
+msgstr "<b>Morada:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>NIF:</b>"
+msgstr "<b>NIF:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Nacionalidade:</b>"
+msgstr "<b>Nacionalidade:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Nome completo:</b>"
+msgstr "<b>Nome completo:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Nome:</b>"
+msgstr "<b>Nome:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Nº Segurança Social:</b>"
+msgstr "<b>Nº Segurança Social:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Nº de Filhos:</b>"
+msgstr "<b>Nº de Filhos:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Nº do BI:</b>"
+msgstr "<b>Nº do BI:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Nº do Funcionário:</b>"
+msgstr "<b>Nº do Funcionário:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>País</b>"
+msgstr "<b>País</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Posição:</b>"
+msgstr "<b>Posição:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Província/Cidade</b>"
+msgstr "<b>Província/Cidade</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Rua:</b>"
+msgstr "<b>Rua:</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Telemóvel Alternativo</b>"
+msgstr "<b>Telemóvel Alternativo</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Telemóvel alternativo</b>"
+msgstr "<b>Telemóvel alternativo</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Telemóvel</b>"
+msgstr "<b>Telemóvel</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_file
+msgid "<b>Veículo Atribuído: </b>"
+msgstr "<b>Veículo Atribuído: </b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "<br/>\n"
+"                                            Assinatura do entrevistado: __________________________"
+msgstr "<br/>\n"
+"                                            Assinatura do entrevistado: __________________________"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "<br/>\n"
+"                                            Data:"
+msgstr "<br/>\n"
+"                                            Data:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "<br/>\n"
+"                                    <br/>\n"
+"                                    <b>______________________________________</b>\n"
+"                                    <br/>\n"
+"                                    <b>(Assinatura e carimbo)</b>"
+msgstr "<br/>\n"
+"                                    <br/>\n"
+"                                    <b>______________________________________</b>\n"
+"                                    <br/>\n"
+"                                    <b>(Assinatura e carimbo)</b>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<font color=\"red\">DUPLICADO</font>"
+msgstr "<font color=\"red\">DUPLICADO</font>"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.res_config_settings_view_form
+msgid "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+msgstr "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.hr_kanban_view_employees
+msgid "<span class=\"o_unfollow\">Unfollow</span>\n"
+"                                    <span class=\"o_following\">Following</span>"
+msgstr "<span class=\"o_unfollow\">Deixar de Seguir</span>\n"
+"                                    <span class=\"o_following\">Seguir</span>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "<span class=\"right\">Folha nº</span>\n"
+"                            <br/>\n"
+"                            <br/>"
+msgstr "<span class=\"right\">Folha nº</span>\n"
+"                            <br/>\n"
+"                            <br/>"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "<span class=\"text-muted\">(If fixed-term contract)</span>"
+msgstr "<span class=\"text-muted\">(se contrato de termo fixo)</span>"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "<span>/ month</span>"
+msgstr "<span>/ mês </span>"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.hr_department_view_kanban
+msgid "<span>Reporting</span>"
+msgstr "<span>Relatórios</span>"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.hr_department_view_kanban
+msgid "<span>To Approve</span>"
+msgstr "<span>Para Aprovar</span>"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.hr_department_view_kanban
+msgid "<span>To Do</span>"
+msgstr "<span>A Fazer</span>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<strong>Este documento não serve de factura.</strong>\n"
+"                                                <br/>\n"
+"                                                <i>Declaro que recebi o valor constante neste recibo,</i>"
+msgstr "<strong>Este documento não serve de factura.</strong>\n"
+"                                                <br/>\n"
+"                                                <i>Declaro que recebi o valor constante neste recibo,</i>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<strong>Forma de Pagamento</strong>"
+msgstr "<strong>Forma de Pagamento</strong>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<strong>N.º Func.</strong>"
+msgstr "<strong>N.º Func.</strong>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<strong>NIF</strong>"
+msgstr "<strong>NIF</strong>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<strong>Name</strong>"
+msgstr "<strong>Nome</strong>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<strong>Obs.</strong>"
+msgstr "<strong>Obs.</strong>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<strong>Period</strong>"
+msgstr "<strong>Period</strong>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<strong>Position</strong>"
+msgstr "<strong>Position</strong>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "<strong>Total Paid (AKZ)</strong>"
+msgstr "<strong>Total Paid (AKZ)</strong>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "A Direção Geral"
+msgstr "A Direção Geral"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "ASPIRAÇÃO DE CARREIRA E POTENCIAL FUTURO"
+msgstr "ASPIRAÇÃO DE CARREIRA E POTENCIAL FUTURO"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "ASSINATURAS"
+msgstr "ASSINATURAS"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "ATITUDE DE SEGURANÇA"
+msgstr "ATITUDE DE SEGURANÇA"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_active
+#: model:ir.model.fields,field_description:hr.field_hr_employee_active
+msgid "Active"
+msgstr "Ativo"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_employee_form_view
+msgid "Activos da Empresa em uso"
+msgstr "Activos da Empresa em uso"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Actual funcionário da empresa"
+msgstr "Actual funcionário da empresa"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_payslip_form_view
+msgid "Add an observation..."
+msgstr "Add an observation..."
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_address_address
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+msgid "Address"
+msgstr "Morada"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+msgid "Address Detail"
+msgstr "Address Detail"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Adequado para uma posição alternativa"
+msgstr "Adequado para uma posição alternativa"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_admission_date
+msgid "Admission Date"
+msgstr "Data de Admissão"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_advantages
+msgid "Advantages"
+msgstr "Vantagens"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Advantages..."
+msgstr "Vantagens..."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Agência"
+msgstr "Agência"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_allowance
+#: model:ir.ui.view,arch_db:ao_hr.ao_payslip_form_view
+msgid "Allowances"
+msgstr "Allowances"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Altamente Recomendado"
+msgstr "Altamente Recomendado"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_personal_mobile_2
+msgid "Alternative Mobile"
+msgstr "Alternative Mobile"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_amount
+msgid "Amount"
+msgstr "Montante"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Antede aos requisitos"
+msgstr "Antede aos requisitos"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:242
+#: code:addons/ao_hr/report/report_bank.py:35
+#: code:addons/ao_hr/report/report_common.py:6
+#: code:addons/ao_hr/report/report_inss.py:35
+#, python-format
+msgid "April"
+msgstr "Abril"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_department_filter
+#: model:ir.ui.view,arch_db:hr.view_employee_filter
+msgid "Archived"
+msgstr "Arquivado"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Atende aos requisitos"
+msgstr "Atende aos requisitos"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Atr/Fal"
+msgstr "Atr/Fal"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:246
+#: code:addons/ao_hr/report/report_bank.py:39
+#: code:addons/ao_hr/report/report_common.py:10
+#: code:addons/ao_hr/report/report_inss.py:39
+#, python-format
+msgid "August"
+msgstr "Agosto"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_bank_bank
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_bank
+msgid "Bank"
+msgstr "Banco"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_bank_account
+msgid "Bank Account"
+msgstr "Conta Bancária"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_bank_account_id
+msgid "Bank Account Number"
+msgstr "Número da Conta Bancária"
+
+#. module: ao_hr
+#: model:ir.ui.menu,name:ao_hr.menu_hr_reporting_bank
+msgid "Bank Map"
+msgstr "Mapa de Bancos"
+
+#. module: ao_hr
+#: model:ir.actions.report,name:ao_hr.action_report_bank
+msgid "Bank Report"
+msgstr "Bank Report"
+
+#. module: ao_hr
+#: model:ir.actions.act_window,name:ao_hr.action_hr_bank
+msgid "Bank Report Wizard"
+msgstr "Bank Report Wizard"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_bank_view
+msgid "Bank Reporting"
+msgstr "Bank Reporting"
+
+#. module: ao_hr
+#: selection:hr.employee,payment_method:0
+msgid "Bank Transfer"
+msgstr "Tranf. Bancária"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_remuneration_inss_base
+msgid "Base INSS Remuneration"
+msgstr "Remuneração Base do INSS"
+
+#. module: ao_hr
+#: selection:wizard.bank,slip_filter_by:0
+#: selection:wizard.salary,slip_filter_by:0
+msgid "Bayslip Batch"
+msgstr "Lote de Recibos de Vencimento"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Bem preparado"
+msgstr "Bem preparado"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Birth"
+msgstr "Data de nascimento"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "COMO FOI CONTACTADO O CANDIDATO( se o emprego actual é a empresa ou outro, por\n"
+"                                        favor\n"
+"                                        detalhe)"
+msgstr "COMO FOI CONTACTADO O CANDIDATO( se o emprego actual é a empresa ou outro, por\n"
+"                                        favor\n"
+"                                        detalhe)"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "COMUNICAÇÃO (inclui várias tipos de comunicação - oral, visual, escuta e\n"
+"                                        escrita, se\n"
+"                                        aplicavél...)"
+msgstr "COMUNICAÇÃO (inclui várias tipos de comunicação - oral, visual, escuta e\n"
+"                                        escrita, se\n"
+"                                        aplicavél...)"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_bank_view
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_inss_view
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_irt_view
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_salary_view
+msgid "Cancel Wizard"
+msgstr "Cancelar"
+
+#. module: hr_contract
+#: selection:hr.contract,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: ao_hr
+#: selection:hr.employee,payment_method:0
+msgid "Cash"
+msgstr "Dinheiro"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Categoria"
+msgstr "Categoria"
+
+#. module: ao_hr
+#: selection:hr.employee,payment_method:0
+msgid "Check"
+msgstr "Cheque"
+
+#. module: ao_hr
+#: sql_constraint:hr.inss.config:0
+msgid "Check please name must it unique!"
+msgstr "Check please name must it unique!"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_remuneration_is_daily
+msgid "Check this box if the value is daily"
+msgstr "Marque esta caixa se o valor for diário"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_resource_calendar_define_manual_week_hours
+msgid "Check this box if you want to manually define the total of week hours for this schedule"
+msgstr "Check this box if you want to manually define the total of week hours for this schedule"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_child_ids
+msgid "Child Departments"
+msgstr "Departamentos Descendentes"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+msgid "Child(s)"
+msgstr "Child(s)"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_child_ids
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_child_ids
+msgid "Childs(s)"
+msgstr "Childs(s)"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Citizenship & Other Information"
+msgstr "Cidadania & Outras Informações"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_city
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_city
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+msgid "City"
+msgstr "Cidade"
+
+#. module: hr_contract
+#: model:ir.actions.act_window,help:hr_contract.action_hr_contract
+msgid "Click here to create new contracts."
+msgstr "Clique aqui criar novos contratos."
+
+#. module: hr
+#: model:ir.actions.act_window,help:hr.act_employee_from_department
+#: model:ir.actions.act_window,help:hr.open_view_employee_list_my
+msgid "Click to add a new employee."
+msgstr "Clique para adicionar novo funcionário."
+
+#. module: hr
+#: model:ir.actions.act_window,help:hr.open_module_tree_department
+msgid "Click to create a department."
+msgstr "Clique para criar um departamento."
+
+#. module: hr
+#: model:ir.actions.act_window,help:hr.action_hr_job
+msgid "Click to define a new job position."
+msgstr "Clique para definir uma nova posição de emprego."
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_coach_id
+#: model:ir.ui.view,arch_db:hr.view_employee_filter
+msgid "Coach"
+msgstr "Reportar À 2"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_holidays_status_code
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_code
+msgid "Code"
+msgstr "Código"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_color
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_color
+#: model:ir.model.fields,field_description:hr.field_hr_employee_color
+msgid "Color Index"
+msgstr "Índice de Cores"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Comentarios:\n"
+"                                        <br/>\n"
+"                                        <br/>\n"
+"                                        <br/>"
+msgstr "Comentarios:\n"
+"                                        <br/>\n"
+"                                        <br/>\n"
+"                                        <br/>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Comentarios:\n"
+"                                        <br/>\n"
+"                                        <br/>\n"
+"                                        <br/>\n"
+"                                        <br/>"
+msgstr "Comentarios:\n"
+"                                        <br/>\n"
+"                                        <br/>\n"
+"                                        <br/>\n"
+"                                        <br/>"
+
+#. modules: ao_hr, hr
+#: model:ir.model,name:ao_hr.model_res_company
+#: model:ir.ui.view,arch_db:hr.view_department_tree
+msgid "Companies"
+msgstr "Empresas"
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_company_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_company_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_company_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_company_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_company_id
+#: model:ir.model.fields,field_description:hr.field_hr_department_company_id
+#: model:ir.model.fields,field_description:hr.field_hr_job_company_id
+#: model:ir.ui.view,arch_db:hr.view_employee_filter
+#: model:ir.ui.view,arch_db:hr.view_job_filter
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_hr_contract_company_assets
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_company_assets
+msgid "Company Assets"
+msgstr "Activos da Empresa"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_vehicle
+msgid "Company Vehicle"
+msgstr "Veículo da Empresa"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_res_config_settings_resource_calendar_id
+msgid "Company Working Hours"
+msgstr "Horas de trabalho da empresa"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_complete_name
+msgid "Complete Name"
+msgstr "Nome Completo"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_wage_final
+msgid "Computed Wage"
+msgstr "Computed Wage"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_resource_calendar_computed_week_hours
+msgid "Computed Week Hours"
+msgstr "Computed Week Hours"
+
+#. module: hr
+#: model:ir.ui.menu,name:hr.menu_human_resources_configuration
+msgid "Configuration"
+msgstr "Configuração"
+
+#. module: hr
+#: model:ir.model,name:hr.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Contact Information"
+msgstr "Informação do Contato"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Contibuinte Fiscal"
+msgstr "Contibuinte Fiscal"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_contract_id
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_name
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Contract Reference"
+msgstr "Referência de Contrato"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Contract Terms"
+msgstr "Termos do Contracto"
+
+#. module: hr_contract
+#: model:ir.model,name:hr_contract.model_hr_contract_type
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_id_4604
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_name
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_form
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_search
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_tree
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Contract Type"
+msgstr "Tipo de Contrato"
+
+#. module: hr_contract
+#: model:ir.actions.act_window,name:hr_contract.action_hr_contract_type
+#: model:ir.ui.menu,name:hr_contract.hr_menu_contract_type
+msgid "Contract Types"
+msgstr "Tipos de contrato"
+
+#. module: hr_contract
+#: model:mail.message.subtype,description:hr_contract.mt_contract_pending
+#: model:mail.message.subtype,description:hr_contract.mt_department_contract_pending
+msgid "Contract about to expire"
+msgstr "Contrato prestes a expirar"
+
+#. module: hr_contract
+#: model:mail.message.subtype,description:hr_contract.mt_contract_close
+msgid "Contract expired"
+msgstr "Contrato expirado"
+
+#. module: hr_contract
+#: code:addons/hr_contract/models/hr_contract.py:100
+#, python-format
+msgid "Contract start date must be less than contract end date."
+msgstr "Contract start date must be less than contract end date."
+
+#. module: hr_contract
+#: model:mail.message.subtype,name:hr_contract.mt_department_contract_pending
+msgid "Contract to Renew"
+msgstr "Contrato a Renovar"
+
+#. module: hr_contract
+#: model:ir.actions.act_window,name:hr_contract.act_hr_employee_2_hr_contract
+#: model:ir.actions.act_window,name:hr_contract.action_hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_contract_ids
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_contracts_count
+#: model:ir.ui.menu,name:hr_contract.hr_menu_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_tree
+#: model:ir.ui.view,arch_db:hr_contract.hr_hr_employee_view_form2
+msgid "Contracts"
+msgstr "Contratos"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_employee_form_view
+msgid "Corporate Email"
+msgstr "Email Corporativo"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_employee_form_view
+msgid "Corporate Mobile"
+msgstr "Telemovél Corporativo"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_cost_price
+msgid "Cost"
+msgstr "Custo"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_address_county
+msgid "County"
+msgstr "Munícipio"
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_create_uid
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_create_uid
+#: model:ir.model.fields,field_description:hr.field_hr_department_create_uid
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_create_uid
+#: model:ir.model.fields,field_description:hr.field_hr_employee_create_uid
+#: model:ir.model.fields,field_description:hr.field_hr_job_create_uid
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_create_uid
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_create_uid
+msgid "Created by"
+msgstr "Criada por"
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_create_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_create_date
+#: model:ir.model.fields,field_description:hr.field_hr_department_create_date
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_create_date
+#: model:ir.model.fields,field_description:hr.field_hr_employee_create_date
+#: model:ir.model.fields,field_description:hr.field_hr_job_create_date
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_create_date
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. modules: ao_hr, hr_contract
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_currency
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_currency_id
+msgid "Currency"
+msgstr "Moeda"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_contract_id
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+#: model:ir.ui.view,arch_db:hr_contract.hr_hr_employee_view_form2
+msgid "Current Contract"
+msgstr "Contrato atual"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Current Employee"
+msgstr "Funcionário atual"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_job_no_of_employee
+msgid "Current Number of Employees"
+msgstr "Número atual de empregados"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "DETALHES DA\n"
+"                                        ENTREVISTA"
+msgstr "DETALHES DA\n"
+"                                        ENTREVISTA"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Data da Entrevista:"
+msgstr "Data da Entrevista:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Data de Fecho"
+msgstr "Data de Fecho"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Data de processamento:"
+msgstr "Data de processamento:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_employee_form_view
+msgid "Data of Bank Account"
+msgstr "Dados Bancários"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_birthday
+msgid "Date of Birth"
+msgstr "Data de Nascimento"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:250
+#: code:addons/ao_hr/report/report_bank.py:43
+#: code:addons/ao_hr/report/report_common.py:14
+#: code:addons/ao_hr/report/report_inss.py:43
+#, python-format
+msgid "December"
+msgstr "Dezembro"
+
+#. module: ao_hr
+#: selection:hr.remuneration,rem_type:0
+#: selection:hr.remuneration.code,type:0
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_line_deduction
+msgid "Deduction"
+msgstr "Dedução"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_payslip_form_view
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Deductions"
+msgstr "Deductions"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Deduções"
+msgstr "Deduções"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_kanban
+msgid "Delete"
+msgstr "Eliminar"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Departamento"
+msgstr "Departamento"
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_list
+#: model:ir.model.fields,field_description:hr.field_hr_employee_department_id
+#: model:ir.model.fields,field_description:hr.field_hr_job_department_id
+#: model:ir.ui.view,arch_db:hr.view_department_filter
+#: model:ir.ui.view,arch_db:hr.view_employee_filter
+#: model:ir.ui.view,arch_db:hr.view_job_filter
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_department_id
+msgid "Department"
+msgstr "Departamento"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_name
+msgid "Department Name"
+msgstr "Nome do departamento"
+
+#. module: hr
+#: model:ir.actions.act_window,name:hr.open_module_tree_department
+#: model:ir.ui.menu,name:hr.menu_hr_department_tree
+#: model:ir.ui.view,arch_db:hr.view_department_filter
+msgid "Departments"
+msgstr "Departamentos"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_name
+msgid "Description"
+msgstr "Descrição"
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_bank_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_inss_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_irt_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_salary_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_display_name
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_display_name
+#: model:ir.model.fields,field_description:hr.field_hr_department_display_name
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_display_name
+#: model:ir.model.fields,field_description:hr.field_hr_employee_display_name
+#: model:ir.model.fields,field_description:hr.field_hr_job_display_name
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_display_name
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_display_name
+msgid "Display Name"
+msgstr "Nome a Mostrar"
+
+#. module: hr
+#: selection:hr.employee,marital:0
+msgid "Divorced"
+msgstr "Divorciado"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "EMPREGO PASSADO (história do trabalho, por favor, detalhe a razão pela qual está\n"
+"                                        a\n"
+"                                        procura de emprego alternativo)"
+msgstr "EMPREGO PASSADO (história do trabalho, por favor, detalhe a razão pela qual está\n"
+"                                        a\n"
+"                                        procura de emprego alternativo)"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "EXPERIÊNCIA DE TRABALHO"
+msgstr "EXPERIÊNCIA DE TRABALHO"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_kanban
+msgid "Edit Contract"
+msgstr "Editar Contrato"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_email
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_email
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_list
+msgid "Email"
+msgstr "E-mail"
+
+#. module: hr
+#: model:ir.model,name:hr.model_mail_alias
+msgid "Email Aliases"
+msgstr "Apelidos de E-mail"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_emergence_contact
+msgid "Emergence Contact"
+msgstr "Emergence Contact"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_employee_form_view
+msgid "Emergences Contacts"
+msgstr "Contactos de Emergências"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_list
+msgid "Emp. Num."
+msgstr "Emp. Num."
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.model,name:ao_hr.model_hr_employee
+#: model:ir.model,name:hr.model_hr_employee
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+#: model:ir.model,name:hr_contract.model_hr_employee
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_employee_id
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Employee"
+msgstr "Funcionário"
+
+#. module: hr
+#: model:ir.model,name:hr.model_hr_employee_category
+msgid "Employee Category"
+msgstr "Categoria do funcionário"
+
+#. modules: ao_hr, hr_contract
+#: model:ir.model,name:ao_hr.model_hr_contract
+#: model:ir.model,name:hr_contract.model_hr_contract
+msgid "Employee Contract"
+msgstr "Contrato do Funcionário"
+
+#. module: ao_hr
+#: model:ir.actions.report,name:ao_hr.action_report_employee_file
+msgid "Employee File"
+msgstr "Arquivo do Funcionário\n"
+"\n"
+""
+
+#. module: ao_hr
+#: model:ir.actions.report,name:ao_hr.action_report_employee_list
+msgid "Employee List"
+msgstr "Lista de Funcionários"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_employee_number
+#: model:ir.ui.view,arch_db:ao_hr.ao_employee_form_view
+msgid "Employee Number"
+msgstr "Número do Funcionário"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_name
+msgid "Employee Tag"
+msgstr "Etiqueta de Funcionário"
+
+#. module: hr
+#: model:ir.actions.act_window,name:hr.open_view_categ_form
+#: model:ir.ui.menu,name:hr.menu_view_employee_category_form
+#: model:ir.ui.view,arch_db:hr.view_employee_category_form
+msgid "Employee Tags"
+msgstr "Etiquetas de empregados"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_employee_bank_account_id
+msgid "Employee bank salary account"
+msgstr "Conta bancária do funcionário"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Employee's Name"
+msgstr "Nome do Funcionário"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_wage
+msgid "Employee's monthly gross wage."
+msgstr "Employee's monthly gross wage."
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_resource_calendar_id
+msgid "Employee's working schedule."
+msgstr "Horário de trabalho do funcionário"
+
+#. modules: ao_hr, hr
+#: model:ir.ui.menu,name:ao_hr.ao_hr_employee_menu
+#: model:ir.actions.act_window,name:hr.act_employee_from_department
+#: model:ir.actions.act_window,name:hr.open_view_employee_list
+#: model:ir.actions.act_window,name:hr.open_view_employee_list_my
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_employee_ids
+#: model:ir.model.fields,field_description:hr.field_hr_job_employee_ids
+#: model:ir.ui.menu,name:hr.menu_hr_root
+#: model:ir.ui.menu,name:hr.menu_open_view_employee_list_my
+#: model:ir.ui.view,arch_db:hr.hr_department_view_kanban
+#: model:ir.ui.view,arch_db:hr.res_config_settings_view_form
+#: model:ir.ui.view,arch_db:hr.view_employee_filter
+#: model:ir.ui.view,arch_db:hr.view_employee_tree
+#: model:ir.ui.view,arch_db:hr.view_partner_tree2
+msgid "Employees"
+msgstr "Funcionários"
+
+#. module: hr
+#: model:ir.actions.act_window,name:hr.open_view_employee_tree
+msgid "Employees Structure"
+msgstr "Estrutura de funcionários"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_category_list
+msgid "Employees Tags"
+msgstr "Etiquetas de Funcionários"
+
+#. modules: ao_hr, hr_contract
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_date_end
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_end_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_end_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_end_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_end_date
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_date_end
+msgid "End Date"
+msgstr "Data de Fim"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_date_end
+msgid "End date of the contract (if it's a fixed-term contract)."
+msgstr "Data final do contrato (se for um contrato de termo fixo)"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_trial_date_end
+msgid "End date of the trial period (if there is one)."
+msgstr "Data final do tempo experimental (se houver um)."
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_trial_date_end
+msgid "End of Trial Period"
+msgstr "Fim do período experimental"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_employee_address_home_id
+msgid "Enter here the private address of the employee, not the one linked to your company."
+msgstr "Enter here the private address of the employee, not the one linked to your company."
+
+#. module: ao_hr
+#: selection:hr.inss.config,inss_type:0
+msgid "Enterprise"
+msgstr "Enterprise"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Entrevistador(s) título do trabalho:\n"
+"                                            <br/>\n"
+"                                            <br/>"
+msgstr "Entrevistador(s) título do trabalho:\n"
+"                                            <br/>\n"
+"                                            <br/>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Entrevistador:"
+msgstr "Entrevistador:"
+
+#. module: hr
+#: code:addons/hr/models/hr.py:310
+#, python-format
+msgid "Error! You cannot create recursive departments."
+msgstr "Erro! Não pode criar departamentos de forma recursiva."
+
+#. module: hr
+#: code:addons/hr/models/hr.py:187
+#, python-format
+msgid "Error! You cannot create recursive hierarchy of Employee(s)."
+msgstr "Erro! Não pode criar hierarquias de funcionários de forma recursiva."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Excede os requisitos"
+msgstr "Excede os requisitos"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_excess
+msgid "Excess"
+msgstr "Excesso"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_job_no_of_recruitment
+msgid "Expected New Employees"
+msgstr "Esperados Novos Funcionários"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_job_expected_employees
+msgid "Expected number of employees for this job position after new recruitment."
+msgstr "Número de empregados neste cargo após novo recrutamento."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Experiência extensiva"
+msgstr "Experiência extensiva"
+
+#. module: hr_contract
+#: selection:hr.contract,state:0
+#: model:mail.message.subtype,name:hr_contract.mt_contract_close
+msgid "Expired"
+msgstr "Expirado"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_extra_deductions
+msgid "Extra Deduction"
+msgstr "Extra Deduction"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_remuneration_inss_extra
+msgid "Extra INSS Remuneration"
+msgstr "Remuneração Extra do INSS"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_extra_remunerations
+msgid "Extra Remuneration"
+msgstr "Extra Remuneration"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Extremamente preparado"
+msgstr "Extremamente preparado"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "FOLHA DE REMUNERAÇÕES REFERENTES A:"
+msgstr "FOLHA DE REMUNERAÇÕES REFERENTES A:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+msgid "FOLHA DE REMUNERAÇÕES REFERENTES AO PERÍODO DE\n"
+"                            <span>01/01/2018</span>\n"
+"                            À\n"
+"                            <span>31/01/2018</span>\n"
+"                            <span class=\"right\">Folha nº</span>\n"
+"                            <br/>\n"
+"                            <br/>"
+msgstr "FOLHA DE REMUNERAÇÕES REFERENTES AO PERÍODO DE\n"
+"                            <span>01/01/2018</span>\n"
+"                            À\n"
+"                            <span>31/01/2018</span>\n"
+"                            <span class=\"right\">Folha nº</span>\n"
+"                            <br/>\n"
+"                            <br/>"
+
+#. module: ao_hr
+#: model:ir.actions.act_window,name:ao_hr.act_open_hr_father_view
+#: model:ir.model,name:ao_hr.model_hr_father
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_father
+#: model:ir.ui.menu,name:ao_hr.ao_hr_parent_father_menu
+msgid "Father"
+msgstr "Pai"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+msgid "Father Name..."
+msgstr "Nome do Pai..."
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:240
+#: code:addons/ao_hr/report/report_bank.py:33
+#: code:addons/ao_hr/report/report_common.py:4
+#: code:addons/ao_hr/report/report_inss.py:33
+#, python-format
+msgid "February"
+msgstr "Fevereiro"
+
+#. module: hr
+#: selection:hr.employee,gender:0
+msgid "Female"
+msgstr "Feminino"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_employee_form_view
+msgid "Filiation"
+msgstr "Filiação"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_slip_filter_by
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_slip_filter_by
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_slip_filter_by
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_slip_filter_by
+msgid "Filter By"
+msgstr "Filtrado por"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_final_value
+msgid "Final Value"
+msgstr "Valor Final"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_fiscal_number
+msgid "Fiscal Number"
+msgstr "Nº de Contribuinte"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_fixed_portion
+msgid "Fixed Portion"
+msgstr "Porção de Fixa"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Folha de Salário Referente A:"
+msgstr "Folha de Salário Referente A:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Folha de Salário nº:"
+msgstr "Folha de Salário nº:"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.hr_kanban_view_employees
+msgid "Follow"
+msgstr "Seguir"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.hr_kanban_view_employees
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Func."
+msgstr "Func."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "GERAL( remuneração actual e benefícios, expectativas salariais, período de aviso\n"
+"                                        prévio..)"
+msgstr "GERAL( remuneração actual e benefícios, expectativas salariais, período de aviso\n"
+"                                        prévio..)"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_gender
+msgid "Gender"
+msgstr "Género"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Generado por Compllexus, Serviços Informáticos"
+msgstr "Generado por Compllexus, Serviços Informáticos"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+msgid "General Info"
+msgstr "General Info"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_type_sequence
+msgid "Gives the sequence when displaying a list of Contract."
+msgstr "Dá o número de sequência quando mostra uma lista de contratos."
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_remuneration_inss_total
+msgid "Gross Remuneration"
+msgstr "Remuneração Bruta"
+
+#. modules: hr_contract, hr
+#: model:ir.ui.view,arch_db:hr.view_employee_filter
+#: model:ir.ui.view,arch_db:hr.view_job_filter
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "H. Extra"
+msgstr "H. Extra"
+
+#. module: hr_contract
+#: model:ir.actions.server,name:hr_contract.ir_cron_data_contract_update_state_ir_actions_server
+#: model:ir.cron,cron_name:hr_contract.ir_cron_data_contract_update_state
+#: model:ir.cron,name:hr_contract.ir_cron_data_contract_update_state
+msgid "HR Contract: update state"
+msgstr "Contrato de RH: estado de atualização"
+
+#. module: hr
+#: model:ir.model,name:hr.model_hr_department
+msgid "HR Department"
+msgstr "Departamento de RH"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "HR Settings"
+msgstr "Definições de Recursos Humanos"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Habilidades transfériveis"
+msgstr "Habilidades transfériveis"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_job_no_of_hired_employee
+msgid "Hired Employees"
+msgstr "Funcionários Contratados"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_personal_home_landline
+msgid "Home Landline"
+msgstr "Tel. de Casa"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_vehicle_distance
+msgid "Home-Work Dist."
+msgstr "Distância entre a casa e o trabalho."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Hora da Entrevista:"
+msgstr "Hora da Entrevista:"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_wage_hour
+msgid "Hour Wage"
+msgstr "Hour Wage"
+
+#. module: hr
+#: model:ir.ui.menu,name:hr.menu_hr_main
+msgid "Human Resources"
+msgstr "Recursos Humanos"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_bank_iban
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "IBAN"
+msgstr "IBAN"
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_id
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_id
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config_id
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_id
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_id
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_id
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_id
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_bank_id
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_inss_id
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_irt_id
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_salary_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_id
+#: model:ir.model.fields,field_description:hr.field_hr_department_id
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_id
+#: model:ir.model.fields,field_description:hr.field_hr_employee_id
+#: model:ir.model.fields,field_description:hr.field_hr_job_id
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_id
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_id
+msgid "ID"
+msgstr "ID"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "INICIATIVA"
+msgstr "INICIATIVA"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_amount_inss
+msgid "INSS Amount"
+msgstr "Valor do INSS"
+
+#. module: ao_hr
+#: model:ir.actions.act_window,name:ao_hr.action_hr_inss_configuration
+#: model:ir.ui.menu,name:ao_hr.menu_hr_inss_config
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_inss_configuration_tree_view
+msgid "INSS Configuration"
+msgstr "Configurações de INSS "
+
+#. module: ao_hr
+#: model:ir.ui.menu,name:ao_hr.menu_hr_reporting_inss
+msgid "INSS Map"
+msgstr "Mapa INSS "
+
+#. module: ao_hr
+#: model:ir.actions.act_window,name:ao_hr.action_hr_inss
+msgid "INSS Map Wizard"
+msgstr "Assistente de mapa do INSS"
+
+#. module: ao_hr
+#: model:ir.actions.report,name:ao_hr.action_report_inss
+msgid "INSS Report"
+msgstr "INSS Report"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "INSTITUTO NACIONAL DE SEGURANÇA SOCIAL"
+msgstr "INSTITUTO NACIONAL DE SEGURANÇA SOCIAL"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "IRT"
+msgstr "IRT"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_amount_base_irt
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_amount_irt
+msgid "IRT Amount"
+msgstr "Valor do IRT"
+
+#. module: ao_hr
+#: model:ir.actions.act_window,name:ao_hr.action_hr_irt_configuration
+#: model:ir.ui.menu,name:ao_hr.menu_hr_irt_config
+msgid "IRT Configuration"
+msgstr "Configurações de IRT "
+
+#. module: ao_hr
+#: model:ir.ui.menu,name:ao_hr.menu_hr_reporting_irt
+msgid "IRT Map"
+msgstr "Mapa de IRT"
+
+#. module: ao_hr
+#: model:ir.actions.act_window,name:ao_hr.action_hr_irt
+msgid "IRT Map Wizard"
+msgstr "Assistente de mapa de IRT"
+
+#. module: ao_hr
+#: model:ir.actions.report,name:ao_hr.action_report_irt
+msgid "IRT Report"
+msgstr "IRT Report"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Ideal"
+msgstr "Ideal"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_identification_id
+msgid "Identification No"
+msgstr "Número de identificação(BI)"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_employee_active
+msgid "If the active field is set to False, it will allow you to hide the resource record without removing it."
+msgstr "Se o campo ativo é definido como Falso, ele permitirá que oculte o registo do recurso sem o remover."
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_employee_is_foreign
+msgid "If this employee is foreign, please check this box"
+msgstr "If this employee is foreign, please check this box"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Important Messages"
+msgstr "Mensagens Importantes"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_job_filter
+msgid "In Position"
+msgstr "Em Posição"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_job_filter
+msgid "In Recruitment"
+msgstr "Em recrutamento"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_employee_vehicle_distance
+msgid "In kilometers"
+msgstr "Em quilómetros"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_initial_value
+msgid "Initial Value"
+msgstr "Valor Inicial"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_remuneration_code_code
+msgid "Insert here a code (3 or 4 chars) for the remuneration. This code should not have white spaces."
+msgstr "Insert here a code (3 or 4 chars) for the remuneration. This code should not have white spaces."
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_remuneration_code_name
+msgid "Insert here a fliendly name for the remuneration"
+msgstr "Insert here a fliendly name for the remuneration"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_remuneration_amount
+msgid "Insert here the amount for the remuneration"
+msgstr "Insert here the amount for the remuneration"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config_inss_type
+msgid "Inss Type"
+msgstr "Inss Type"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_irt_configuration_tree_view
+msgid "Irt Configuration"
+msgstr "Irt Configuration"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_is_daily
+msgid "Is Daily"
+msgstr "É Diário"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_is_foreign
+msgid "Is Foreign"
+msgstr "É Estrangeiro?"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_manager
+msgid "Is a Manager"
+msgstr "É um Gerente"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:239
+#: code:addons/ao_hr/report/report_bank.py:32
+#: code:addons/ao_hr/report/report_common.py:3
+#: code:addons/ao_hr/report/report_inss.py:32
+#, python-format
+msgid "January"
+msgstr "Janeiro"
+
+#. modules: hr_contract, hr
+#: model:ir.ui.view,arch_db:hr.view_employee_filter
+#: model:ir.ui.view,arch_db:hr.view_hr_job_form
+#: model:ir.ui.view,arch_db:hr.view_hr_job_tree
+#: model:ir.ui.view,arch_db:hr.view_job_filter
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Job"
+msgstr "Cargo"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_job_description
+msgid "Job Description"
+msgstr "Descrição do Cargo"
+
+#. module: ao_hr
+#: model:ir.actions.report,name:ao_hr.action_report_job_evaluation_and_interview
+msgid "Job Evaluation Form and Interview"
+msgstr "Formulário de Avaliação de Trabalho e Entrevista"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Job Evaluation and Interview Form"
+msgstr "Formulário de Avaliação de Trabalho e Entrevista"
+
+#. modules: hr_contract, hr
+#: model:ir.model,name:hr.model_hr_job
+#: model:ir.model.fields,field_description:hr.field_hr_employee_job_id
+#: model:ir.model.fields,field_description:hr.field_hr_job_name
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_job_id
+msgid "Job Position"
+msgstr "Posição do Cargo"
+
+#. module: hr
+#: model:ir.actions.act_window,name:hr.action_hr_job
+msgid "Job Positions"
+msgstr "Posições de cargos"
+
+#. module: hr
+#: model:ir.actions.act_window,help:hr.action_hr_job
+msgid "Job Positions are used to define jobs and their requirements.\n"
+"                You can keep track of the number of employees you have per job\n"
+"                position and follow the evolution according to what you planned\n"
+"                for the future."
+msgstr "Posições são usados para definir os trabalhos e os seus requirements.\n"
+"Você pode acompanhar o número de funcionários que você tem por job\n"
+"posição e acompanhar a evolução de acordo com o que você planned\n"
+"para o futuro."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_list
+msgid "Job Title"
+msgstr "Título do Cargo"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_jobs_ids
+#: model:ir.ui.view,arch_db:hr.view_job_filter
+msgid "Jobs"
+msgstr "Empregos"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:245
+#: code:addons/ao_hr/report/report_bank.py:38
+#: code:addons/ao_hr/report/report_common.py:9
+#: code:addons/ao_hr/report/report_inss.py:38
+#, python-format
+msgid "July"
+msgstr "Julho"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:244
+#: code:addons/ao_hr/report/report_bank.py:37
+#: code:addons/ao_hr/report/report_common.py:8
+#: code:addons/ao_hr/report/report_inss.py:37
+#, python-format
+msgid "June"
+msgstr "Junho"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "LOCALIDADE"
+msgstr "LOCALIDADE"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_langs
+msgid "Languages"
+msgstr "Idiomas"
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_bank___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_inss___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_irt___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_report_ao_hr_report_salary___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt___last_update
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary___last_update
+#: model:ir.model.fields,field_description:hr.field_hr_department___last_update
+#: model:ir.model.fields,field_description:hr.field_hr_employee___last_update
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category___last_update
+#: model:ir.model.fields,field_description:hr.field_hr_job___last_update
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract___last_update
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type___last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_write_uid
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_write_uid
+#: model:ir.model.fields,field_description:hr.field_hr_department_write_uid
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_write_uid
+#: model:ir.model.fields,field_description:hr.field_hr_employee_write_uid
+#: model:ir.model.fields,field_description:hr.field_hr_job_write_uid
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_write_uid
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_write_uid
+msgid "Last Updated by"
+msgstr "Última Atualização por"
+
+#. modules: ao_hr, hr_contract, hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_write_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_write_date
+#: model:ir.model.fields,field_description:hr.field_hr_department_write_date
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_write_date
+#: model:ir.model.fields,field_description:hr.field_hr_employee_write_date
+#: model:ir.model.fields,field_description:hr.field_hr_job_write_date
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_write_date
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_write_date
+msgid "Last Updated on"
+msgstr "Última Atualização em"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_last_work_date
+msgid "Last Work Day"
+msgstr "Ultimo dia de Trabalho"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_employee_contract_id
+msgid "Latest contract of the employee"
+msgstr "Último contrato do funcionário"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_hr_job_form
+msgid "Launch Recruitment"
+msgstr "Lançar Recrutamento"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_hr_holidays_status
+msgid "Leave Type"
+msgstr "Tipo de Ausência"
+
+#. module: hr
+#: selection:hr.employee,marital:0
+msgid "Legal Cohabitant"
+msgstr "Legal Cohabitant"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_irt
+msgid "Liquidado"
+msgstr "Liquidado"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_list
+msgid "List of Employees"
+msgstr "List of Employees"
+
+#. module: ao_hr
+#: model:ir.actions.act_window,name:ao_hr.action_hr_remuneration_codes
+msgid "List of Remuneration Codes"
+msgstr "Códigos da Lista de Remunerações"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "MORADA"
+msgstr "MORADA"
+
+#. module: hr
+#: selection:hr.employee,gender:0
+msgid "Male"
+msgstr "Masculino"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_manager_id
+#: model:ir.model.fields,field_description:hr.field_hr_employee_parent_id
+#: model:ir.ui.view,arch_db:hr.view_employee_filter
+#: model:res.groups,name:hr.group_hr_manager
+msgid "Manager"
+msgstr "Gestor"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_resource_calendar_manual_week_hours
+msgid "Manual Week Hours"
+msgstr "Manual Week Hours"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_resource_calendar_define_manual_week_hours
+msgid "Manually Define Week Hours"
+msgstr "Manually Define Week Hours"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_irt
+msgid "Mapa de Liquidação de IRT ("
+msgstr "Mapa de Liquidação de IRT ("
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:241
+#: code:addons/ao_hr/report/report_bank.py:34
+#: code:addons/ao_hr/report/report_common.py:5
+#: code:addons/ao_hr/report/report_inss.py:34
+#, python-format
+msgid "March"
+msgstr "Março"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_marital
+msgid "Marital Status"
+msgstr "Estado Civil"
+
+#. module: hr
+#: selection:hr.employee,marital:0
+msgid "Married"
+msgstr "Casado"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:243
+#: code:addons/ao_hr/report/report_bank.py:36
+#: code:addons/ao_hr/report/report_common.py:7
+#: code:addons/ao_hr/report/report_inss.py:36
+#, python-format
+msgid "May"
+msgstr "Maio"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_hr_employee_view_form2
+msgid "Medical Exam"
+msgstr "Exame médico"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_medic_exam
+msgid "Medical Examination Date"
+msgstr "Data do exame médico"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_image_medium
+msgid "Medium-sized photo"
+msgstr "Foto de tamanho médio"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_employee_image_medium
+msgid "Medium-sized photo of the employee. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr "Foto de tamanho médio do funcionário. É automaticamente redimensionada para 128x128 pixeis, preservando o rácio. Use este campo em vistas formulário ou algumas vistas kanban."
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_member_ids
+msgid "Members"
+msgstr "Membros"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.hr_kanban_view_employees
+msgid "Messages"
+msgstr "Mensagens"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_misses
+msgid "Misses"
+msgstr "Faltas"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_personal_mobile_1
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_mobile
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_mobile
+msgid "Mobile"
+msgstr "Telemóvel"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Monthly Advantages in Cash"
+msgstr "Remuneração Mensal em Dinheiro"
+
+#. module: ao_hr
+#: model:ir.actions.act_window,name:ao_hr.act_open_hr_mother_view
+#: model:ir.model,name:ao_hr.model_hr_mother
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_mother
+#: model:ir.ui.menu,name:ao_hr.ao_hr_parent_mother_menu
+msgid "Mother"
+msgstr "Mãe"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+msgid "Mother Name..."
+msgstr "Nome da mãe"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "N/A"
+msgstr "N/D"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "NOME"
+msgstr "NOME"
+
+#. modules: ao_hr, hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_name
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_name
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_list
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+#: model:ir.model.fields,field_description:hr.field_hr_employee_name
+msgid "Name"
+msgstr "Nome"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_country_id
+msgid "Nationality (Country)"
+msgstr "Nacionalidade"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Nenhuma experiência"
+msgstr "Nenhuma experiência"
+
+#. module: hr_contract
+#: selection:hr.contract,state:0
+msgid "New"
+msgstr "Novo"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Nomde do Candidato:"
+msgstr "Nomde do Candidato:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Nome"
+msgstr "Nome"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_irt
+msgid "Nome Completo"
+msgstr "Nome Completo"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Nome do entrevistador:\n"
+"                                            <br/>\n"
+"                                            <br/>"
+msgstr "Nome do entrevistador:\n"
+"                                            <br/>\n"
+"                                            <br/>"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Nomes Completos"
+msgstr "Nomes Completos"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:81
+#, python-format
+msgid "Normal Working Days paid at 100%"
+msgstr "Dias Normais de Trabalho pagos a 100%"
+
+#. module: hr
+#: selection:hr.job,state:0
+msgid "Not Recruiting"
+msgstr "Not Recruiting"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_note
+msgid "Note"
+msgstr "Nota"
+
+#. modules: hr_contract, hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_notes
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_notes
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:249
+#: code:addons/ao_hr/report/report_bank.py:42
+#: code:addons/ao_hr/report/report_common.py:13
+#: code:addons/ao_hr/report/report_inss.py:42
+#, python-format
+msgid "November"
+msgstr "Novembro"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_employee_form_view
+msgid "Number"
+msgstr "Número"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_children
+msgid "Number of Children"
+msgstr "Número de Filhos"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_job_no_of_employee
+msgid "Number of employees currently occupying this job position."
+msgstr "Número de empregados ocupando este cargo."
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_job_no_of_hired_employee
+msgid "Number of hired employees for this job position during recruitment phase."
+msgstr "Número de funcionários contratados para este posto de trabalho durante a fase de recrutamento."
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_job_no_of_recruitment
+msgid "Number of new employees you expect to recruit."
+msgstr "Número de novos funcionários esperados para recrutar."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+#: model:ir.ui.view,arch_db:ao_hr.report_irt
+msgid "Nº"
+msgstr "Nº"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Nº Beneficiario"
+msgstr "Nº Beneficiario"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Nº C0NTRIB. S.SOCIAL"
+msgstr "Nº C0NTRIB. S.SOCIAL"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Nº DE IDENTIF. DE PESSOA COLECTIVA"
+msgstr "Nº DE IDENTIF. DE PESSOA COLECTIVA"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Nº Dias Mês"
+msgstr "Nº Dias Mês"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Nº INSS"
+msgstr "Nº INSS"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_irt
+msgid "Nº de Contribuinte"
+msgstr "Nº de Contribuinte"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Não"
+msgstr "Não"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Não antede aos requisitos"
+msgstr "Não antede aos requisitos"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Não recomendo"
+msgstr "Não recomendo"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato demonstrou a capacidade de\n"
+"                                        trabalhar\n"
+"                                        bem em uma equipa e com superiores, colegas e funcionários que lhe reportam"
+msgstr "O candidato demonstrou a capacidade de\n"
+"                                        trabalhar\n"
+"                                        bem em uma equipa e com superiores, colegas e funcionários que lhe reportam"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato demonstrou a capacidade de ser\n"
+"                                        proativo e visionário (forward thinking)"
+msgstr "O candidato demonstrou a capacidade de ser\n"
+"                                        proativo e visionário (forward thinking)"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato demonstrou boas habilidades de\n"
+"                                        preparação para entrevista"
+msgstr "O candidato demonstrou boas habilidades de\n"
+"                                        preparação para entrevista"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato demonstrou desejo/potencial para\n"
+"                                        maior\n"
+"                                        desenvolvimento na carreira"
+msgstr "O candidato demonstrou desejo/potencial para\n"
+"                                        maior\n"
+"                                        desenvolvimento na carreira"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato demonstrou para sua satifação que\n"
+"                                        ele(a) tem\n"
+"                                        as habilidades de comunicação necessárias para realizar o trabalho com sucesso"
+msgstr "O candidato demonstrou para sua satifação que\n"
+"                                        ele(a) tem\n"
+"                                        as habilidades de comunicação necessárias para realizar o trabalho com sucesso"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato demonstrou para sua satifação que\n"
+"                                        ele(a) tem\n"
+"                                        habilidades necessáris de supervisão / liderança para executar o trabalho com\n"
+"                                        sucesso"
+msgstr "O candidato demonstrou para sua satifação que\n"
+"                                        ele(a) tem\n"
+"                                        habilidades necessáris de supervisão / liderança para executar o trabalho com\n"
+"                                        sucesso"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato demonstrou para sua satifação que\n"
+"                                        ele(a) tem habilidades técnicas necessárias para realizar o trabalho com sucesso"
+msgstr "O candidato demonstrou para sua satifação que\n"
+"                                        ele(a) tem habilidades técnicas necessárias para realizar o trabalho com sucesso"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato demonstrou para sua satifação que\n"
+"                                        tem\n"
+"                                        a experiência de segurança e compromisso necessário"
+msgstr "O candidato demonstrou para sua satifação que\n"
+"                                        tem\n"
+"                                        a experiência de segurança e compromisso necessário"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato tem educação, formação e/ou\n"
+"                                        competências necessárias"
+msgstr "O candidato tem educação, formação e/ou\n"
+"                                        competências necessárias"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O candidato tem experiência de trabalho prévia\n"
+"                                        relacionada à posição"
+msgstr "O candidato tem experiência de trabalho prévia\n"
+"                                        relacionada à posição"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "O histórico de emprego do candidato está\n"
+"                                        relacionado a posição"
+msgstr "O histórico de emprego do candidato está\n"
+"                                        relacionado a posição"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_payslip_form_view
+msgid "Observations"
+msgstr "Observations"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:248
+#: code:addons/ao_hr/report/report_bank.py:41
+#: code:addons/ao_hr/report/report_common.py:12
+#: code:addons/ao_hr/report/report_inss.py:41
+#, python-format
+msgid "October"
+msgstr "Outubro"
+
+#. module: hr
+#: model:ir.actions.act_window,help:hr.open_module_tree_department
+msgid "Odoo's department structure is used to manage all documents\n"
+"                related to employees by departments: expenses, timesheets,\n"
+"                leaves, recruitments, etc."
+msgstr "A estrutura de departamento do Odoo é usada para gerenciar todos os documentos\n"
+"                relacionados a funcionários por departamentos: despesas, quadros de horários,\n"
+"                licenças, recrutamentos etc.\n"
+"\n"
+""
+
+#. module: hr
+#: model:res.groups,name:hr.group_hr_user
+msgid "Officer"
+msgstr "Escritório"
+
+#. module: hr
+#: selection:hr.employee,gender:0
+msgid "Other"
+msgstr "Outros"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Other Information"
+msgstr "Outra informação"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Other Information ..."
+msgstr "Outra Informação ..."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_irt
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Outros"
+msgstr "Outros"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_overtimes
+msgid "Overtimes"
+msgstr "Horas extras"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "PREPARAÇÃO DA\n"
+"                                        ENTREVISTA DO CANDIDATO( gestão de tempo, pesquisa / familiarização com a\n"
+"                                        empresa)"
+msgstr "PREPARAÇÃO DA\n"
+"                                        ENTREVISTA DO CANDIDATO( gestão de tempo, pesquisa / familiarização com a\n"
+"                                        empresa)"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Padrão de emprego errático"
+msgstr "Padrão de emprego errático"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Pago AKZ"
+msgstr "Pago AKZ"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_department_parent_id
+msgid "Parent Department"
+msgstr "Departamento Pai"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_passport_id
+msgid "Passport No"
+msgstr "N. Passaporte"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Recibo de Salário"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_employee_form_view
+msgid "Payment"
+msgstr "Pagamento"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_payment_method
+msgid "Payment Method"
+msgstr "Método de Pagamento"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_hr_payslip_run_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_hr_payslip_run_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_hr_payslip_run_id
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_hr_payslip_run_id
+#: selection:wizard.inss,slip_filter_by:0
+#: selection:wizard.irt,slip_filter_by:0
+msgid "Payslip Batch"
+msgstr "Lote de Recibos de Vencimento"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_hr_payslip_run
+msgid "Payslip Batches"
+msgstr "Lotes de Recibos de Vencimento"
+
+#. module: ao_hr
+#: selection:wizard.bank,slip_filter_by:0
+#: selection:wizard.inss,slip_filter_by:0
+#: selection:wizard.irt,slip_filter_by:0
+#: selection:wizard.salary,slip_filter_by:0
+msgid "Payslip Date"
+msgstr "Data do Recibo de Vencimento"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_period_working_days
+msgid "Payslip Days"
+msgstr "Payslip Days"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_hr_payslip_line
+msgid "Payslip Line"
+msgstr "Linha Recibo de Vencimento"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_payslip_period
+msgid "Payslip Period"
+msgstr "Payslip Period"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_personal_email
+msgid "Personal Email"
+msgstr "Email  Pessoal"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_phone
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_phone
+msgid "Phone"
+msgstr "Telefone"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_image
+msgid "Photo"
+msgstr "Fotografia"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_employee_place_of_birth
+msgid "Place of Birth"
+msgstr "Local de Nascimento"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Position"
+msgstr "Posto"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Posição aplicada para:"
+msgstr "Posição aplicada para:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Pouca preparação"
+msgstr "Pouca preparação"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Precisa de mais treinamento"
+msgstr "Precisa de mais treinamento"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_wizard_bank
+msgid "Print BANK Map"
+msgstr "Imprimir Mapa de Bancos"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_bank_view
+msgid "Print Bank Report"
+msgstr "Print Bank Report"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_wizard_inss
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_inss_view
+msgid "Print INSS Map"
+msgstr "Imprimir mapa de INSS"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_wizard_irt
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_irt_view
+msgid "Print IRT Map"
+msgstr "Imprimir Mapa de IRT"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_wizard_salary
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_salary_view
+msgid "Print Salary Map"
+msgstr "Imprimir Mapa de Salários"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_address_home_id
+msgid "Private Address"
+msgstr "Endereço privado"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Private Information"
+msgstr "Informação privada"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Processado por"
+msgstr "Processado por"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_address_province
+msgid "Province"
+msgstr "Província"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_purchase_date
+msgid "Purchase Date"
+msgstr "Data da Compra"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "RECOMENDAÇÃO GERAL (por favor detalhe)"
+msgstr "RECOMENDAÇÃO GERAL (por favor detalhe)"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "REPÚBLICA DE ANGOLA"
+msgstr "REPÚBLICA DE ANGOLA"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Recibo de Vencimentos"
+msgstr "Recibo de Vencimentos"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Recomendado"
+msgstr "Recomendado"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Recomendação"
+msgstr "Recomendação"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_hr_job_form
+msgid "Recruitment"
+msgstr "Recrutamento"
+
+#. module: hr
+#: selection:hr.job,state:0
+msgid "Recruitment in Progress"
+msgstr "Recrutamento em Progresso"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_company_assets_ref
+msgid "Reference"
+msgstr "Referência"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Related User"
+msgstr "Utilizador Relacionado"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_res_users_employee_ids
+msgid "Related employees"
+msgstr "Empregados relacionados"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_employee_user_id
+msgid "Related user name for the resource to manage its access."
+msgstr "Nome do utilizador relacionado para o recurso para gerir o seu acesso."
+
+#. module: ao_hr
+#: selection:hr.remuneration,rem_type:0
+#: selection:hr.remuneration.code,type:0
+#: model:ir.model,name:ao_hr.model_hr_remuneration
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_line_remuneration
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_remuneration
+msgid "Remuneration"
+msgstr "Remuneração"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_hr_remuneration_code
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_remunerationcode_id
+msgid "Remuneration Code"
+msgstr "Código da Remuneração"
+
+#. module: ao_hr
+#: model:ir.ui.menu,name:ao_hr.menu_human_resources_configuration_remuneration_codes
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_remuneration_code_tree_view
+msgid "Remuneration Codes"
+msgstr "Códigos de Remunerações"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_payslip_form_view
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Remunerations"
+msgstr "Remunerations"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_contract_form_view
+msgid "Remunerations and Deductions"
+msgstr "Remunerações e Deduções"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_remuneration_ids
+msgid "Remunerations for this Contract"
+msgstr "Remunerations for this Contract"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_remuneration_ids
+msgid "Remunerations in this code"
+msgstr "Remunerations in this code"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Remuneração Adicional"
+msgstr "Remuneração Adicional"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Remunerações"
+msgstr "Remunerações"
+
+#. module: hr
+#: model:ir.ui.menu,name:hr.menu_hr_reporting_timesheet
+msgid "Reporting"
+msgstr "Relatórios"
+
+#. module: ao_hr
+#: model:ir.ui.menu,name:ao_hr.menu_hr_reporting
+msgid "Reports"
+msgstr "Relatórios"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_job_requirements
+msgid "Requirements"
+msgstr "Requisitos"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_resource_calendar
+msgid "Resource Calendar"
+msgstr "Calendário de recursos"
+
+#. module: hr_contract
+#: selection:hr.contract,state:0
+msgid "Running"
+msgstr "Em Execução"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_sinid
+msgid "SIN No"
+msgstr "Nº SS"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "SS"
+msgstr "SS"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_ssnid
+msgid "SSN No"
+msgstr "Nº Segurança Social"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "SUPERVISÃO E LIDERANÇA (inclui capacidade de coaching/mentorign)"
+msgstr "SUPERVISÃO E LIDERANÇA (inclui capacidade de coaching/mentorign)"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Sal. Base"
+msgstr "Sal. Base"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_form
+msgid "Salary Information"
+msgstr "Informação do salário "
+
+#. module: ao_hr
+#: model:ir.ui.menu,name:ao_hr.menu_hr_reporting_salary
+msgid "Salary Map"
+msgstr "Mapa de Salários"
+
+#. module: ao_hr
+#: model:ir.actions.act_window,name:ao_hr.action_hr_salary
+msgid "Salary Map Wizard"
+msgstr "Assistente de Mapa de Salários"
+
+#. module: ao_hr
+#: model:ir.actions.report,name:ao_hr.action_report_salary
+msgid "Salary Report"
+msgstr "Salary Report"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Salário Base"
+msgstr "Salário Base"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Salário Ilíquido"
+msgstr "Salário Ilíquido"
+
+#. module: ao_hr
+#: model:ir.ui.menu,name:ao_hr.menu_hr_configuration_schedule
+msgid "Schedules"
+msgstr "Horários"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "Search Contract"
+msgstr "Procurar contrato"
+
+#. module: hr_contract
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_search
+msgid "Search Contract Type"
+msgstr "Procurar o tipo de contrato"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_employee_social_security
+msgid "Security Number"
+msgstr "Número da Segurança Social"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_remuneration_contract_id
+msgid "Select the Contract remuneration"
+msgstr "Select the Contract remuneration"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_wizard_bank_hr_payslip_run_id
+#: model:ir.model.fields,help:ao_hr.field_wizard_inss_hr_payslip_run_id
+#: model:ir.model.fields,help:ao_hr.field_wizard_irt_hr_payslip_run_id
+#: model:ir.model.fields,help:ao_hr.field_wizard_salary_hr_payslip_run_id
+msgid "Select the Payslip Batch for wich you want do generate the Salary map Report"
+msgstr "Selecione o Lote de holerite para o qual você deseja gerar o Relatório de mapa de salários"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_wizard_bank_bank
+msgid "Select the bank for print the declaration"
+msgstr "Select the bank for print the declaration"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_wizard_bank_slip_filter_by
+#: model:ir.model.fields,help:ao_hr.field_wizard_inss_slip_filter_by
+#: model:ir.model.fields,help:ao_hr.field_wizard_irt_slip_filter_by
+#: model:ir.model.fields,help:ao_hr.field_wizard_salary_slip_filter_by
+msgid "Select the methond to capture the Payslips. You can choose Payslip Batch or by Date"
+msgstr "Selecione o método para capturar os recibos de vencimento. Você pode escolher Lote ou por data\n"
+"\n"
+""
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_remuneration_remunerationcode_id
+msgid "Select the remuneration code for the remuneration"
+msgstr "Seleccione o código de remuneração para a remuneração"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Sem preparação"
+msgstr "Sem preparação"
+
+#. module: ao_hr
+#: code:addons/ao_hr/models/payslip.py:247
+#: code:addons/ao_hr/report/report_bank.py:40
+#: code:addons/ao_hr/report/report_common.py:11
+#: code:addons/ao_hr/report/report_inss.py:40
+#, python-format
+msgid "September"
+msgstr "Setembro"
+
+#. modules: ao_hr, hr_contract
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_line_sequence_view
+#: model:ir.model.fields,field_description:ao_hr.field_hr_salary_rule_sequence_view
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_type_sequence
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_type_view_search
+msgid "Sequence"
+msgstr "Sequência"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.res_config_settings_view_form
+msgid "Set default calendar used to compute time allocation for leaves, timesheets, ..."
+msgstr "Set default calendar used to compute time allocation for leaves, timesheets, ..."
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_job_state
+msgid "Set whether the recruitment process is open or closed for this job position."
+msgstr "Definir o processo de recrutamento como aberto ou fechado para este cargo"
+
+#. module: hr
+#: model:ir.actions.act_window,name:hr.hr_config_settings_action
+#: model:ir.ui.menu,name:hr.hr_menu_configuration
+#: model:ir.ui.view,arch_db:hr.hr_department_view_kanban
+msgid "Settings"
+msgstr "Configurações"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_res_config_settings_module_hr_org_chart
+msgid "Show Organizational Chart"
+msgstr "Show Organizational Chart"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.res_config_settings_view_form
+msgid "Show organizational chart on employee form"
+msgstr "Show organizational chart on employee form"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.res_config_settings_view_form
+msgid "Show organizational chart on employee form."
+msgstr "Show organizational chart on employee form."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Sim"
+msgstr "Sim"
+
+#. module: ao_hr
+#: model:ir.actions.report,name:ao_hr.action_report_simple_payslip
+msgid "Simple Payslip"
+msgstr "Recibo de Vencimento Simples"
+
+#. module: hr
+#: selection:hr.employee,marital:0
+msgid "Single"
+msgstr "Solteiro"
+
+#. module: ao_hr
+#: selection:hr.inss.config,inss_type:0
+msgid "Singular"
+msgstr "Singular"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Site da Empresa"
+msgstr "Site da Empresa"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_image_small
+msgid "Small-sized photo"
+msgstr "Foto pequena"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_employee_image_small
+msgid "Small-sized photo of the employee. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Foto de tamanho pequeno do empregado. É automaticamente redimensionada para uma imagem de 64x64 pixéis, com o rácio preservado. Use este campo onde uma imagem pequena for necessária."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Sobre Ilíquido"
+msgstr "Sobre Ilíquido"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_employee_sinid
+msgid "Social Insurance Number"
+msgstr "Número da Segurança Social"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_res_company_company_ss
+msgid "Social Security"
+msgstr "Segurança Social"
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_employee_ssnid
+msgid "Social Security Number"
+msgstr "Número da Segurança Social"
+
+#. modules: ao_hr, hr_contract
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_date_start
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_bank_start_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_inss_start_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_irt_start_date
+#: model:ir.model.fields,field_description:ao_hr.field_wizard_salary_start_date
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_date_start
+msgid "Start Date"
+msgstr "Data de Início"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_date_start
+msgid "Start date of the contract."
+msgstr "Data de inicio do contrato "
+
+#. modules: ao_hr, hr_contract
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_state_id
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_state_id
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+msgid "State"
+msgstr "Estado"
+
+#. modules: hr_contract, hr
+#: model:ir.model.fields,field_description:hr.field_hr_job_state
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+#: model:ir.ui.view,arch_db:hr.view_job_filter
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_state
+msgid "Status"
+msgstr "Estado"
+
+#. module: hr_contract
+#: model:ir.model.fields,help:hr_contract.field_hr_contract_state
+msgid "Status of the contract"
+msgstr "Estado do contrato"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_hr_job_form
+msgid "Stop Recruitment"
+msgstr "Terminar o recrutamento"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_street
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_street
+msgid "Street"
+msgstr "Rua"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+msgid "Street..."
+msgstr "Rua..."
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_street2
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_street2
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+msgid "Street2"
+msgstr "Rua2"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+msgid "Students"
+msgstr "Students"
+
+#. module: hr
+#: model:ir.actions.act_window,name:hr.hr_employee_action_subordinate_hierachy
+msgid "Subordinate Hierarchy"
+msgstr "Hierarquia de Subordinados"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_child_ids
+msgid "Subordinates"
+msgstr "Subordinados"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Subsidios"
+msgstr "Subsidios"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+msgid "TELEFONE"
+msgstr "TELEFONE"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "TELEFONE:"
+msgstr "TELEFONE:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "TRABALHO EM EQUIPA"
+msgstr "TRABALHO EM EQUIPA"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "TREINAMENTO E COMPETÊNCIA (são requisitos mínimos e obrigatórios atendidos? Por\n"
+"                                        favor detalhar quaisquer requisitos de escassez, se aplicável)"
+msgstr "TREINAMENTO E COMPETÊNCIA (são requisitos mínimos e obrigatórios atendidos? Por\n"
+"                                        favor detalhar quaisquer requisitos de escassez, se aplicável)"
+
+#. module: hr
+#: sql_constraint:hr.employee.category:0
+msgid "Tag name already exists !"
+msgstr "Nome da etiqueta já existe!"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_category_ids
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_inss_config_tax
+#: model:ir.model.fields,field_description:ao_hr.field_hr_irt_config_tax
+msgid "Tax(%)"
+msgstr "Imposto(%)"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_irt
+msgid "Taxa Média"
+msgstr "Taxa Média"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_employee_list
+msgid "Telephone"
+msgstr "Telephone"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_is_address_home_a_company
+msgid "The employee adress has a company linked"
+msgstr "The employee adress has a company linked"
+
+#. module: hr
+#: sql_constraint:hr.job:0
+msgid "The name of the job position must be unique per department in company!"
+msgstr "O nome do posto de trabalho deve ser único por departamento na empresa!"
+
+#. module: ao_hr
+#: sql_constraint:hr.inss.config:0
+msgid "There is already a registration for this INSS  !"
+msgstr "There is already a registration for this INSS  !"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_bank_view
+msgid "This Wizard will generate the Bank Report for selected\n"
+"						Payslips. Select the Bank you wish to generate the Report for. You\n"
+"						can filter Payslips by Payslip Batch or by Date. Select a Payslip\n"
+"						Batch to generate the Report for all Paylip in the Batch. Select a\n"
+"						date range to capture all Payslip with Date End within that range.\n"
+"						Those marked as cancelled or credit note will be ignored."
+msgstr "Este assistente irá gerar o Mapa de Bancos para os recibos de vencimento selecionados\n"
+"                        . Podes filtrar os recibos de vencimento por lote ou por data.\n"
+"                        Selecione um lote de recibo de vencimento para gerar o relatório para todos os recibos de vencimento neste lote.                         Selecione um período para capturar todos os recibos de vencimento dentro desse intervalo. Os marcados como cancelados ou nota de crédito\n"
+"                        serão ignorados."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_inss_view
+msgid "This Wizard will generate the INSS Report for selected\n"
+"                        Payslips. You can filter Payslips by Payslip Batch or by Date.\n"
+"                        Select a Payslip Batch to generate the Report for all Paylip in\n"
+"                        the Batch. Select a date range to capture all Payslip with Date\n"
+"                        End within that range. Those marked as cancelled or credit note\n"
+"                        will be ignored."
+msgstr "Este assistente irá gerar o Mapa de INSS para os recibos de vencimento selecionados\n"
+"                        . Podes filtrar os recibos de vencimento por lote ou por data.\n"
+"                        Selecione um lote de recibo de vencimento para gerar o relatório para todos os recibos de vencimento neste lote.                         Selecione um período para capturar todos os recibos de vencimento dentro desse intervalo. Os marcados como cancelados ou nota de crédito\n"
+"                        serão ignorados."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_irt_view
+msgid "This Wizard will generate the IRT Report for selected\n"
+"                        Payslips. You can filter Payslips by Payslip Batch or by Date.\n"
+"                        Select a Payslip Batch to generate the Report for all Paylip in\n"
+"                        the Batch. Select a date range to capture all Payslip with Date\n"
+"                        End within that range. Those marked as cancelled or credit note\n"
+"                        will be ignored."
+msgstr "Este assistente irá gerar o Mapa de IRT para os recibos de vencimento selecionados\n"
+"                        . Podes filtrar os recibos de vencimento por lote ou por data.\n"
+"                        Selecione um lote de recibo de vencimento para gerar o relatório para todos os recibos de vencimento neste lote.                         Selecione um período para capturar todos os recibos de vencimento dentro desse intervalo. Os marcados como cancelados ou nota de crédito\n"
+"                        serão ignorados."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_salary_view
+msgid "This Wizard will generate the Salary Map for selected\n"
+"                        Payslips. You can filter Payslips by Payslip Batch or by Date.\n"
+"                        Select a Payslip Batch to generate the Report for all Paylip in\n"
+"                        the Batch. Select a date range to capture all Payslip with Date\n"
+"                        End within that range. Those marked as cancelled or credit note\n"
+"                        will be ignored."
+msgstr "Este assistente irá gerar o Mapa de salários para os recibos de vencimento selecionados\n"
+"                        . Podes filtrar os recibos de vencimento por lote ou por data.\n"
+"                        Selecione um lote de recibo de vencimento para gerar o relatório para todos os recibos de vencimento neste lote.                         Selecione um período para capturar todos os recibos de vencimento dentro desse intervalo. Os marcados como cancelados ou nota de crédito\n"
+"                        serão ignorados."
+
+#. module: hr
+#: model:ir.model.fields,help:hr.field_hr_employee_image
+msgid "This field holds the image used as photo for the employee, limited to 1024x1024px."
+msgstr "Este campo guarda a imagem usada como fotografia do funcionário, limitada a 1024x1024 pixéis."
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_payslip_remuneration
+msgid "This is the Wage amount"
+msgstr "This is the Wage amount"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_payslip_remuneration_inss_base
+msgid "This is the Wage plus Overtime minus Misses"
+msgstr "Este é o salário mais as horas extras e descontado as faltas"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_payslip_overtimes
+msgid "This is the total amount for Overtimes"
+msgstr "Esse é o valor total das horas extras"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_payslip_misses
+msgid "This is the total discount for misses"
+msgstr "Este é o desconto total pelas faltas"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_payslip_remuneration_inss_extra
+msgid "Those are other INSS collectible remunerations"
+msgstr "Those are other INSS collectible remunerations"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "Tipo de Entrevista:"
+msgstr "Tipo de Entrevista:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Tipo de processamento:"
+msgstr "Tipo de processamento:"
+
+#. module: hr_contract
+#: selection:hr.contract,state:0
+#: model:ir.ui.view,arch_db:hr_contract.hr_contract_view_search
+#: model:mail.message.subtype,name:hr_contract.mt_contract_pending
+msgid "To Renew"
+msgstr "Para Renovar"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Todos"
+msgstr "Todos"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+#: model:ir.ui.view,arch_db:ao_hr.report_irt
+msgid "Totais"
+msgstr "Totais"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "Total"
+msgstr "Total"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_job_expected_employees
+msgid "Total Forecasted Employees"
+msgstr "Total de empregados previsto"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_total_paid
+msgid "Total Paid"
+msgstr "Total Paid"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_resource_calendar_week_hours_final
+msgid "Total Week Hours"
+msgstr "Total Week Hours"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_bank
+#: model:ir.ui.view,arch_db:ao_hr.report_inss
+msgid "Total dos Salários Ilíquidos"
+msgstr "Total dos Salários Ilíquidos"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_total_deductions
+msgid "Total of Deductions"
+msgstr "Total of Deductions"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_payslip_total_remunerations
+msgid "Total of Remunerations"
+msgstr "Total of Remunerations"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_resource_calendar_manual_week_hours
+msgid "Total work hours in the week"
+msgstr "Total work hours in the week"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Totals"
+msgstr "Totals"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_code_type
+#: model:ir.model.fields,field_description:ao_hr.field_hr_remuneration_rem_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_holidays_status_code
+msgid "Type here a code for this Holiday Type"
+msgstr "Type here a code for this Holiday Type"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "TÉCNICO"
+msgstr "TÉCNICO"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.hr_kanban_view_employees
+#: model:ir.ui.view,arch_db:hr.view_department_filter
+#: model:ir.ui.view,arch_db:hr.view_employee_filter
+#: model:ir.ui.view,arch_db:hr.view_job_filter
+msgid "Unread Messages"
+msgstr "Mensagens Por Ler"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Use here the home address of the employee.\n"
+"                                            This private address is used in the expense report reimbursement document.\n"
+"                                            It should be different from the work address."
+msgstr "Use aqui o endereço residencial do funcionário.\n"
+"                                            Este endereço particular é usado no documento de reembolso do relatório de despesas.\n"
+"                                            Deve ser diferente do endereço do trabalho."
+
+#. module: ao_hr
+#: model:ir.model.fields,help:ao_hr.field_hr_payslip_line_sequence_view
+#: model:ir.model.fields,help:ao_hr.field_hr_salary_rule_sequence_view
+msgid "Use to arrange calculation sequence"
+msgstr "Usar para organizar sequência de cálculo"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_user_id
+msgid "User"
+msgstr "Utilizador"
+
+#. module: hr
+#: model:ir.model,name:hr.model_res_users
+msgid "Users"
+msgstr "Utilizadores"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.hr_job_view_kanban
+msgid "Vacancies :"
+msgstr "Vacancies :"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_irt
+msgid "Valor Colectável"
+msgstr "Valor Colectável"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Venc. / Hora"
+msgstr "Venc. / Hora"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "Vencimento"
+msgstr "Vencimento"
+
+#. modules: hr_contract, hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_visa_expire
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_visa_expire
+msgid "Visa Expire Date"
+msgstr "Data de expiração do visto"
+
+#. modules: hr_contract, hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_visa_no
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_visa_no
+msgid "Visa No"
+msgstr "Número de visto"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_wage
+msgid "Wage"
+msgstr "Salário"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_contract_week_hours
+msgid "Week Hours"
+msgstr "Week Hours"
+
+#. module: hr
+#: selection:hr.employee,marital:0
+msgid "Widower"
+msgstr "Viúvo"
+
+#. module: hr
+#: model:ir.actions.act_window,help:hr.act_employee_from_department
+#: model:ir.actions.act_window,help:hr.open_view_employee_list_my
+msgid "With just a quick glance on the Odoo employee screen, you\n"
+"                can easily find all the information you need for each person;\n"
+"                contact data, job position, availability, etc."
+msgstr "Com apenas uma rápida olhada na tela empregado a Openerp, you\n"
+"pode facilmente encontrar todas as informações que você precisa para cada pessoa; \n"
+"dados de contato, cargo, disponibilidade, etc."
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_address_id
+msgid "Work Address"
+msgstr "Endereço de Trabalho"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_work_email
+msgid "Work Email"
+msgstr "Email Profissional"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Work Information"
+msgstr "Informação do trabalho"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_work_location
+msgid "Work Location"
+msgstr "Local de Trabalho"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_mobile_phone
+msgid "Work Mobile"
+msgstr "Telémovel do Emprego"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.res_config_settings_view_form
+msgid "Work Organization"
+msgstr "Organização do trabalho"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "Work Permit"
+msgstr "Licença de trabalho"
+
+#. modules: hr_contract, hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_permit_no
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_permit_no
+msgid "Work Permit No"
+msgstr "Licença de trabalho nº"
+
+#. module: hr
+#: model:ir.model.fields,field_description:hr.field_hr_employee_work_phone
+msgid "Work Phone"
+msgstr "Telefone do Trabalho"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract_resource_calendar_id
+msgid "Working Schedule"
+msgstr "Horário de trabalho"
+
+#. module: hr
+#: model:ir.actions.act_window,help:hr.action_hr_job
+msgid "You can attach a survey to a job position. It will be used in\n"
+"                the recruitment process to evaluate the applicants for this job\n"
+"                position."
+msgstr "Você pode anexar uma pesquisa para um cargo. Ele será usado in\n"
+"o processo de recrutamento para avaliar os candidatos para este job\n"
+"posição."
+
+#. module: hr
+#: model:mail.template,subject:hr.mail_template_data_unknown_employee_email_address
+msgid "Your document has not been created"
+msgstr "Your document has not been created"
+
+#. module: hr
+#: model:mail.template,body_html:hr.mail_template_data_unknown_employee_email_address
+msgid "Your document has not been created because your email address is not recognized. Please send emails with the email address recorded on your employee information, or contact your HR manager."
+msgstr "Your document has not been created because your email address is not recognized. Please send emails with the email address recorded on your employee information, or contact your HR manager."
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.ao_hr_vew_hr_father_form
+#: model:ir.ui.view,arch_db:ao_hr.vew_hr_mother_form
+msgid "ZIP"
+msgstr "Código Postal"
+
+#. module: ao_hr
+#: model:ir.model.fields,field_description:ao_hr.field_hr_father_zip
+#: model:ir.model.fields,field_description:ao_hr.field_hr_mother_zip
+msgid "Zip"
+msgstr "Código Postal"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_salary
+msgid "_______________________________"
+msgstr "_______________________________"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_simple_payslip
+msgid "_____________________________________________"
+msgstr "_____________________________________________"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_department_form
+msgid "department"
+msgstr "departamento"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_employee_form
+msgid "e.g. Part Time"
+msgstr "por ex.: Part Time"
+
+#. module: hr
+#: model:ir.ui.view,arch_db:hr.view_hr_job_form
+msgid "e.g. Sales Manager"
+msgstr "exemplo, Diretor de Vendas"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_hr_inss_config
+msgid "hr.inss.config"
+msgstr "hr.inss.config"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_hr_irt_config
+msgid "hr.irt.config"
+msgstr "hr.irt.config"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_hr_salary_rule
+msgid "hr.salary.rule"
+msgstr "hr.salary.rule"
+
+#. module: hr
+#: model:ir.model,name:hr.model_mail_alias_mixin
+msgid "mail.alias.mixin"
+msgstr "mail.alias.mixin"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.report_job_evaluation_and_interview
+msgid "o candidadto está relacionado a qualquer pessoas que trabalha dentro\n"
+"                                        desta empresas?\n"
+"                                        <br/>\n"
+"                                        SIM/NÃO (se sim, por favor detalhe) Nome: Relacionamento: Localização:"
+msgstr "o candidadto está relacionado a qualquer pessoas que trabalha dentro\n"
+"                                        desta empresas?\n"
+"                                        <br/>\n"
+"                                        SIM/NÃO (se sim, por favor detalhe) Nome: Relacionamento: Localização:"
+
+#. module: ao_hr
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_bank_view
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_inss_view
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_irt_view
+#: model:ir.ui.view,arch_db:ao_hr.view_hr_salary_view
+msgid "or"
+msgstr "ou"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_report_ao_hr_report_bank
+msgid "report.ao_hr.report_bank"
+msgstr "report.ao_hr.report_bank"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_report_ao_hr_report_inss
+msgid "report.ao_hr.report_inss"
+msgstr "report.ao_hr.report_inss"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_report_ao_hr_report_irt
+msgid "report.ao_hr.report_irt"
+msgstr "report.ao_hr.report_irt"
+
+#. module: ao_hr
+#: model:ir.model,name:ao_hr.model_report_ao_hr_report_salary
+msgid "report.ao_hr.report_salary"
+msgstr "report.ao_hr.report_salary"
+
+#. module: hr
+#: model:ir.model,name:hr.model_res_config_settings
+msgid "res.config.settings"
+msgstr "res.config.settings"
+
+#. module: hr
+#: model:res.groups,comment:hr.group_hr_user
+msgid "the user will be able to approve document created by employees."
+msgstr "o utilizador será capaz de aprovar documentos criados pelos funcionários."
+
+#. module: hr
+#: model:res.groups,comment:hr.group_hr_manager
+msgid "the user will have an access to the human resources configuration as well as statistic reports."
+msgstr "O utilizador terá acesso às configurações de recursos humanos, bem como aos relatórios de estatísticas."
+

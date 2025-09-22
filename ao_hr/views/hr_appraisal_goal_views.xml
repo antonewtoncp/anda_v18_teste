@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_appraisal_goal_form_inherit" model="ir.ui.view">
+            <field name="name">hr.appraisal.goal.form</field>
+            <field name="model">hr.appraisal.goal</field>
+            <field name="inherit_id" ref="hr_appraisal.hr_appraisal_goal_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_confirm']" position="before">
+                    <button name="button_manager_approved" type="object"
+                            string="Approve" class="oe_highlight"
+                            attrs="{'invisible': [('state', '=', 'approved')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </xpath>
+                <xpath expr="//field[@name='description']" position="after">
+                    <field name="year_end_description"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

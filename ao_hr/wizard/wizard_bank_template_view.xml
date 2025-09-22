@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_hr_bank_template_view" model="ir.ui.view">
+            <field name="name">wizard.bank.template.form</field>
+            <field name="model">wizard.bank.template</field>
+            <field name="priority" eval="1024" />
+            <field name="arch" type="xml">
+                <form string="Bank Reporting" version="7.0">
+                    <h3>
+                        Selecionar a folha de recibo de vencimento para imprimir o template do
+                        Banco.
+                    </h3>
+                    <br />
+                    <group>
+                        <field name="hr_payslip_run_id"
+                            options="{'no_quick_create': True, 'no_create_edit': True}"
+                        />
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print Bank Report"
+                            type="object" class="oe_highlight" /> or <button string="Cancel Wizard"
+                            special="cancel" class="oe_link" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hr_bank_template" model="ir.actions.act_window">
+            <field name="name">Bank Template Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.bank.template</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Bank Template" parent="hr_payroll.menu_hr_payroll_report" sequence="6"
+            action="action_hr_bank_template" id="menu_hr_bank_template"
+            groups="hr_payroll.group_hr_payroll_user" />
+
+    </data>
+</openerp>

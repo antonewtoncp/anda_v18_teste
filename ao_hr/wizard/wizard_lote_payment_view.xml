@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="wizard_lote_payment_view" model="ir.ui.view">
+            <field name="name">wizard.payment.form</field>
+            <field name="model">wizard.payment</field>
+            <field name="arch" type="xml">
+                <form>
+                   <h3 style="font-size: 18px; color: #333; line-height: 1.5; margin: 10px 0; text-align: justify;">
+    "Os pagamentos em massa permitem a realização de múltiplos pagamentos numa única operação".
+    Selecionar o tipo de pagamento em massa para imprimir  o lote de Pagamento.
+</h3>
+
+                    <br/>
+                    <group col="4" colspan="2">
+                        <field name="type" widget="radio" options="{'horizontal': true}"/>
+                        <field name="operation_type"/>
+
+                    </group>
+                    <group col="4" colspan="2">
+                        <field name="slip_filter_by"/>
+                        <field name="account_debit_nib"/>
+                        <field name="processing_date"/>
+                        <field name="owner_reference"/>
+                    </group>
+                    <group attrs="{'invisible':[('slip_filter_by', 'in', ['year','payslip_date',False])]}">
+                        <field name="hr_payslip_run_id" options="{'no_quick_create': True, 'no_create_edit': True}"
+                               attrs="{'required':[('slip_filter_by', '=', 'payslip_batch')]}"/>
+                    </group>
+                    <group attrs="{'invisible':[('slip_filter_by', 'in', ['payslip_batch','year', False])]}">
+                        <field name="start_date"
+                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
+                        <field name="end_date"
+                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
+                    </group>
+                    <group attrs="{'invisible':[('slip_filter_by', 'in', ['payslip_batch','payslip_date', False])]}">
+                        <field name="fiscal_year"
+                               attrs="{'required':[('slip_filter_by', '=', 'year')]}"/>
+                    </group>
+                    <group attrs="{'invisible': [('type', '!=', 'psx')]}">
+                        <field name="category"
+                               />
+                        <field name="reason"
+                               />
+                        <field name="urgency"
+                               />
+                        <field name="transfer_type"
+                               />
+                        <field name="details"
+                               />
+                    </group>
+
+                    <footer class="d-flex flex-row gap-3">
+
+                        <button name="print_xlsx_report" string="Print XLSX"
+                                type="object" class="oe_highlight btn-primary"/>
+
+                        <button string="Cancel Wizard" special="cancel" class="btn btn-danger"/>
+
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_wizard_lote_payment" model="ir.actions.act_window">
+            <field name="name">Assistente do Salario em Massa </field>
+            <field name="res_model">wizard.payment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ao_hr.wizard_lote_payment_view"/>
+            <field name="target">new</field>
+        </record>
+
+       <menuitem name="Pagamento em Massa" parent="hr_payroll.menu_hr_payroll_report"
+                  action="action_wizard_lote_payment" sequence="10" id="menu_hr_lote_payment"/>
+
+
+    </data>
+</odoo>

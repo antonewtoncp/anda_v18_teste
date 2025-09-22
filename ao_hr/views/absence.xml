@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="absent_holiday_psi_form_view" model="ir.ui.view">
+            <field name="name">absent.holiday.psi.form</field>
+            <field name="model">absent.holiday.psi</field>
+            <field name="arch" type="xml">
+                <form string="Training Request">
+                    <header>
+                        <button name="button_employee_sign" attrs="{'invisible': [('employee_sign_date', '!=', False)]}"
+                                string="Employee Sign" class="oe_highlight" type="object"/>
+
+                         <button name="button_employee_rejected" attrs="{'invisible': [('employee_sign_date', '!=', False)]}"
+                                string="Rejeitar" class="oe_highlight" type="object"/>
+
+
+                        <field name="state" widget="statusbar" options="{'clickable': '0'}"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                        </div>
+                        <widget name="web_ribbon" bg_color="bg-warning" title="Assinado"
+                                attrs="{'invisible': [('state', '!=', 'sign')]}"/>
+                        <widget name="web_ribbon" bg_color="bg-danger" title="Assinado"
+                                attrs="{'invisible': [('state', '!=', 'rejected')]}"/>
+
+
+                        <div class="oe_title">
+                            <label for="employee_id"/>
+                            <h1>
+                                <field name="employee_id" required="1" placeholder="Nome do trabalhador"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="job_id" string="Função"/>
+
+                                <field name="date_contract_id" string="Inicio do contrato"/>
+                                <field name="mobile_phone" string="N.º de contacto em caso de emergência"
+                                       widget="phone"/>
+                            </group>
+                            <group>
+                                <field name="subsidy" string="Inclui subsídio de férias?" widget="boolean_toggle"/>
+
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="date_ref_year" string="Férias Ref. ao Ano de" required="1"/>
+                                <field name="qty_day" string="Dias de Férias já utilizadas" required="1"/>
+                                <field name="qty_mother_day" string="Dia(s) de mãe( Mulheres com filhos até 14 anos)"/>
+
+
+                                <field name="balance_holiday_present_date"
+                                       string="Balanço de Férias até a presente data" required="1"/>
+                                <field name="day_holiday_enjoy" string="Dias de Férias a gozar"/>
+                                <field name="date_start" string="Data início das férias" required="1"/>
+                                <field name="end_date" string="Data de fim das férias" required="1"/>
+                                <field name="date_presentation" string="Data de apresentação na PSI" required="1"/>
+
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Outros Detalhes ">
+                                <h4 style="text-align:center; background-color:#51DF13">
+                                    <b>A ser preenchido pelo RH</b>
+                                </h4>
+
+                                <group>
+                                    <field name="day_holiday_approved_now" string="Dias de ferias aprovadas agora"
+                                           required="1"/>
+                                    <field name="date_holiday_enjoy_still" string="Dias de férias ainda por gozar"
+                                           required="1"/>
+
+
+                                    <field name="received_by" string="Recebido por
+"/>
+                                    <field name="received_date" string="Data de recebimento"/>
+                                    <field name="other_details" string="Outros detalhes"/>
+                                </group>
+                            </page>
+                            <page name="approvals" string="Aprovadores de RH">
+                                <group col="1">
+                                    <h4 style="text-align:center; background-color:#51DF13">
+                                        <b>A ser preenchido pelo RH</b>
+                                    </h4>
+
+                                    <field name="employee_sign_date" invisible="1"/>
+                                    <field name="department_boss_id" invisible="1"/>
+                                    <field name="resident_representative_id" invisible="1"/>
+                                    <table class="table table-condensed table-sm">
+                                        <tr>
+                                            <td>
+                                                <label for="department_boss" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <field name="department_boss" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <label for="department_boss_date" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <field name="department_boss_date" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <button name="department_boss_approve" type="object" string="Approve"
+                                                        attrs="{'invisible':[('department_boss_date', '!=', False)]}"/>
+                                            </td>
+                                            <td>
+                                                <button name="department_boss_disapprove" type="object"
+                                                        string="Disapprove"
+                                                        attrs="{'invisible':[('department_boss_date', '!=', False)]}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="hr_manager" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <field name="hr_manager" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <label for="hr_manager_date" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <field name="hr_manager_date" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <button name="hr_manager_approve" type="object" string="Approve"
+                                                        attrs="{'invisible':[('hr_manager_date', '!=', False)]}"/>
+                                            </td>
+                                            <td>
+                                                <button name="hr_manager_disapprove" type="object" string="Disapprove"
+                                                        attrs="{'invisible':[('hr_manager_date', '!=', False)]}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="resident_representative" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <field name="resident_representative" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <label for="resident_representative_date" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <field name="resident_representative_date" readonly="1"/>
+                                            </td>
+                                            <td>
+                                                <button name="resident_approve" type="object" string="Approve"
+                                                        attrs="{'invisible':[('resident_representative_date', '!=', False)]}"/>
+                                            </td>
+                                            <td>
+                                                <button name="resident_disapprove" type="object" string="Disapprove"
+                                                        attrs="{'invisible':[('resident_representative_date', '!=', False)]}"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </group>
+                            </page>
+
+                        </notebook>
+                        <span>
+
+                            <p>
+                                <b>Notas importantes:</b>
+                            </p>
+                            <p>
+                                <b>1</b>
+                                . A marcação deve ser feita por acordo entre o empregador e o trabalhador, em caso de
+                                desacordo decide o empregador (N.º 2 do artigo 134.º da LGT)
+                            </p>
+                            <p>
+                                <b>2</b>
+                                . O período de férias é de vinte e dois(22) dias úteis em cada ano, calculando 2 dias
+                                por cada mês trabalhado.
+                            </p>
+                            <p><b>3</b>. Nas férias são calculadas apenas os dias úteis de trabalho, não inclui fim de
+                                semana nem feriados nacionais vigentes.
+                            </p>
+                            <p>
+                                <b>4</b>. Os dias de férias da PSI (quando estabelecidos por memorando) só abrangem os
+                                funcionários que mantiverem o vínculo com a empresa até o ano civil seguinte.
+                            </p>
+                            <p>
+                                <b>5</b>. Os dias de mãe, em caso de rescisão de contrato, não serão contabilizados para
+                                indeminização em dinheiro, sendo exclusivamente para gozo da mãe com filhos menores de
+                                14 anos.
+                            </p>
+                            <p>
+                                <b>6</b>. As trabalhadoras têm direito de 1 dia de férias por cada filho menor de 14
+                                anos.
+                            </p>
+                            <p>
+                                <b>7</b>. As férias só podem ser gozadas depois de completados seis(6) meses de trabalho
+                                efectivo e reportam-se ao trabalho prestado no ano
+                                da admissão.
+
+                            </p>
+                            <p>
+                                <b>8</b>. As férias só podem ser gozadas depois de aprovação por escrito do departamento
+                                de Recursos Humanos
+
+                            </p>
+                        </span>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="absent_holiday_psi_tree_view" model="ir.ui.view">
+            <field name="name">absent.holiday.psi.tree</field>
+            <field name="model">absent.holiday.psi</field>
+            <field name="arch" type="xml">
+                <tree string="Training Request">
+                    <field name="employee_id"/>
+                    <field name="course_start_date"/>
+                    <field name="course_end_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="absent_holiday_psi_search_view" model="ir.ui.view">
+            <field name="name">absent.holiday.psi.search</field>
+            <field name="model">absent.holiday.psi</field>
+            <field name="arch" type="xml">
+                <search string="Training Request">
+                    <group expand="1" string="Group By">
+                        <filter string="Employee" name="employee_id" domain="[]"
+                                context="{'group_by':'employee_id'}"/>
+                        <field name="received_by"/>
+                        <field name="request_by"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="absent_holiday_psi_act_window" model="ir.actions.act_window">
+            <field name="name">Formulario de pedido de férias</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">absent.holiday.psi</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Cria aqui a sua ficha de féria
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem name="Formulario de pedido de férias" id="absent_holiday_psi_menu"
+                  parent="hr_holidays.menu_hr_holidays_my_leaves"
+                  sequence="15"
+                  action="absent_holiday_psi_act_window"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_employee_task_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.task.form</field>
+        <field name="model">hr.employee.task</field>
+        <field name="arch" type="xml">
+            <form string="hr_employee_task_form">
+                <header>
+                    <field name="state" widget="statusbar" readonly="1"/>
+                    <button name="start_task" string="Em Progresso" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="o_row">
+                            <field name="name" placeholder="Task Title..." required="1"
+                                   attrs="{'readonly': [('state', 'in', ['done', 'canceled'])]}"/>
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="start_date" required="1"
+                               attrs="{'readonly': [('state', 'in', ['done', 'canceled'])]}"/>
+                        <field name="end_date" attrs="{'readonly': [('state', 'in', ['done', 'canceled'])]}"/>
+                        <field name="owner" required="1" attrs="{'readonly': [('state', 'in', ['done', 'canceled'])]}"
+                               string="Proprietário da Tarefa"/>
+                        <field name="total_time" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page name="description_page" string="Description">
+                            <field name="description" type="html"
+                                   attrs="{'readonly': [('state', 'in', ['done', 'canceled'])]}"/>
+                            <div class="oe_clear"/>
+                        </page>
+                    </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_employee_task_view_tree" model="ir.ui.view">
+        <field name="name">hr.employee.task.tree</field>
+        <field name="model">hr.employee.task</field>
+        <field name="arch" type="xml">
+            <tree string="hr_employee_task_tree">
+                <field name="name"/>
+                <field name="owner"/>
+                <field name="state"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="total_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_hr_employee_task" model="ir.actions.act_window">
+        <field name="name">Todas As Tarefas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.task</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Gestão de Tarefas"
+              parent="ao_hr.ao_menu_hr_root"
+              id="id_task_owner"
+              sequence="2"
+    />
+
+
+    <menuitem id="menu_employee_task"
+              name="Todas as Tarefas"
+              parent="id_task_owner"
+              groups="hr.group_hr_manager"
+              action="action_hr_employee_task"
+              sequence="8"/>
+</odoo>

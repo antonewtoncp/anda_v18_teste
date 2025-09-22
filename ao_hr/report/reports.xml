@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="ag_paper_format_portrait" model="report.paperformat">
+            <field name="name">Compllexus - Paper Format Portrait</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="employee_paper_format_portrait" model="report.paperformat">
+            <field name="name">Compllexus - Employee Paper Format Portrait</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">40</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="es_paper_format_landscape" model="report.paperformat">
+            <field name="name">Compllexus - Paper Format Landscape</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_salary_a1_landscape" model="report.paperformat">
+            <field name="name">ANDA - Salary A1 Landscape</field>
+            <field name="default" eval="True" />
+            <field name="format">A1</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">25</field>
+            <field name="margin_bottom">8</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">96</field>
+        </record>
+
+        <record id="paperformat_salary_a2_landscape" model="report.paperformat">
+            <field name="name">ANDA - Salary A2 Landscape</field>
+            <field name="default" eval="True" />
+            <field name="format">A2</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">15</field>
+            <field name="margin_bottom">8</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">96</field>
+        </record>
+
+        <record id="paperformat_salary_a3_landscape" model="report.paperformat">
+            <field name="name">ANDA - Salary A3 Landscape</field>
+            <field name="default" eval="False" />
+            <field name="format">A3</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">8</field>
+            <field name="margin_bottom">8</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">6</field>
+            <field name="dpi">96</field>
+        </record>
+
+        <record id="payment_receipt_paper_format_landscape" model="report.paperformat">
+            <field name="name">Compllexus payment receipt - Paper Format Landscape</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">3</field>
+            <field name="margin_bottom">3</field>
+            <field name="margin_left">1</field>
+            <field name="margin_right">1</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+
+        <!--        <report id="action_report_employee_file"-->
+        <!--                model="hr.employee"-->
+        <!--                string="Employee File"-->
+        <!--                report_type="qweb-pdf"-->
+        <!--                paperformat="ag_paper_format_portrait"-->
+        <!--                name="ao_hr.report_employee_file"-->
+        <!--                file="ao_hr.report_employee_file"-->
+        <!--        />-->
+
+        <report
+            id="action_report_employee_list_colaboradores"
+            model="hr.employee"
+            string="Lista de colaboradores"
+            report_type="qweb-pdf"
+            name="ao_hr.report_employee_lista_colaboradores_pdf"
+            file="ao_hr.report_employee_lista_colaboradores_pdf"
+        />
+
+        <report
+            id="action_report_employee_list_colaboradores_department"
+            model="hr.department"
+            string="Lista de colaboradores por departamento"
+            report_type="qweb-pdf"
+            name="ao_hr.report_employee_lista_colaboradores_department_pdf"
+            file="ao_hr.report_employee_lista_colaboradores_department_pdf"
+        />
+
+        <record id="action_report_simple_payslip" model="ir.actions.report">
+            <field name="name">Recibo de Vencimento Simples</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ao_hr.report_simple_payslip</field>
+            <field name="report_file">ao_hr.report_simple_payslip</field>
+            <field name="binding_type">report</field>
+            <field name="binding_model_id" ref="model_hr_payslip" />
+            <field name="paperformat_id" ref="ao_hr.payment_receipt_paper_format_landscape" />
+        </record>
+
+        <record id="hr_payroll.action_report_payslip" model="ir.actions.report">
+            <field name="name">PaySlip</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ao_hr.report_payslip</field>
+            <field name="report_file">ao_hr.report_payslip</field>
+            <field name="print_report_name">('Recibo - %s' % (object.employee_id.name))</field>
+            <field name="binding_model_id" ref="model_hr_payslip" />
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_salary" model="ir.actions.report">
+            <field name="name">Salary Report</field>
+            <field name="model">wizard.salary</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ao_hr.report_salary</field>
+            <field name="report_file">ao_hr.report_salary</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="ao_hr.payment_receipt_paper_format_landscape" />
+        </record>
+
+        <record id="action_report_inss" model="ir.actions.report">
+            <field name="name">SS Report</field>
+            <field name="model">wizard.inss</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ao_hr.report_inss</field>
+            <field name="report_file">ao_hr.report_inss</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="ao_hr.es_paper_format_landscape" />
+        </record>
+
+        <!--  <report
+                  id="action_report_irt"
+                  model="hr.payslip"
+                  string="IRT Report"
+                  report_type="qweb-pdf"
+                  menu="False"
+                  paperformat="es_paper_format_landscape"
+                  name="ao_hr.report_irt"
+                  file="ao_hr.report_irt"
+          />-->
+
+        <record id="action_report_bank" model="ir.actions.report">
+            <field name="name">Bank Report</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ao_hr.report_bank</field>
+            <field name="report_file">ao_hr.report_bank</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="ao_hr.es_paper_format_landscape" />
+        </record>
+
+        <!--<report
+        id="action_report_job_evaluation_and_interview"
+                model="hr.employee"
+                string="Job Evaluation Form and Interview"
+                report_type="qweb-pdf"
+                paperformat="employee_paper_format_portrait"
+                name="ao_hr.report_job_evaluation_and_interview"
+                file="ao_hr.report_job_evaluation_and_interview"
+        />
+-->
+        <record id="action_report_work_declaration" model="ir.actions.report">
+            <field name="name">Declaração de Trabalho</field>
+            <field name="model">hr.contract</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ao_hr.report_work_declaration</field>
+            <field name="report_file">ao_hr.report_work_declaration</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!--<report
+        id="action_report_contract_determinado"
+                model="hr.contract"
+                string="Contracto tempo determinado"
+                report_type="qweb-pdf"
+                paperformat="employee_paper_format_portrait"
+                name="ao_hr.report_contract_determinado_pdf"
+                file="ao_hr.report_contract_determinado_pdf"
+        />-->
+
+        <record id="action_report_irt_group_a" model="ir.actions.report">
+            <field name="name">IRT Report Group A</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ao_hr.report_irt</field>
+            <field name="report_file">ao_hr.report_irt</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="ao_hr.es_paper_format_landscape" />
+        </record>
+
+        <record id="action_report_irt_group_bc" model="ir.actions.report">
+            <field name="name">IRT Report Group B - C</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ao_hr.report_irt_group_bc</field>
+            <field name="report_file">ao_hr.report_irt_group_bc</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="ao_hr.es_paper_format_landscape" />
+        </record>
+
+        <!-- MAPA IRT XLSX -->
+
+        <record id="action_report_map_irt_xls" model="ir.actions.report">
+            <field name="name">Map IRT</field>
+            <field name="model">wizard.irt</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">ao_hr.report.irt.xlsx</field>
+            <field name="report_file">ao_hr.report.irt.xlsx</field>
+            <field name="print_report_name">'Mapa de IRT'</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- LOTE DE PAGAMENTO  XLSX -->
+
+        <record id="action_payment_lote_xls" model="ir.actions.report">
+            <field name="name">Pagamento em Massa </field>
+            <field name="model">wizard.payment</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">ao_hr.lote.payment.xlsx</field>
+            <field name="report_file">ao_hr.lote.payment.xlsx</field>
+            <field name="print_report_name">'Pagamento em Massa'</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- <report
+                 id="action_training_request"
+                 model="hr.training.request"
+                 string="Pedido de Formação"
+                 name="ao_hr.report_training_request"
+                 file="ao_hr.report_training_request"
+                 report_type="qweb-pdf"/> -->
+    </data>
+</odoo>

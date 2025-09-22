@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_appraisal_form_inherit" model="ir.ui.view">
+            <field name="name">hr_appraisal.form</field>
+            <field name="model">hr.appraisal</field>
+            <field name="inherit_id" ref="hr_appraisal.view_hr_appraisal_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='manager_feedback']" position="replace">
+                    <field name="manager_feedback" nolabel="1" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='employee_feedback']" position="replace">
+                    <field name="employee_feedback" nolabel="1" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='date_close']" position="replace">
+                    <field name="start_date" required="1"/>
+                </xpath>
+                <xpath expr="//field[@name='job_id']" position="after">
+                    <field name="date_close" required="1"/>
+                </xpath>
+                <xpath expr="//field[@name='manager_feedback']" position="after">
+                    <div class="col-12 row">
+                        <h3 class="col-6">Manager Answer</h3>
+                    </div>
+                    <field name="manager_answer" nolabel="1" attrs="{
+                                    'invisible': [
+                                        '&amp;',
+                                        ('manager_feedback_published', '=', False),
+                                        ('can_see_manager_publish', '=', False)
+                                    ],
+                                    'readonly': [
+                                        '|',
+                                        ('can_see_manager_publish', '=', False),
+                                        ('state', '!=', 'pending')]}"/>
+                    <h3 class="col-6">Did you review 360?</h3>
+                    <span class="col-3 text-right" attrs="{'invisible': [('state', '=', 'new')]}">Feedback 360</span>
+                    <field name="is_feedback_review" widget="boolean_toggle" attrs="{
+                                    'invisible': [
+                                        '&amp;',
+                                        ('manager_feedback_published', '=', False),
+                                        ('can_see_manager_publish', '=', False)
+                                    ],
+                                    'readonly': [
+                                        '|',
+                                        ('can_see_manager_publish', '=', False),
+                                        ('state', '!=', 'pending')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='employee_feedback']" position="after">
+                    <div class="col-12 row">
+                        <h3 class="col-6">Employee Answer</h3>
+                    </div>
+                    <field name="employee_answer" nolabel="1" attrs="{
+                                    'invisible': [
+                                        '&amp;',
+                                        ('employee_feedback_published', '=', False),
+                                        ('can_see_employee_publish', '=', False)
+                                    ],
+                                    'readonly': [
+                                        '|',
+                                        ('state', '!=', 'pending'),
+                                        ('can_see_employee_publish', '=', False)]}"/>
+                    <field name="appraisal_skill_line" attrs="{
+                                    'invisible': [
+                                        '&amp;',
+                                        ('employee_feedback_published', '=', False),
+                                        ('can_see_employee_publish', '=', False)
+                                    ],
+                                    'readonly': [
+                                        '|',
+                                        ('state', '!=', 'pending'),
+                                        ('can_see_employee_publish', '=', False)]}">
+                        <tree string="Skills" editable="bottom">
+                            <field name="skill_id"/>
+                        </tree>
+                    </field>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_career_plan_form_view" model="ir.ui.view">
+            <field name="name">hr.career.plan.form</field>
+            <field name="model">hr.career.plan</field>
+            <field name="arch" type="xml">
+                <form string="Leadership Development Plan">
+                    <header>
+                        <button name="button_employee_sign" attrs="{'invisible': [('employee_sign_date', '!=', False)]}"
+                                string="Employee Sign" class="oe_highlight" type="object"/>
+                        <button name="button_manager_sign" string="Manger Sign"
+                                attrs="{'invisible': [('manager_sign_date', '!=', False)]}" class="oe_highlight"
+                                type="object"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Plan name"/>
+                            </h1>
+                        </div>
+                        <group col="2">
+                            <group>
+                                <field name="employee_id"/>
+                                <field name="strategy"/>
+                                <field name="employee_sign_date" readonly="1"/>
+                                <field name="employee_comments"/>
+                            </group>
+                            <group>
+                                <field name="manager_id"/>
+                                <field name="manager_sign_date" readonly="1"/>
+                                <field name="manager_comments"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Swot Analysis">
+                                <field name="swot_analyse_line">
+                                    <tree string="Swot Analysis" editable="bottom">
+                                        <field name="strengths"/>
+                                        <field name="weaknesses"/>
+                                        <field name="opportunities"/>
+                                        <field name="threats"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Action Plan">
+                                <field name="action_plan_line">
+                                    <tree string="Action Plan" editable="bottom">
+                                        <field name="action"/>
+                                        <field name="employee_id"/>
+                                        <field name="deadline"/>
+                                        <field name="progress"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Mid-term Goal">
+                                <field name="mid_term_line">
+                                    <tree string="Mid-term Goal" editable="bottom">
+                                        <field name="action"/>
+                                        <field name="employee_id"/>
+                                        <field name="deadline"/>
+                                        <field name="progress"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="LongMid-term Goal">
+                                <field name="long_term_line">
+                                    <tree string="Long-term Goal" editable="bottom">
+                                        <field name="action"/>
+                                        <field name="employee_id"/>
+                                        <field name="deadline"/>
+                                        <field name="progress"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Career Goals">
+                                <field name="career_goals_line">
+                                    <tree string="Career Goals" editable="bottom">
+                                        <field name="action"/>
+                                        <field name="employee_id"/>
+                                        <field name="deadline"/>
+                                        <field name="progress"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_career_plan_tree_view" model="ir.ui.view">
+            <field name="name">hr.career.plan.tree</field>
+            <field name="model">hr.career.plan</field>
+            <field name="arch" type="xml">
+                <tree string="Career Plan">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="manager_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_career_plan_search_view" model="ir.ui.view">
+            <field name="name">hr.career.plan.search</field>
+            <field name="model">hr.career.plan</field>
+            <field name="arch" type="xml">
+                <search string="Career Plan">
+                    <field name="employee_id"/>
+                    <field name="manager_id"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Employee" name="employee_id" domain="[]"
+                                context="{'group_by':'employee_id'}"/>
+                        <filter string="Manager" name="manager_id" domain="[]"
+                                context="{'group_by':'manager_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="hr_career_plan_act_window" model="ir.actions.act_window">
+            <field name="name">Career Plan</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.career.plan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    There is no examples click here to add new Career Plan.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Plano de Carreira" id="hr_career_plan_menu" parent="career_plan_menu_main"
+                  action="hr_career_plan_act_window"/>
+
+    </data>
+</odoo>

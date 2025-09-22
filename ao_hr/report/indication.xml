@@ -1,0 +1,1744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="psi_paper_format_landscape" model="report.paperformat">
+            <field name="name">CBS - Paper Format Landscape</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+                id="report_hr_indication_id"
+                model="wizard.indication"
+                string="Indicador de rh "
+                name="ao_hr.report_card"
+                file="ao_hr.report_card"
+                report_type="qweb-pdf"
+                paperformat="ao_hr.psi_paper_format_landscape"/>
+
+        <template id="report_card">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <div class="header" style="color: #0B74CE">
+                        <div class="row b_color">
+                            <div class="col-8">
+                                <b>
+                                    <span class="text-left" t-field="res_company.name"/>
+                                </b>
+                            </div>
+                            <div class="col-4">
+                                <ul class="list-inline text-right">
+                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                    |
+                                    Pag.<span class="page"/>/
+                                    <span class="topage"/>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page">
+                            <style>
+                                * {padding-bottom: 0 !important;
+                                padding-top: 0 !important;
+                                margin-bottom: 0 !important;margin-top:0 !important; }
+                                hr {
+                                display: block; height: 1px;
+                                border: 0; border-top: 1px solid #0B74CE;
+                                margin: 0; padding: 0;
+                                }
+                                .b_color{
+                                color: #0B74CE;
+                                }
+                                .border_bottom {border-bottom: solid black 1px;}
+
+                                table {
+                                border-spacing: 3px;
+                                border-top: 3px solid black;
+                                border-collapse:collapse;
+                                font-size:10px;
+                                }
+
+                                td {
+                                border-bottom:0 !important;
+                                border-top: 1px solid #B2BABB !important;
+                                }
+
+                                th {
+                                border-top:0 !important;
+                                border-bottom: 1px solid #B2BABB !important;
+                                }
+
+                                table, tr, th, td {
+                                border-collapse: separate;
+                                padding:0px !important;
+                                }
+
+                                .border_top_th{
+                                border-top: 1px solid black !important;
+                                }
+                            </style>
+                            <br/>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <table class="table table-sm o_main_table" style="border-top: 0px;">
+                                        <tr>
+                                            <th style="border: 0 !important">
+                                                <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
+                                                     style="max-height: 60px;"/>
+
+                                                <p>
+                                                    <span t-field="res_company.name"/>
+                                                </p>
+                                                <p>
+                                                    <span t-field="res_company.street"/>,
+                                                    <br/>
+                                                    <span t-field="res_company.city"/>-
+                                                    <span t-field="res_company.country_id"/>
+                                                </p>
+                                                <p>
+                                                    Contibuinte Fiscal nº
+                                                    <span t-field="res_company.vat"/>
+                                                </p>
+                                                <p>
+                                                    <span t-field="res_company.hr_phone"/>
+                                                </p>
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                            <h6 style="text-align:center;color:#0B74CE;text-transform:uppercase">RELATÓRIO MENSAL DE
+                                RECURSOS HUMANOS DE
+                                <span t-esc="o.end_date.strftime('%B')"/>
+                                <span t-esc="o.end_date.strftime('%Y')"/>
+                            </h6>
+                            <div name="table_salary_line" class="row">
+
+                                <div class="col-12">
+                                    <t t-set="number" t-value="1"/>
+                                    <t t-set="total_degree_female_start" t-value="0"/>
+                                    <t t-set="total_degree_female_end" t-value="0"/>
+                                    <t t-set="total_degree_male_start" t-value="0"/>
+                                    <t t-set="total_degree_male_end" t-value="0"/>
+                                    <t t-set="total_degree_start" t-value="0"/>
+                                    <t t-set="total_degree_end" t-value="0"/>
+                                    <t t-set="total_degree_start_vs_end" t-value="0"/>
+                                    <t t-set="total_degree_vs" t-value="0"/>
+                                    <t t-set="total_degree_female_and_male_start" t-value="0"/>
+                                    <table id="table2" class="table table-sm o_main_table">
+                                        <tr>
+                                            <th colspan="3" class="text-center" style="border:none !important;">
+                                                <div>
+                                                    <span>FORÇA POR GÊNERO</span>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class="text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.start_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class=" text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.end_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="4" style="border:none !important;text-transform:uppercase"
+                                                class="text-right title">
+                                                <div>
+                                                    <strong><span t-esc="o.start_date.strftime('%B')[:3]"/>&#160;&#160;&#160;&#160;&#160;VS&#160;&#160;&#160;&#160;&#160;<span
+                                                            t-esc="o.end_date.strftime('%B')[:3]"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        <tr style="font-weight: bold;">
+
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">Masculino
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">Ferminino
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">TOTAL
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">Masculino
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">Ferminino
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">TOTAL
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">TOTAL
+                                            </td>
+
+                                        </tr>
+                                        <t t-set="total_vs_employee_work"
+                                           t-value="abs(o.qty_number_gender_employee_start()['total']-o.qty_number_gender_employee_end()['total'])"/>
+
+                                        <tr style="font-weight: bold;">
+
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>NÚMERO DE TRABALHADORES</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="o.qty_number_gender_employee_start()['male']"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="o.qty_number_gender_employee_start()['female']"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="o.qty_number_gender_employee_start()['total']"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="o.qty_number_gender_employee_end()['male']"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="o.qty_number_gender_employee_end()['female']"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="o.qty_number_gender_employee_end()['total']"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_vs_employee_work"/>
+                                            </td>
+
+                                        </tr>
+                                        <tr style="font-weight: bold;">
+
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>FORÇA DE TRABALHO POR GRAU ACADÉMICO</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+
+                                        </tr>
+
+                                        <t t-foreach="o.all_certificate()" t-as="degree">
+                                            <t t-set="total_degree_female_and_male_vs"
+                                               t-value="o.qty_number_gender_employee_start_degree(degree)['total']-o.qty_number_gender_employee_end_degree(degree)['total']"/>
+
+
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <t t-if="degree=='graduate'">
+                                                        Ensino Secundário
+                                                    </t>
+                                                    <t t-if="degree=='bachelor'">
+                                                        Licenciatura
+                                                    </t>
+                                                    <t t-if="degree=='master'">
+                                                        Mestrado
+                                                    </t>
+                                                    <t t-if="degree=='doctor'">
+                                                        Doutorado
+                                                    </t>
+                                                    <t t-if="degree=='other'">
+                                                        Outro
+                                                    </t>
+                                                    <t t-if="degree=='primary_school'">
+                                                        Base Técnico
+                                                    </t>
+                                                    <t t-if="degree=='high_school'">
+                                                        Médio Tecnico
+                                                    </t>
+                                                    <t t-if="degree=='pre_university'">
+                                                        Pré Universitaria
+                                                    </t>
+                                                    <t t-if="degree=='university_attendance'">
+                                                        Frequência Universitária
+                                                    </t>
+                                                    <t t-if="degree=='licensed'">
+                                                        Licenciado
+                                                    </t>
+                                                    <t t-if="degree=='postgraduate'">
+                                                        Pós-graduação
+                                                    </t>
+                                                    <t t-if="degree=='postgraduate_professional_training'">
+                                                        pós graduação formação profissional
+                                                    </t>
+                                                    <t t-if="degree=='phd'">
+                                                        PHD
+                                                    </t>
+
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_gender_employee_start_degree(degree)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_gender_employee_start_degree(degree)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_gender_employee_start_degree(degree)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_gender_employee_end_degree(degree)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_gender_employee_end_degree(degree)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_gender_employee_end_degree(degree)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="abs(total_degree_female_and_male_vs)"/>
+
+                                                </td>
+                                                <t t-set="total_degree_female_start"
+                                                   t-value="total_degree_female_start+o.qty_number_gender_employee_start_degree(degree)['female']"/>
+                                                <t t-set="total_degree_male_start"
+                                                   t-value="total_degree_male_start+o.qty_number_gender_employee_start_degree(degree)['male']"/>
+                                                <t t-set="total_degree_female_end"
+                                                   t-value="total_degree_female_end+o.qty_number_gender_employee_end_degree(degree)['female']"/>
+
+                                                <t t-set="total_degree_male_end"
+                                                   t-value="total_degree_male_end+o.qty_number_gender_employee_end_degree(degree)['male']"/>
+                                                <t t-set="total_degree_start"
+                                                   t-value="total_degree_start+o.qty_number_gender_employee_start_degree(degree)['total']"/>
+                                                <t t-set="total_degree_end"
+                                                   t-value="total_degree_end+o.qty_number_gender_employee_end_degree(degree)['total']"/>
+                                                <t t-set="total_degree_start_vs_end"
+                                                   t-value="total_degree_start_vs_end+0"/>
+
+
+                                            </tr>
+                                        </t>
+                                        <t t-set="total_degree_female_and_male_start"
+                                           t-value="total_degree_male_start+total_degree_female_start"/>
+                                        <t t-set="total_degree_female_and_male_end"
+                                           t-value="total_degree_male_end+total_degree_female_end"/>
+                                        <t t-set="total_vs"
+                                           t-value="abs(total_degree_female_and_male_start-total_degree_female_and_male_end)"/>
+
+                                        <tr style="background-color:#2ec18b; font-weight:bold;">
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                TOTAL GERAL
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_degree_male_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_degree_female_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_degree_female_and_male_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_degree_male_end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_degree_female_end"/>
+                                            </td>
+
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_degree_female_and_male_end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_vs"/>
+
+                                            </td>
+
+
+                                        </tr>
+                                    </table>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <table id="table2" class="table table-sm o_main_table">
+                                        <tr>
+                                            <th colspan="3" class="text-center" style="border:none !important;">
+                                                <div>
+                                                    <span>
+                                                        <strong>TRABALHADORES POR NUMERO DE DEPEDENTES</strong>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class="text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.start_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class=" text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.end_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="4" style="border:none !important;text-transform:uppercase"
+                                                class="text-right title">
+                                                <div>
+                                                    <strong><span t-esc="o.start_date.strftime('%B')[:3]"/>&#160;&#160;&#160;&#160;&#160;VS&#160;&#160;&#160;&#160;&#160;<span
+                                                            t-esc="o.end_date.strftime('%B')[:3]"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        <tr style="font-weight: bold;">
+
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">TOTAL
+                                            </td>
+
+                                        </tr>
+                                        <t t-set="total_dependent_male_start" t-value="0"/>
+                                        <t t-set="total_dependent_female_start" t-value="0"/>
+                                        <t t-set="total_dependent_total_start" t-value="0"/>
+                                        <t t-set="total_dependent_male_end" t-value="0"/>
+                                        <t t-set="total_dependent_female_end" t-value="0"/>
+                                        <t t-set="total_dependent_total_end" t-value="0"/>
+                                        <t t-set="total_dependent_total_start_vs_end" t-value="0"/>
+
+                                        <t t-set="med" t-value="0"/>
+                                        <t t-foreach="[0,1,2,3,4,5,6,7,8]" t-as="i">
+                                            <t t-if="i==0">
+                                                <t t-set="med" t-value="o.qty_number_dependents_end(i)['total']"/>
+                                            </t>
+                                            <t t-if=" not i==0">
+                                                <t t-if="med &lt;o.qty_number_dependents_end(i)['total'] ">
+                                                    <t t-set="med" t-value="o.qty_number_dependents_end(i)['total']"/>
+                                                </t>
+
+                                            </t>
+                                            <t t-set="total_dependent"
+                                               t-value="abs(o.qty_number_dependents_start(i)['total']-o.qty_number_dependents_end(i)['total'])"/>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i"/>
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_dependents_start(i)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_dependents_start(i)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_dependents_start(i)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_dependents_end(i)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_dependents_end(i)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_dependents_end(i)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="abs(total_dependent)"/>
+
+                                                </td>
+
+                                            </tr>
+                                            <t t-set="total_dependent_male_start"
+                                               t-value="total_dependent_male_start+o.qty_number_dependents_start(i)['male']"/>
+                                            <t t-set="total_dependent_female_start"
+                                               t-value="total_dependent_female_start+o.qty_number_dependents_start(i)['female']"/>
+                                            <t t-set="total_dependent_total_start"
+                                               t-value="total_dependent_total_start+o.qty_number_dependents_start(i)['total']"/>
+                                            <t t-set="total_dependent_male_end"
+                                               t-value="total_dependent_male_end+o.qty_number_dependents_end(i)['male']"/>
+                                            <t t-set="total_dependent_female_end"
+                                               t-value="total_dependent_female_end+o.qty_number_dependents_end(i)['female']"/>
+                                            <t t-set="total_dependent_total_end"
+                                               t-value="total_dependent_total_end+o.qty_number_dependents_end(i)['total']"/>
+
+                                        </t>
+                                        <t t-set="total_dependent_total_start_vs_end"
+                                           t-value="abs(total_dependent_total_start-total_dependent_total_end)"/>
+
+                                        <tr style="background-color:#2ec18b; font-weight:bold;">
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                TOTAL GERAL
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_dependent_male_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_dependent_female_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_dependent_total_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_dependent_male_end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_dependent_female_end"/>
+                                            </td>
+
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_dependent_total_end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_dependent_total_start_vs_end"/>
+
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"
+                                                class="text-left title">
+                                                <strong>
+                                                    Temos uma média de
+                                                    <span t-esc="med"/>
+                                                    dependentes por traballhador
+                                                </strong>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+
+                                    <table id="table2" class="table table-sm o_main_table">
+                                        <tr>
+                                            <th colspan="3" class="text-center" style="border:none !important;">
+                                                <div>
+                                                    <span>
+                                                        <strong>TRABALHADORES POR PROVINCIAS</strong>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class="text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.start_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class=" text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.end_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="4" style="border:none !important;text-transform:uppercase"
+                                                class="text-right title">
+                                                <div>
+                                                    <strong><span t-esc="o.start_date.strftime('%B')[:3]"/>&#160;&#160;&#160;&#160;&#160;VS&#160;&#160;&#160;&#160;&#160;<span
+                                                            t-esc="o.end_date.strftime('%B')[:3]"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        <tr style="font-weight: bold;">
+
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">TOTAL
+                                            </td>
+
+                                        </tr>
+                                        <t t-set="total_work_location_male_start" t-value="0"/>
+                                        <t t-set="total_work_location_female__start" t-value="0"/>
+                                        <t t-set="total_work_location_start" t-value="0"/>
+                                        <t t-set="total_work_location_male__end" t-value="0"/>
+                                        <t t-set="total_work_location_female_end" t-value="0"/>
+                                        <t t-set="total_work_location_end" t-value="0"/>
+                                        <t t-set="total_dependent_total_start_vs_end" t-value="0"/>
+
+                                        <t t-set="med" t-value="0"/>
+                                        <t t-foreach="o.all_work_location()" t-as="i">
+                                            <t t-set="total_work_location_female_and_male_vs"
+                                               t-value="o.qty_number_work_location_start(i.id)['total']-o.qty_number_work_location_end(i.id)['total']"/>
+
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i.name"/>
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_work_location_start(i.id)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_work_location_start(i.id)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_work_location_start(i.id)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_work_location_end(i.id)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_work_location_end(i.id)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_work_location_end(i.id)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="abs(total_work_location_female_and_male_vs)"/>
+
+                                                </td>
+
+                                            </tr>
+                                            <t t-set="total_work_location_male_start"
+                                               t-value="total_work_location_male_start+o.qty_number_work_location_start(i.id)['male']"/>
+                                            <t t-set="total_work_location_female__start"
+                                               t-value="total_work_location_female__start+o.qty_number_work_location_start(i.id)['female']"/>
+                                            <t t-set="total_work_location_start"
+                                               t-value="total_work_location_start+o.qty_number_work_location_start(i.id)['total']"/>
+                                            <t t-set="total_work_location_male__end"
+                                               t-value="total_work_location_male__end+o.qty_number_work_location_end(i.id)['male']"/>
+                                            <t t-set="total_work_location_female_end"
+                                               t-value="total_work_location_female_end+o.qty_number_work_location_end(i.id)['female']"/>
+                                            <t t-set="total_work_location_end"
+                                               t-value="total_work_location_end+o.qty_number_work_location_end(i.id)['total']"/>
+
+                                        </t>
+                                        <t t-set="total_work_location_start_vs_end"
+                                           t-value="abs(total_work_location_start-total_work_location_end)"/>
+
+                                        <tr style="background-color:#2ec18b; font-weight:bold;">
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                TOTAL GERAL
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_work_location_male_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_work_location_female__start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_work_location_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_work_location_male__end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_work_location_female_end"/>
+                                            </td>
+
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_work_location_end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_work_location_start_vs_end"/>
+
+                                            </td>
+
+
+                                        </tr>
+                                    </table>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+
+                                    <table id="table2" class="table table-sm o_main_table">
+                                        <tr>
+                                            <th colspan="3" class="text-center" style="border:none !important;">
+                                                <div>
+                                                    <span>
+                                                        <strong>FORÇA DE TRABLHO POR IDADE</strong>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class="text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.start_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class=" text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.end_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="4" style="border:none !important;text-transform:uppercase"
+                                                class="text-right title">
+                                                <div>
+                                                    <strong><span t-esc="o.start_date.strftime('%B')[:3]"/>&#160;&#160;&#160;&#160;&#160;VS&#160;&#160;&#160;&#160;&#160;<span
+                                                            t-esc="o.end_date.strftime('%B')[:3]"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        <tr style="font-weight: bold;">
+
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">TOTAL
+                                            </td>
+
+                                        </tr>
+                                        <t t-set="total_age_male_start" t-value="0"/>
+                                        <t t-set="total_age_female__start" t-value="0"/>
+                                        <t t-set="total_age_location_start" t-value="0"/>
+                                        <t t-set="total_age_location_male__end" t-value="0"/>
+                                        <t t-set="total_age_female_end" t-value="0"/>
+                                        <t t-set="total_age_end" t-value="0"/>
+                                        <t t-set="total_age_total_start_vs_end" t-value="0"/>
+
+                                        <t t-set="med" t-value="0"/>
+                                        <t t-foreach="['18-20','21-25','26-30','31-35','36-40','41-45','46-50','51-55','56-60','Mais de 61']"
+                                           t-as="i">
+                                            <t t-set="total_number_age_female_and_male_vs"
+                                               t-value="o.qty_number_age_start(i)['total']-o.qty_number_age_end(i)['total']"/>
+
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i"/>
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_age_start(i)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_age_start(i)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_age_start(i)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_age_end(i)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_age_end(i)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_age_end(i)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="abs(total_number_age_female_and_male_vs)"/>
+
+                                                </td>
+
+                                            </tr>
+                                            <t t-set="total_age_male_start"
+                                               t-value="total_age_male_start+o.qty_number_age_start(i)['male']"/>
+                                            <t t-set="total_age_female__start"
+                                               t-value="total_age_female__start+o.qty_number_age_start(i)['female']"/>
+                                            <t t-set="total_age_location_start"
+                                               t-value="total_age_location_start+o.qty_number_age_start(i)['total']"/>
+                                            <t t-set="total_age_location_male__end"
+                                               t-value="total_age_location_male__end+o.qty_number_age_end(i)['male']"/>
+                                            <t t-set="total_age_female_end"
+                                               t-value="total_age_female_end+o.qty_number_age_end(i)['female']"/>
+                                            <t t-set="total_age_end"
+                                               t-value="total_age_end+o.qty_number_age_end(i)['total']"/>
+
+                                        </t>
+                                        <t t-set="total_age_total_start_vs_end"
+                                           t-value="abs(total_age_end-total_age_location_start)"/>
+
+                                        <tr style="background-color:#2ec18b; font-weight:bold;">
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                TOTAL GERAL
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_age_male_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_age_female__start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_age_location_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_age_female_end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_age_female_end"/>
+                                            </td>
+
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_age_end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_age_total_start_vs_end"/>
+
+                                            </td>
+
+
+                                        </tr>
+                                    </table>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+
+
+                                    <table id="table2" class="table table-sm o_main_table">
+                                        <tr>
+                                            <th colspan="3" class="text-center" style="border:none !important;">
+                                                <div>
+                                                    <span>
+                                                        <strong>FORÇA DE TRABLHO POR DEPARTAMENTO</strong>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class="text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.start_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class=" text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.end_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="4" style="border:none !important;text-transform:uppercase"
+                                                class="text-right title">
+                                                <div>
+                                                    <strong><span t-esc="o.start_date.strftime('%B')[:3]"/>&#160;&#160;&#160;&#160;&#160;VS&#160;&#160;&#160;&#160;&#160;<span
+                                                            t-esc="o.end_date.strftime('%B')[:3]"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        <tr style="font-weight: bold;">
+
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Masculino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>Ferminino</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>TOTAL</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">TOTAL
+                                            </td>
+
+                                        </tr>
+                                        <t t-set="total_department_male_start" t-value="0"/>
+                                        <t t-set="total_department_female__start" t-value="0"/>
+                                        <t t-set="total_department_start" t-value="0"/>
+                                        <t t-set="total_department_male__end" t-value="0"/>
+                                        <t t-set="total_department_female_end" t-value="0"/>
+                                        <t t-set="total_department_end" t-value="0"/>
+                                        <t t-set="total_department_total_start_vs_end" t-value="0"/>
+                                        <t t-set="med" t-value="0"/>
+                                        <t t-foreach="o.all_departament()"
+                                           t-as="i">
+                                            <t t-set="total_number_department_female_and_male_vs"
+                                               t-value="o.qty_number_department_start(i.id)['total']-o.qty_number_department_end(i.id)['total']"/>
+
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i.name"/>
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_department_start(i.id)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_department_start(i.id)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_department_start(i.id)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_department_end(i.id)['male']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_department_end(i.id)['female']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="o.qty_number_department_end(i.id)['total']"/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="abs(total_number_department_female_and_male_vs)"/>
+
+                                                </td>
+
+                                            </tr>
+                                            <t t-set="total_department_male_start"
+                                               t-value="total_department_male_start+o.qty_number_department_start(i.id)['male']"/>
+                                            <t t-set="total_department_female__start"
+                                               t-value="total_department_female__start+o.qty_number_department_start(i.id)['female']"/>
+                                            <t t-set="total_department_start"
+                                               t-value="total_department_start+o.qty_number_department_start(i.id)['total']"/>
+                                            <t t-set="total_department_male__end"
+                                               t-value="total_department_male__end+o.qty_number_department_end(i.id)['male']"/>
+                                            <t t-set="total_department_female_end"
+                                               t-value="total_department_female_end+o.qty_number_department_end(i.id)['female']"/>
+                                            <t t-set="total_department_end"
+                                               t-value="total_department_end+o.qty_number_department_end(i.id)['total']"/>
+
+                                        </t>
+                                        <t t-set="total_age_total_start_vs_end"
+                                           t-value="abs(total_department_end-total_department_start)"/>
+
+                                        <tr style="background-color:#2ec18b; font-weight:bold;">
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                TOTAL GERAL
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_department_male_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_department_female__start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_department_location_start"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_department_female_end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <span t-esc="total_department_female_end"/>
+                                            </td>
+
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_department_end"/>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <span t-esc="total_department_total_start_vs_end"/>
+
+                                            </td>
+
+
+                                        </tr>
+                                    </table>
+                                    <img src="/ao_hr/static/src/img/icon.png"
+                                         style="height:700px;width:100%;"/>
+
+                                    <img src="/ao_hr/static/src/img/icon2.png"
+                                         style="height:700px;width:100%;"/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+
+                                    <h6 style="text-align:center;color:#0B74CE;text-transform:uppercase">CUSTO DE
+                                        PESSOAL
+                                    </h6>
+                                    <t t-set="brut_end" t-value="0"/>
+                                    <t t-set="brut_start" t-value="0"/>
+
+                                    <table id="table2" class="table table-sm o_main_table">
+                                        <tr>
+                                            <th colspan="3" class="text-center" style="border:none !important;">
+                                                <div>
+                                                    <span>
+                                                        <strong>SALÁRIOS</strong>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class="text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.start_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="5" class=" text-center title"
+                                                style="border:none !important;text-transform:uppercase">
+                                                <div>
+                                                    <strong>
+                                                        <span t-esc="o.end_date.strftime('%B')"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                            <th colspan="4" style="border:none !important;text-transform:uppercase"
+                                                class="text-center title">
+                                                <div>
+                                                    <strong><span t-esc="o.start_date.strftime('%B')[:3]"/>&#160;&#160;&#160;&#160;&#160;VS&#160;&#160;&#160;&#160;&#160;<span
+                                                            t-esc="o.end_date.strftime('%B')[:3]"/>
+                                                    </strong>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        <tr style="font-weight: bold;">
+
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">Nº
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>DESCRIÇÃO</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>PROVENTOS</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>DESCONTOS</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>PROVENTOS</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="2"
+                                                class="text-center title">
+                                                <strong>DESCONTOS</strong>
+                                            </td>
+                                            <td style="text-transform:uppercase" colspan="3"
+                                                class="text-center title">
+                                                <strong>COMPARATIVO</strong>
+                                            </td>
+
+
+                                        </tr>
+
+                                        <t t-set="med" t-value="0"/>
+                                        <t t-foreach="o.get_costs_salary()" t-as="i">
+                                            <t t-set="brut_start"
+                                               t-value="brut_start+i['gross_salary']"/>
+                                            <t t-set="brut_end"
+                                               t-value="brut_end+i['gross_salary_end']"/>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    1
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    SALÁRIOS EFECTIVOS BRUTO
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['gross_salary']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['gross_salary_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['gross_salary_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    2
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    SUBSIDIOS DE FÉRIAS
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_ferias']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_ferias_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_ferias_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    3
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    SUBSIDIOS DE NATAL
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_nat']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_nat_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_nat_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    4
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    FÉRIAS NÃO GOZADAS
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_holiday_not_use']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_holiday_not_use_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_holiday_not_use_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    5
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    ABONOS DE FAMILIA
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_fam']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_fam_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_fam_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    6
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    SUBSIDIO DE TRANSPORTE
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_trans']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_trans_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['sub_trans_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    7
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    DESCONTOS DE FALTAS
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['misses']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['misses_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['misses_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    8
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    EMPRÉSTIMO SALARIAL
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['loan']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['loan_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['loan_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    9
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    DESCONTOS DE INSS
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['ss_tax']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['ss_tax_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['ss_tax_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+
+                                            <tr style="font-weight: bold;">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    10
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    DESCONTOS DE IRT
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['irt']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['irt_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['irt_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="background-color:#2ec18b; font-weight:bold;"
+                                                class="text-center title">
+
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    SALÁRIO EFETIVOS LIQUIDO PAGOS
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['paid']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['des_paid']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['paid_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['paid_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['paid_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr style="background-color:#714b67; font-weight:bold;"
+                                                class="text-center title">
+
+                                                <td style="text-transform:uppercase;color:white" colspan="2"
+                                                    class="text-center title">
+
+
+                                                </td>
+                                                <td style="text-transform:uppercase" colspan="2"
+                                                    class="text-center title;color:white">
+                                                    SALÁRIO PRESTADOR LIQUIDO PAGOS
+                                                </td>
+                                                <td style="text-transform:uppercase ;color:white" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['budget']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase;color:white" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['des_budget']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase;color:white" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['budget_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase;color:white" colspan="2"
+                                                    class="text-center title">
+                                                    <span t-esc="i['des_budget_end']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+                                                <td style="text-transform:uppercase;color:white" colspan="3"
+                                                    class="text-center title">
+                                                    <span t-esc="i['budget_vs']"
+                                                          t-options='{"widget": "float", "precision": 2}'/>
+                                                </td>
+
+
+                                            </tr>
+
+
+                                        </t>
+                                    </table>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+
+                                    <p align="center">
+                                        <li>A
+                                            <span class="text-left" t-field="res_company.name"/>
+                                            como média salarial, referente a
+                                            <strong>
+                                                <span t-esc="o.end_date.strftime('%B')"/>
+                                            </strong>
+                                            a quantia monetária de
+                                            <span t-esc="brut_start"  t-options='{"widget": "float", "precision": 2}'/>
+                                            resultante da base bruta de
+                                            <span t-esc="brut_end"  t-options='{"widget": "float", "precision": 2}'/>
+                                        </li>
+                                    </p>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </t>
+
+                </t>
+
+            </t>
+        </template>
+
+    </data>
+</odoo>

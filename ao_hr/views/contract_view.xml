@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- modify contract form view -->
+    <record id="ao_contract_form_view" model="ir.ui.view">
+        <field name="name">hr.contract.form</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <!-- <field name="schedule_pay" position="replace"/>-->
+            <!--<field name="wage" position="after">
+                 <field name="payslip_date" invisible="1"/>
+            </field>-->
+            <xpath expr="//header" position="inside">
+                <!--<button states="open" name="button_print" type="object" string="Print Contract"/>-->
+                <button states="open" name="button_print_declaration" type="object" string="Declaração de Trabalho"
+                        class="oe_stat_button" icon="fa-book"/>
+            </xpath>
+            <xpath expr="//field[@name='hr_responsible_id']" position="replace">
+                <field name="hr_responsible_id" />
+            </xpath>
+            <xpath expr="//field[@name='name']" position="replace">
+                <field name="name" class="text-truncate" readonly="1"/>
+            </xpath>
+            <field name="job_id" position="replace">
+            </field>
+            <!--            <field name="first_contract_date" position="replace">-->
+            <!--            </field>-->
+            <field name="date_start" position="replace">
+            </field>
+            <field name="department_id" position="replace">
+            </field>
+            <!--            <xpath expr="//field[@name='structure_type_id']" position="attributes">-->
+            <!--            <attribute name="required">1</attribute>-->
+            <!--            <attribute name="options">{'no_create': True, 'no_open': True}</attribute>-->
+            <!--            <attribute name="readonly">1</attribute>-->
+            <!--            <attribute name="force_save">1</attribute>-->
+            <!--            </xpath>-->
+            <!--            <field name="contract_type_id" position="replace">-->
+            <!--            </field>-->
+            <field name="date_end" position="before">
+                <field name="department_id"/>
+                <!--                <field name="contract_type_id"/>-->
+                <field name="contract_period" invisible="1" attrs="{'required':[('check_period','=',True)]}"/>
+            </field>
+            <field name="employee_id" position="after">
+                <field name="job_id"/>
+                <field name="check_period" invisible="1"/>
+                <field name="date_start"/>
+            </field>
+            <xpath expr="//field[@name='date_end']" position="replace">
+                <field name="facade_date_end" readonly="1" invisible="1"/>
+                <field name="date_end"/>
+            </xpath>
+
+            <field name="employee_id" position="after">
+            </field>
+            <field name="structure_type_id" position="replace">
+                <field name="bi"/>
+                <field name="fiscal_number"/>
+                <field name="structure_type_id" readonly="0" force_save="1"/>
+                <!--                <field name="number_month"/>-->
+                <!--                <field name="number_duration_month"/>-->
+
+
+            </field>
+            <field name="contract_type_id" position="after">
+                <label for="contract_duration"/>
+                <div class="o_row" name="contract_duration">
+                    <field name="contract_duration" nolabel="0"/>
+                    <span>/ Month(s)</span>
+                </div>
+                <field name="check_period" invisible="1"/>
+                <field name="contract_period" invisible="1" attrs="{'required':[('check_period','=',True)]}"/>
+                <field name="time_left" invisible="1"/>
+                <label for="facade_time_left"/>
+                <div class="o_row" name="facade_time_left">
+                    <field name="facade_time_left" nolabel="0" readonly="1"/>
+                    <span>/ Month(s)</span>
+                </div>
+            </field>
+
+            <field name="structure_type_id" position="after">
+                <field name="struct_id" required="1" invisible="0" readonly="0" force_save="1"/>
+            </field>
+            <xpath expr="//group[@name='salary']" position="inside">
+                <label for="wage_day"/>
+                <div class="o_row" name="wage_day">
+                    <field name="wage_day" nolabel="1"/>
+                    <span>/ day</span>
+                </div>
+                <label for="wage_hour"/>
+                <div class="o_row" name="wage_hour">
+                    <field name="wage_hour" nolabel="1"/>
+                    <span>/ hour</span>
+                </div>
+
+                    <field name="description_alter_wage"/>
+
+            </xpath>
+            <xpath expr="//page[@name='other']/group" position="before">
+                <group>
+
+                    <group string="Beneficios do Contrato">
+                        <field name="exempt_ss" string="Calcular Segurança Social ?" widget="boolean_toggle"/>
+                        <field name="exempt_irt" string="Calcular IRT ?" widget="boolean_toggle"/>
+                    </group>
+                    <group string="Beneficios do Contrato">
+                        <field name="car" widget="boolean_toggle"/>
+                        <field name="phone" widget="boolean_toggle"/>
+                        <field name="chang" widget="boolean_toggle"/>
+                        <field name="home" widget="boolean_toggle"/>
+                    </group>
+                    <group invisible="1">
+                        <field name="utts" invisible="1" widget="boolean_toggle"/>
+                        <field name="has_criminal_record" widget="boolean_toggle"/>
+                        <field name="has_taxpayer_card" widget="boolean_toggle"/>
+                        <field name="has_medical_certificate" widget="boolean_toggle"/>
+                        <field name="has_account_bank" widget="boolean_toggle"/>
+                        <field name="has_household" widget="boolean_toggle"/>
+                        <field name="has_driving_license" widget="boolean_toggle"/>
+                        <field name="has_bi" widget="boolean_toggle"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <xpath expr="//page[last()]" position="after">
+                <page string="Remunerações e Deduções">
+                    <field name="remuneration_ids">
+                        <tree name="Remuneration" editable="bottom" decoration-danger="rem_type == 'deduction'"
+                              decoration-success="rem_type == 'remuneration'">
+                            <field name="remunerationcode_id" options="{'no_create_edit': True}" string="Remuneração"/>
+                            <field name="date_start" string="Data Inicial"/>
+                            <field name="date_end" string="Data Final"/>
+                            <field name="amount" string="Valor"/>
+                            <field name="is_daily" string="É diario?"/>
+                            <field name="name" string="Nome"/>
+                            <field name="rem_type" readonly="1" string="Tipo"/>
+                            <field name="rem_day" invisible="0" string="Valor/dia"/>
+                            <field name="rem_hour" invisible="0" string="Valor/hora"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <field name="resource_calendar_id" position="before">
+                <field name="first_work_day" invisible="1"/>
+                <field name="first_work_hours" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <!--    <record id="inherit_contract_salary" model="ir.ui.view">-->
+    <!--        <field name="name">Inherit Contract Salary</field>-->
+    <!--        <field name="model">hr.contract</field>-->
+    <!--        <field name="inherit_id" ref="hr_contract_salary.hr_contract_view_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//group[@name='contract_template']//field[@name='default_contract_id']" position="replace">-->
+    <!--                &lt;!&ndash; Add your fields or attributes here &ndash;&gt;-->
+    <!--            </xpath>-->
+
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <!-- modify contract tree view -->
+    <record id="ao_contract_tree_view" model="ir.ui.view">
+        <field name="name">hr.contract.tree</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="job_id" position="after">
+                <field name="exempt_irt" widget="boolean_toggle"/>
+                <field name="payslip_date" invisible="1"/>
+            </field>
+
+        </field>
+    </record>
+
+    <!-- modify contract kanban view -->
+    <record id="ao_contract_kanban_view" model="ir.ui.view">
+        <field name="name">hr.contract.kanban</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="contract_type_id"/>
+                <field name="structure_type_id"/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_kanban_content')]/div" position="after">
+                <div class="text-muted o_kanban_record_subtitle">
+                    <field name="employee_id"/>
+                </div>
+            </xpath>
+            <xpath expr="//div[@name='div_job_id']" position="after">
+                <div class="text-muted o_kanban_record_subtitle">
+                    <field name="structure_type_id"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

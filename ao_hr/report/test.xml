@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="psi_paper_format_landscape" model="report.paperformat">
+            <field name="name">CBS - Paper Format Landscape</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+                id="report_report_hr_teste"
+                model="hr.employee"
+                string="Teste1"
+                name="report_hr_psi.report_card_teste"
+                file="report_hr_psi.report_card_teste"
+                report_type="qweb-pdf"
+                paperformat="report_hr_psi.psi_paper_format_landscape"/>
+
+        <template id="report_card_teste">
+            <t t-call="web.html_container">
+
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="container">
+
+                            <table>
+                                <tr>
+                                    <th>DESIGNAÇÃO</th>
+                                    <th>NOTAS</th>
+                                    <th>EXERCCICIOS</th>
+                                </tr>
+                                <tr>
+                                    <td>Final</td>
+                                    <td>Inicial</td>
+                                    <td>Germany</td>
+                                </tr>
+                                <tr>
+                                    <td>Centro comercial Moctezuma</td>
+                                    <td>Francisco Chang</td>
+                                    <td>Mexico</td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+
+
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

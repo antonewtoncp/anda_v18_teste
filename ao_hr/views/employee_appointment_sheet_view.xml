@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_employee_appointment_form_view" model="ir.ui.view">
+            <field name="name">ao.hr.employee.appointment.form</field>
+            <field name="model">ao.hr.employee.appointment</field>
+            <field name="arch" type="xml">
+                <form string="Employee Promotion">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" required="1" placeholder="Appointment name"/>
+                            </h1>
+                            <label for="employee_id"/>
+                            <h1>
+                                <field name="employee_id" required="1" placeholder="Employee name"/>
+                            </h1>
+                        </div>
+                        <group col="4">
+                            <field name="department_id"/>
+                            <field name="job_id"/>
+                            <field name="appointed_by"/>
+                            <field name="department_manger_id"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Justificação">
+                                <span>Justificação para a nomeação (Por favor providenciar o máximo de informação
+                                    possível
+                                    e bem objectivas, baseando nas 3 secções abaixo)
+                                </span>
+                                <group>
+                                    <field name="motive" widget="text" nolabel="1"/>
+                                </group>
+
+                            </page>
+
+                            <!--<page string="Approvals">
+                                <span>Todas as aprovações são reconfirmadas pelo Responsável de RH antes submetido a
+                                    aprovação final do representante residente (RR) que aprova.</span>
+                                <group col="1">
+
+                                </group>
+                            </page>-->
+                        </notebook>
+                        <span>
+                            <b>Critérios:</b>
+                            <p>1. Realização de uma actividade exitosa por um trabalhador singular que tivera um efeito
+                                extraordinário para organização, durante o ano (especificar).
+                            </p>
+                            <p>2. Que tivera um cumprimento excelente "dentro da sua descrição
+                                de função” baseando na avaliação de desempenho anual
+                            </p>
+                            <p>3. Que tivera um espírito de equipa Excepcional (especificar a acção).
+                            </p>
+                        </span>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_employee_appointment_tree_view" model="ir.ui.view">
+            <field name="name">ao.hr.employee.appointment.tree</field>
+            <field name="model">ao.hr.employee.appointment</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Promotion">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="department_manger_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_employee_appointment_search_view" model="ir.ui.view">
+            <field name="name">ao.hr.employee.appointment.search</field>
+            <field name="model">ao.hr.employee.appointment</field>
+            <field name="arch" type="xml">
+                <search string="Employee Promotion">
+                    <group expand="1" string="Group By">
+                        <filter string="Employee" name="employee_id" domain="[]"
+                                context="{'group_by':'employee_id'}"/>
+                        <field name="department_manger_id"/>
+                        <field name="job_id"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="hr_employee_appointment_act_window" model="ir.actions.act_window">
+            <field name="name">Ficha de Nomeação do Funcionário do ano</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ao.hr.employee.appointment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Não há nomeação de ano de funcionário clique aqui para adicionar nova nomeação de ano.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Ficha de Nomeação do Funcionário do ano" id="hr_employee_year_appointment_menu"
+                  parent="ao_hr.menu_employee_ficha"
+                  action="hr_employee_appointment_act_window"/>
+
+
+    </data>
+</odoo>

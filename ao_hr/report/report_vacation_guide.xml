@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+        <record id="action_vacation_requeste_report" model="ir.actions.report">
+            <field name="name">Guia de Férias</field>
+            <field name="type">qweb-pdf</field>
+            <field name="model">hr.leave</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ao_hr.report_vacation_guide_pdf</field>
+            <field name="report_file">ao_hr.report_vacation_guide_pdf</field>
+            <field name="print_report_name">'Guia de Férias'</field>
+        </record>
+        <template id="report_vacation_guide_pdf">
+            <t t-call="web.html_container">
+               <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <style type="text/css">
+                            body {
+                                margin: 0;
+                                padding: 0;
+                                font-family: Arial, sans-serif;
+                            }
+                            p, ul, li{
+                                font-size:14px !important;
+                                font-family: arial !important;
+                                text-align: justify !important;
+                            }
+                        </style>
+                        <header>
+                        </header>
+                        <div class="text-left">
+                             <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" style="max-height:150px;"  />
+                            <div>
+                              
+                            </div>
+                        </div>
+                        <br></br><br></br>
+                        <br></br><br></br>
+                        <br></br>
+
+                    <div class="page">
+                            <div>
+                                <h1 class="text-center" style="font-size: 36 px !important; margin-bottom:30px !important;"> <strong>GUIA DE FÉRIAS</strong></h1>
+                                <div style="margin-left: 30px !important; margin-right: 30px !important;">
+                                <p>Por este meio se faz constar a quem o conhecimento desta competir, que o
+                                    Senhor(a) <strong><span t-field="o.employee_ids"/></strong>, trabalhador desta Empresa, colocado no departamento 
+                                    <strong><span t-field="o.department_id"/></strong>, exercendo a função de 
+                                    <strong><span t-field="o.employee_id.job_id.name"/></strong>.</p> 
+                                <p>Encontra-se em gozo de férias, num período de  <strong>
+                                 <t t-esc="int(o.number_of_days) - 2 if int(o.number_of_days) == 13 else int(o.number_of_days)" />
+                                </strong>dias úteis, a partir de:</p>
+                                 <ul style="margin-left:30px !important;">
+                                    <li>Inicio das férias: <span t-field="o.sf_start"/></li>
+                                    <li>Termino das férias: <span t-field="o.sf_end"/></li>
+                                    <t t-set="regresso" t-value="(o.sf_end + relativedelta(days=1)).strftime('%d/%m/%Y')"/>
+                                    <li>Regresso ao Trabalho: <span t-esc="regresso"/> </li>
+                                 </ul>
+                                <p>Para que não lhe ponham impedimento, emitiu-se a presente Guia de Férias,
+                                    que vai por mim e pelo responsável da área assinada e autenticada com o
+                                    carimbo a óleo em uso nesta Empresa.</p>
+                                <p>Luanda, aos <span t-esc="datetime.date.today().strftime('%d/%m/%Y')"/>.</p>
+                                <br></br>
+                                <p><strong>Departamento de RH</strong></p>
+                                <p>_______________________________________</p> 
+                                <br></br>
+
+                                <p><strong>Coordenador da Área</strong></p>
+                                <p>_______________________________________</p> 
+                                <br></br>
+
+                                <p><strong>Trabalhador/a</strong></p>
+                                <p>_______________________________________</p> 
+                                <br></br>
+                                </div>
+                            </div>
+                    </div>
+                </t>
+               </t>
+               
+            </t>
+        </template>
+    </data>
+</odoo>
