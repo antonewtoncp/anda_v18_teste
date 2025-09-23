@@ -5,7 +5,7 @@ from dateutil import relativedelta
 from odoo.exceptions import ValidationError
 
 
-class ModelName(models.TransientModel):
+class WizardIndication(models.TransientModel):
     _name = 'wizard.indication'
     _description = 'Wizard indication of hr '
 
@@ -16,30 +16,55 @@ class ModelName(models.TransientModel):
         [('all', 'Geral'), ('number_work_gender', 'Number Work By Degree Academic '),
          ('number_children', 'Number Dependents')],
         default='all')
+    
 
     def get_costs_salary(self):
         salary_map_data = []
         costs_employee_start = self.env['hr.payslip.run'].search(
-            [('date_start', '<=', self.start_date.strftime('%Y-%m-%d')),
-             ('date_end', '>=', self.start_date.strftime('%Y-%m-%d')),
-             ('structure_type_id.type', '=', 'employee')])
+            [
+                ('date_start', '<=', self.start_date.strftime('%Y-%m-%d')),
+                ('date_end', '>=', self.start_date.strftime('%Y-%m-%d')),
+                ('structure_type_id.type', '=', 'employee'),
+                
+             ]
+        )
         costs_worker_start = self.env['hr.payslip.run'].search(
-            [('date_start', '<=', self.start_date.strftime('%Y-%m-%d')),
-             ('date_end', '>=', self.start_date.strftime('%Y-%m-%d')),
-             ('structure_type_id.type', '=', 'worker')])
+            [
+                ('date_start', '<=', self.start_date.strftime('%Y-%m-%d')),
+                ('date_end', '>=', self.start_date.strftime('%Y-%m-%d')),
+                ('structure_type_id.type', '=', 'worker'),
+                
+            ]
+        )
         costs_employee_end = self.env['hr.payslip.run'].search(
-            [('date_start', '<=', self.end_date.strftime('%Y-%m-%d')),
-             ('date_end', '>=', self.end_date.strftime('%Y-%m-%d')),
-             ('structure_type_id.type', '=', 'employee')])
+            [
+                ('date_start', '<=', self.end_date.strftime('%Y-%m-%d')),
+                ('date_end', '>=', self.end_date.strftime('%Y-%m-%d')),
+                ('structure_type_id.type', '=', 'employee'),
+                
+            ]
+        )
         costs_worker_end = self.env['hr.payslip.run'].search(
-            [('date_start', '<=', self.end_date.strftime('%Y-%m-%d')),
-             ('date_end', '>=', self.end_date.strftime('%Y-%m-%d')),
-             ('structure_type_id.type', '=', 'worker')])
+            [
+                ('date_start', '<=', self.end_date.strftime('%Y-%m-%d')),
+                ('date_end', '>=', self.end_date.strftime('%Y-%m-%d')),
+                ('structure_type_id.type', '=', 'worker'),
+                
+            ]
+        )
 
         payslips = self.env['hr.payslip'].search(
-            [('payslip_run_id.name', '=', costs_employee_start[0].name if costs_employee_start else "")])
+            [
+                ('payslip_run_id.name', '=', costs_employee_start[0].name if costs_employee_start else ""),
+                
+            ]
+        )
         payslips_end = self.env['hr.payslip'].search(
-            [('payslip_run_id.name', '=', costs_employee_end[0].name if costs_employee_end else "")])
+            [
+                ('payslip_run_id.name', '=', costs_employee_end[0].name if costs_employee_end else ""),
+                
+            ]
+        )
         res = {
             'sub_trans': sum(
                 [re.total for line in payslips for re in line.line_ids if re.code == 'sub_trans']),
@@ -158,12 +183,13 @@ class ModelName(models.TransientModel):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '<=', self.start_date),
 
-                                                        ('department_id', '=', department)
+                                                        ('department_id', '=', department),
+                                                        
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('end_date', '<=', self.start_date),
-                                                          ('department_id', '=', department)
-
+                                                          ('department_id', '=', department),
+                                                          
                                                           ])
         return {"male": len(employee_male), 'female': len(employee_female),
                 'total': len(employee_male) + len(employee_female)}
@@ -172,12 +198,13 @@ class ModelName(models.TransientModel):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '>=', self.start_date),
                                                         ('create_date', '<=', self.end_date),
-                                                        ('department_id', '=', department)
+                                                        ('department_id', '=', department),
+                                                        
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('create_date', '<=', self.end_date),
-                                                          ('department_id', '=', department)
-
+                                                          ('department_id', '=', department),
+                                                          
                                                           ])
         print(employee_female)
         return {"male": len(employee_male), 'female': len(employee_female),
@@ -186,12 +213,13 @@ class ModelName(models.TransientModel):
     def qty_number_work_location_start(self, location):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '<=', self.start_date),
-                                                        ('work_location_id', '=', location)
+                                                        ('work_location_id', '=', location),
+                                                        
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('create_date', '<=', self.start_date),
-                                                          ('work_location_id', '=', location)
-
+                                                          ('work_location_id', '=', location),
+                                                          
                                                           ])
 
         return {"male": len(employee_male), 'female': len(employee_female),
@@ -207,12 +235,14 @@ class ModelName(models.TransientModel):
             employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                             ('create_date', '<=', self.start_date),
                                                             ('age', '>=', age1),
-                                                            ('age', '<=', age2)
+                                                            ('age', '<=', age2),
+                                                            
                                                             ])
             employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                               ('create_date', '<=', self.start_date),
                                                               ('age', '>=', age1),
-                                                              ('age', '<=', age2)
+                                                              ('age', '<=', age2),
+                                                              
 
                                                               ])
             return {"male": len(employee_male), 'female': len(employee_female),
@@ -223,12 +253,14 @@ class ModelName(models.TransientModel):
             employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                             ('create_date', '<=', self.end_date),
                                                             ('age', '>=', 61),
-                                                            ('age', '<=', 120)
+                                                            ('age', '<=', 120),
+                                                            ("company_id", "=", self.env.company.id)
                                                             ])
             employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                               ('create_date', '<=', self.end_date),
                                                               ('age', '>=', 61),
-                                                              ('age', '<=', 120)
+                                                              ('age', '<=', 120),
+                                                              ("company_id", "=", self.env.company.id)
 
                                                               ])
             return {"male": len(employee_male), 'female': len(employee_female),
@@ -239,12 +271,14 @@ class ModelName(models.TransientModel):
             employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                             ('create_date', '<=', self.end_date),
                                                             ('age', '>=', age1),
-                                                            ('age', '<=', age2)
+                                                            ('age', '<=', age2),
+                                                            
                                                             ])
             employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                               ('create_date', '<=', self.end_date),
                                                               ('age', '>=', age1),
-                                                              ('age', '<=', age2)
+                                                              ('age', '<=', age2),
+                                                              
 
                                                               ])
             return {"male": len(employee_male), 'female': len(employee_female),
@@ -253,11 +287,13 @@ class ModelName(models.TransientModel):
     def qty_number_work_location_end(self, location):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '<=', self.end_date),
-                                                        ('work_location_id', '=', location)
+                                                        ('work_location_id', '=', location),
+                                                        ("company_id", "=", self.env.company.id)
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('create_date', '<=', self.end_date),
-                                                          ('work_location_id', '=', location)
+                                                          ('work_location_id', '=', location),
+                                                          ("company_id", "=", self.env.company.id)
 
                                                           ])
 
@@ -268,14 +304,16 @@ class ModelName(models.TransientModel):
     def check_dates(self):
         for res in self:
             if res.start_date > res.end_date:
-                raise ValidationError(_('Start Date must be lower than End Date'))
+                raise ValidationError("")
 
     def qty_number_dependents_start(self, index):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '<=', self.start_date),
+                                                        
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('create_date', '<=', self.start_date),
+                                                          
                                                           ])
         f = m = 0
         for rec in employee_female:
@@ -292,9 +330,11 @@ class ModelName(models.TransientModel):
     def qty_number_dependents_end(self, index):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '<=', self.end_date),
+                                                        
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('create_date', '<=', self.end_date),
+                                                          
                                                           ])
         f = m = 0
         for rec in employee_female:
@@ -311,31 +351,43 @@ class ModelName(models.TransientModel):
     def qty_number_gender_employee_start(self):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '<=', self.start_date),
+                                                        
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('create_date', '<=', self.start_date),
+                                                          
                                                           ])
         return {"male": len(employee_male), 'female': len(employee_female),
                 'total': len(employee_female) + len(employee_male)}
 
     def all_certificate(self):
-        l = ['primary_school', 'graduate', 'high_school', 'pre_university', 'university_attendance', 'bachelor',
-             'master', 'doctor',
-
-             'licensed',
-             'postgraduate',
-             'postgraduate_professional_training',
-             'phd', 'other']
+        l = [
+                'primary_school',
+                'graduate',
+                'high_school',
+                'pre_university',
+                'university_attendance',
+                'bachelor',
+                'master',
+                'doctor',
+                'licensed',
+                'postgraduate',
+                'postgraduate_professional_training',
+                'phd',
+                'other'
+            ]
         return l
 
     def qty_number_gender_employee_start_degree(self, certificate):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '<=', self.start_date),
-                                                        ('certificate', '=', certificate)
+                                                        ('certificate', '=', certificate),
+                                                        
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('create_date', '<=', self.start_date),
-                                                          ('certificate', '=', certificate)
+                                                          ('certificate', '=', certificate),
+                                                          
                                                           ])
         return {"male": len(employee_male), 'female': len(employee_female),
                 'total': len(employee_female) + len(employee_male)}
@@ -343,11 +395,13 @@ class ModelName(models.TransientModel):
     def qty_number_gender_employee_end_degree(self, certificate):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '<=', self.end_date),
-                                                        ('certificate', '=', certificate)
+                                                        ('certificate', '=', certificate),
+                                                        
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('create_date', '<=', self.end_date),
-                                                          ('certificate', '=', certificate)
+                                                          ('certificate', '=', certificate),
+                                                          
                                                           ])
         return {"male": len(employee_male), 'female': len(employee_female),
                 'total': len(employee_female) + len(employee_male)}
@@ -356,9 +410,11 @@ class ModelName(models.TransientModel):
         employee_male = self.env['hr.employee'].search([('gender', '=', 'male'),
                                                         ('create_date', '<=', self.end_date),
                                                         ('create_date', '>=', self.start_date),
+                                                        
                                                         ])
         employee_female = self.env['hr.employee'].search([('gender', '=', 'female'),
                                                           ('create_date', '<=', self.end_date),
+                                                          
                                                           ])
         return {"male": len(employee_male), 'female': len(employee_female),
                 'total': len(employee_female) + len(employee_male)}

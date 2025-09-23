@@ -8,18 +8,14 @@
             <field name="arch" type="xml">
                 <form string="Training Request">
                     <header>
-                        <button name="button_employee_sign" attrs="{'invisible': [('employee_sign_date', '!=', False)]}"
+                        <button name="button_employee_sign"
+                                invisible="employee_sign_date!=False"
                                 string="Employee Sign" class="oe_highlight" type="object"/>
                     </header>
                     <sheet>
-                        <div class="oe_title">
-                            <label for="employee_id"/>
-                            <h1>
-                                <field name="employee_id" required="1" placeholder="Employee name"/>
-                            </h1>
-                        </div>
                         <group>
                             <group>
+                                <field name="employee_id" required="1"/>
                                 <field name="department_id"/>
                                 <field name="job_id"/>
                                 <field name="mobile_phone"/>
@@ -57,10 +53,11 @@
                                             <td><label for="department_boss_date" readonly="1"/></td>
                                             <td><field name="department_boss_date" readonly="1"/></td>
                                             <td><button name="department_boss_approve" type="object" string="Approve"
-                                                        attrs="{'invisible':[('department_boss_date', '!=', False)]}"/></td>
+                                                        invisible="department_boss_date!=False"
+                                                        /></td>
                                             <td><button name="department_boss_disapprove" type="object"
                                                         string="Disapprove"
-                                                        attrs="{'invisible':[('department_boss_date', '!=', False)]}"/></td>
+                                                        invisible="department_boss_date!=False"/></td>
                                         </tr>
                                         <tr>
                                             <td><label for="hr_manager" readonly="1"/></td>
@@ -68,9 +65,10 @@
                                             <td><label for="hr_manager_date" readonly="1"/></td>
                                             <td><field name="hr_manager_date" readonly="1"/></td>
                                             <td><button name="hr_manager_approve" type="object" string="Approve"
-                                                        attrs="{'invisible':[('hr_manager_date', '!=', False)]}"/></td>
+                                                invisible="hr_manager_date!=False"
+                                                        /></td>
                                             <td><button name="hr_manager_disapprove" type="object" string="Disapprove"
-                                                        attrs="{'invisible':[('hr_manager_date', '!=', False)]}"/></td>
+                                                        invisible="hr_manager_date!=False"/></td>
                                         </tr>
                                         <tr>
                                             <td><label for="resident_representative" readonly="1"/></td>
@@ -79,11 +77,11 @@
                                             <td><field name="resident_representative_date" readonly="1"/></td>
                                             <td>
                                                 <button name="resident_approve" type="object" string="Approve"
-                                                        attrs="{'invisible':[('resident_representative_date', '!=', False)]}"/>
+                                                        invisible="resident_representative_date!=False"/>
                                             </td>
                                             <td>
                                                 <button name="resident_disapprove" type="object" string="Disapprove"
-                                                        attrs="{'invisible':[('resident_representative_date', '!=', False)]}"/>
+                                                        invisible="resident_representative_date!=False"/>
                                             </td>
                                         </tr>
                                     </table>
@@ -131,11 +129,11 @@
             <field name="name">hr.training.request.tree</field>
             <field name="model">hr.training.request</field>
             <field name="arch" type="xml">
-                <tree string="Training Request">
+                <list string="Training Request">
                     <field name="employee_id"/>
                     <field name="course_start_date"/>
                     <field name="course_end_date"/>
-                </tree>
+                </list>
             </field>
         </record>
 

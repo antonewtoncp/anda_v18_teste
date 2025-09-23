@@ -83,9 +83,9 @@
                     <field name="structure_type_id" string="Payroll Type" required="1"
                         options="{'no_create': True, 'no_open': True}" />
                     <field name="salary_map_xls"
-                        attrs="{'invisible':[('salary_map_xls','=',False)]}" />
+                        invisible ="salary_map_xls==False"/>
                     <field name="payment_map_xls"
-                        attrs="{'invisible':[('payment_map_xls','=',False)]}" />
+                        invisible ="payment_map_xls==False"/>
                 </xpath>
             </field>
         </record>

@@ -5,13 +5,13 @@
         <field name="model">hr.inss.config</field>
         <field name="priority" eval="100"/>
         <field name="arch" type="xml">
-            <tree string="INSS Configuration" editable="bottom">
+            <list string="INSS Configuration" editable="bottom">
                 <field name="name" readonly="1"/>
                 <field name="tax" required="1"/>
                 <field name="inss_type" required="1"/>
                 <field name="create_date" readonly="1"/>
                 <field name="write_date" readonly="1"/>
-            </tree>
+            </list>
 
         </field>
     </record>
@@ -20,7 +20,7 @@
         <field name="name">INSS Configuration</field>
         <field name="res_model">hr.inss.config</field>
         <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_hr_inss_configuration_tree_view"/>
     </record>
 </odoo>

@@ -8,10 +8,14 @@
             <field name="arch" type="xml">
                 <form string="Leadership Development Plan">
                     <header>
-                        <button name="button_employee_sign" attrs="{'invisible': [('employee_sign_date', '!=', False)]}"
-                                string="Employee Sign" class="oe_highlight" type="object"/>
-                        <button name="button_manager_sign" string="Manger Sign"
-                                attrs="{'invisible': [('manager_sign_date', '!=', False)]}" class="oe_highlight"
+                        <button name="button_employee_sign"
+                                invisible="employee_sign_date != False"
+                                string="Employee Sign"
+                                class="oe_highlight" 
+                                type="object"/>
+                        <button name="button_manager_sign" string="Manager Sign"
+                                invisible="manager_sign_date != False"
+                                class="oe_highlight"
                                 type="object"/>
 
                     </header>
@@ -38,52 +42,52 @@
                         <notebook>
                             <page string="Swot Analysis">
                                 <field name="swot_analyse_line">
-                                    <tree string="Swot Analysis" editable="bottom">
+                                    <list string="Swot Analysis" editable="bottom">
                                         <field name="strengths"/>
                                         <field name="weaknesses"/>
                                         <field name="opportunities"/>
                                         <field name="threats"/>
-                                    </tree>
+                                    </list>
                                 </field>
                             </page>
                             <page string="Action Plan">
                                 <field name="action_plan_line">
-                                    <tree string="Action Plan" editable="bottom">
+                                    <list string="Action Plan" editable="bottom">
                                         <field name="action"/>
                                         <field name="employee_id"/>
                                         <field name="deadline"/>
                                         <field name="progress"/>
-                                    </tree>
+                                    </list>
                                 </field>
                             </page>
                             <page string="Mid-term Goal">
                                 <field name="mid_term_line">
-                                    <tree string="Mid-term Goal" editable="bottom">
+                                    <list string="Mid-term Goal" editable="bottom">
                                         <field name="action"/>
                                         <field name="employee_id"/>
                                         <field name="deadline"/>
                                         <field name="progress"/>
-                                    </tree>
+                                    </list>
                                 </field>
                             </page>
                             <page string="LongMid-term Goal">
                                 <field name="long_term_line">
-                                    <tree string="Long-term Goal" editable="bottom">
+                                    <list string="Long-term Goal" editable="bottom">
                                         <field name="action"/>
                                         <field name="employee_id"/>
                                         <field name="deadline"/>
                                         <field name="progress"/>
-                                    </tree>
+                                    </list>
                                 </field>
                             </page>
                             <page string="Career Goals">
                                 <field name="career_goals_line">
-                                    <tree string="Career Goals" editable="bottom">
+                                    <list string="Career Goals" editable="bottom">
                                         <field name="action"/>
                                         <field name="employee_id"/>
                                         <field name="deadline"/>
                                         <field name="progress"/>
-                                    </tree>
+                                    </list>
                                 </field>
                             </page>
                         </notebook>
@@ -101,11 +105,11 @@
             <field name="name">hr.career.plan.tree</field>
             <field name="model">hr.career.plan</field>
             <field name="arch" type="xml">
-                <tree string="Career Plan">
+                <list string="Career Plan">
                     <field name="name"/>
                     <field name="employee_id"/>
                     <field name="manager_id"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -130,7 +134,7 @@
             <field name="name">Career Plan</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">hr.career.plan</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     There is no examples click here to add new Career Plan.

@@ -23,21 +23,20 @@
                         <field name="processing_date"/>
                         <field name="owner_reference"/>
                     </group>
-                    <group attrs="{'invisible':[('slip_filter_by', 'in', ['year','payslip_date',False])]}">
+                    <group  invisible="slip_filter_by in ('year','payslip_date',False)">
                         <field name="hr_payslip_run_id" options="{'no_quick_create': True, 'no_create_edit': True}"
-                               attrs="{'required':[('slip_filter_by', '=', 'payslip_batch')]}"/>
+                                required="slip_filter_by=='payslip_batch'"/>
                     </group>
-                    <group attrs="{'invisible':[('slip_filter_by', 'in', ['payslip_batch','year', False])]}">
+                    <group invisible="slip_filter_by in ('payslip_date','payslip_batch',False)" >
                         <field name="start_date"
-                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
-                        <field name="end_date"
-                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
+                                required="slip_filter_by=='payslip_date'"/>
+                        <field name="end_date" required="slip_filter_by=='payslip_date'"/>
                     </group>
-                    <group attrs="{'invisible':[('slip_filter_by', 'in', ['payslip_batch','payslip_date', False])]}">
+                    <group invisible="slip_filter_by in ('payslip_batch','payslip_date',False)">
                         <field name="fiscal_year"
-                               attrs="{'required':[('slip_filter_by', '=', 'year')]}"/>
+                               required="slip_filter_by=='year'"/>
                     </group>
-                    <group attrs="{'invisible': [('type', '!=', 'psx')]}">
+                    <group invisible="type != 'psx'">
                         <field name="category"
                                />
                         <field name="reason"
@@ -65,7 +64,7 @@
         <record id="action_wizard_lote_payment" model="ir.actions.act_window">
             <field name="name">Assistente do Salario em Massa </field>
             <field name="res_model">wizard.payment</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="view_id" ref="ao_hr.wizard_lote_payment_view"/>
             <field name="target">new</field>
         </record>

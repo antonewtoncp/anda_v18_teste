@@ -12,17 +12,17 @@
 
                         <field name="group" widget="radio" options="{ 'horizontal': true }" />
                         <field name="exercise_year"
-                            attrs="{'invisible': [('group', '!=', 'year_exercise') ]}" />
+                        invisible="group !='year_exercise'"/>
 
                     </group>
-                    <group attrs="{'invisible': [('group', '==', 'year_exercise') ]}">
+                    <group invisible="group == 'year_exercise'">
                         <field name="slip_filter_by" />
                         <field name="date_from"
-                            attrs="{'invisible': [('slip_filter_by', '!=', 'payslip_date')]}" />
+                                invisible="slip_filter_by !='payslip_date'"/>
                         <field name="date_to"
-                            attrs="{'invisible': [('slip_filter_by', '!=', 'payslip_date')]}" />
+                                invisible="slip_filter_by !='payslip_date'"/>
                         <field name="hr_payslip_run_id"
-                            attrs="{'invisible': [('slip_filter_by', '!=', 'payslip_batch')]}" />
+                                invisible="slip_filter_by !='payslip_batch'"/>
                     </group>
                     <footer>
                         <button name="export_payslip_to_excel" string="Baixar"

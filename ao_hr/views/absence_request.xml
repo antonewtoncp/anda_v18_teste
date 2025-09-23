@@ -537,11 +537,11 @@
             <field name="name">absence.request.psi.tree</field>
             <field name="model">absence.request.psi</field>
             <field name="arch" type="xml">
-                <tree string="Training Request">
+                <list string="Training Request">
                     <field name="employee_id"/>
                     <field name="department_boss"/>
 
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -563,7 +563,7 @@
             <field name="name">Formulario de pedido de ausências</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">absence.request.psi</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Cria aqui a sua ficha de pedido de ausências

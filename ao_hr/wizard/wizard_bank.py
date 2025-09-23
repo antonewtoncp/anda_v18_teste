@@ -32,7 +32,13 @@ class WizardSalary(models.TransientModel):
                 return False
         return True
 
-    _constraints = [(_check_dates, "'Start Date' must be less than 'End Date'.", ['Start Date', 'End Date'])]
+    @api.constrains('start_date','end_date')
+    def _check_dates(self):
+        for payslip in self:
+            if payslip.start_date > payslip.end_date:
+                raise UserError(_("'Start Date' must be less than 'End Date'"))
+
+    #_constraints = [(_check_dates, "'Start Date' must be less than 'End Date'.", ['Start Date', 'End Date'])]
 
     def get_lines(self):
         for payslip in self:

@@ -16,19 +16,19 @@
                     <group>
                         <field name="slip_filter_by"/>
                     </group>
-                    <group attrs="{'invisible':[('slip_filter_by', 'in', ['year','payslip_date',False])]}">
+                    <group invisible="slip_filter_by in ('year','payslip_date',False)">
                         <field name="hr_payslip_run_id" options="{'no_quick_create': True, 'no_create_edit': True}"
-                               attrs="{'required':[('slip_filter_by', '=', 'payslip_batch')]}"/>
+                               required ="slip_filter_by=='payslip_batch'"/>
                     </group>
-                    <group attrs="{'invisible':[('slip_filter_by', 'in', ['payslip_batch','year', False])]}">
+                    <group invisible="slip_filter_by in ('payslip_batch','year',False)">
                         <field name="start_date"
-                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
+                                required ="slip_filter_by=='payslip_date'"/>
                         <field name="end_date"
-                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
+                                required ="slip_filter_by=='payslip_date'"/>
                     </group>
-                    <group attrs="{'invisible':[('slip_filter_by', 'in', ['payslip_batch','payslip_date', False])]}">
+                    <group invisible="slip_filter_by in ('payslip_date','payslip_batch',False)">
                         <field name="fiscal_year"
-                               attrs="{'required':[('slip_filter_by', '=', 'year')]}"/>
+                                required="slip_filter_by=='year'"/>
                     </group>
                     <footer class="d-flex flex-row gap-3">
                         <button name="print_report" string="Print IRT Map"

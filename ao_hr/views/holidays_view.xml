@@ -8,10 +8,10 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet//group" position="after">
                 <group string="Data do Processamento de Subsídio de Férias"
-                       attrs="{'invisible': [('leave_type_code', '!=', 'SF')]}">
+                        invisible="leave_type_code!='SF'">
                     <field name="disc_ali_trans"/>
-                    <field name="sf_start" attrs="{'required':[('leave_type_code', '!=', 'SF')]}" class="oe_inline"/>
-                    <field name="sf_end" attrs="{'required':[('leave_type_code', '!=', 'SF')]}" class="oe_inline"/>
+                    <field name="sf_start" required ="leave_type_code=='SF'" class="oe_inline"/>
+                    <field name="sf_end" required ="leave_type_code=='SF'" class="oe_inline"/>
                     <field name="leave_type_code" invisible="1"/>
                 </group>
             </xpath>

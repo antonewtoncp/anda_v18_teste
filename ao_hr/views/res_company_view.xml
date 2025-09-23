@@ -13,8 +13,8 @@
                     <group name="hr" string="Human Resource">
                         <field name="hr_mobile" string="Mobile"/>
                         <field name="hr_phone" string="Phone"/>
-                        <field name="hr_manager" string="Mobile"/>
-                        <field name="hr_general_manager" string="Phone"/>
+                        <field name="hr_manager" string="Manager"/>
+                        <field name="hr_general_manager" string="General Manager"/>
                     </group>
                 </xpath>
             </field>

@@ -11,7 +11,7 @@
                 <xpath expr="//button[@name='action_confirm']" position="before">
                     <button name="button_manager_approved" type="object"
                             string="Approve" class="oe_highlight"
-                            attrs="{'invisible': [('state', '=', 'approved')]}"/>
+                            invisible="state=='approved'"/>
                     <field name="state" widget="statusbar"/>
                 </xpath>
                 <xpath expr="//field[@name='description']" position="after">

@@ -6,7 +6,7 @@
         <field name="model">hr.irt.config</field>
         <field name="priority" eval="100"/>
         <field name="arch" type="xml">
-            <tree string="Irt Configuration" editable="bottom">
+            <list string="Irt Configuration" editable="bottom">
                 <field name="initial_value" required="1"/>
                 <field name="final_value" required="1"/>
                 <field name="fixed_portion" required="1"/>
@@ -14,7 +14,7 @@
                 <field name="excess" required="1"/>
                 <field name="create_date" readonly="1"/>
                 <field name="write_date" readonly="1"/>
-            </tree>
+            </list>
 
         </field>
     </record>
@@ -23,7 +23,7 @@
         <field name="name">IRT Configuration</field>
         <field name="res_model">hr.irt.config</field>
         <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="view_id" ref="view_hr_irt_configuration_tree_view"/>
     </record>
 </odoo>

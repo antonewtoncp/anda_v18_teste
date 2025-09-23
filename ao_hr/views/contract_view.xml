@@ -14,7 +14,7 @@
             </field>-->
             <xpath expr="//header" position="inside">
                 <!--<button states="open" name="button_print" type="object" string="Print Contract"/>-->
-                <button states="open" name="button_print_declaration" type="object" string="Declaração de Trabalho"
+                <button invisible="state=='open'" name="button_print_declaration" type="object" string="Declaração de Trabalho"
                         class="oe_stat_button" icon="fa-book"/>
             </xpath>
             <xpath expr="//field[@name='hr_responsible_id']" position="replace">
@@ -42,7 +42,7 @@
             <field name="date_end" position="before">
                 <field name="department_id"/>
                 <!--                <field name="contract_type_id"/>-->
-                <field name="contract_period" invisible="1" attrs="{'required':[('check_period','=',True)]}"/>
+                <field name="contract_period" invisible="1" required="check_period==True" />
             </field>
             <field name="employee_id" position="after">
                 <field name="job_id"/>
@@ -72,7 +72,7 @@
                     <span>/ Month(s)</span>
                 </div>
                 <field name="check_period" invisible="1"/>
-                <field name="contract_period" invisible="1" attrs="{'required':[('check_period','=',True)]}"/>
+                <field name="contract_period" invisible="1" required="check_period==True"/>
                 <field name="time_left" invisible="1"/>
                 <label for="facade_time_left"/>
                 <div class="o_row" name="facade_time_left">
@@ -187,7 +187,7 @@
                 <field name="contract_type_id"/>
                 <field name="structure_type_id"/>
             </xpath>
-            <xpath expr="//div[hasclass('oe_kanban_content')]/div" position="after">
+            <xpath expr="//t[@t-name='card']" position="after">
                 <div class="text-muted o_kanban_record_subtitle">
                     <field name="employee_id"/>
                 </div>
