@@ -15,15 +15,7 @@
                                nolabel="1"/>
                     </group>
                 </xpath>
-                 <xpath expr="//separator[1][@colspan='2']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//span[@nolabel='1']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//span[@class='text-muted']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
+                
                 <xpath expr="//field[@name='structure_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>

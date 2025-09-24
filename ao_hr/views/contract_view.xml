@@ -128,18 +128,18 @@
             <xpath expr="//page[last()]" position="after">
                 <page string="Remunerações e Deduções">
                     <field name="remuneration_ids">
-                        <tree name="Remuneration" editable="bottom" decoration-danger="rem_type == 'deduction'"
+                        <list name="Remuneration" editable="bottom" decoration-danger="rem_type == 'deduction'"
                               decoration-success="rem_type == 'remuneration'">
-                            <field name="remunerationcode_id" options="{'no_create_edit': True}" string="Remuneração"/>
+                            <!-- <field name="remunerationcode_id" options="{'no_create_edit': True}" string="Remuneração"/> -->
                             <field name="date_start" string="Data Inicial"/>
                             <field name="date_end" string="Data Final"/>
-                            <field name="amount" string="Valor"/>
-                            <field name="is_daily" string="É diario?"/>
+                            <!-- <field name="amount" string="Valor"/> -->
+                            <!-- <field name="is_daily" string="É diario?"/> -->
                             <field name="name" string="Nome"/>
-                            <field name="rem_type" readonly="1" string="Tipo"/>
+                            <!-- <field name="rem_type" readonly="1" string="Tipo"/>
                             <field name="rem_day" invisible="0" string="Valor/dia"/>
-                            <field name="rem_hour" invisible="0" string="Valor/hora"/>
-                        </tree>
+                            <field name="rem_hour" invisible="0" string="Valor/hora"/> -->
+                        </list>
                     </field>
                 </page>
             </xpath>

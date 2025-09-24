@@ -11,10 +11,10 @@ class Employee(models.Model):
     _inherit = 'hr.employee'
 
     employee_number = fields.Char('Employee Number', tracking=True)
-    private_email = fields.Char(related='address_home_id.email', string="Email Privado", groups="hr.group_hr_user",
-                                tracking=True)
-    phone = fields.Char(related='address_home_id.phone', related_sudo=False, readonly=False, string="Telefone Privado",
-                        groups="hr.group_hr_user", tracking=True)
+    # private_email = fields.Char(related='address_home_id.email', string="Email Privado", groups="hr.group_hr_user",
+    #                             tracking=True)
+    # phone = fields.Char(related='address_home_id.phone', related_sudo=False, readonly=False, string="Telefone Privado",
+    #                     groups="hr.group_hr_user", tracking=True)
     notes = fields.Text('Notes', groups="hr.group_hr_user", tracking=True)
     color = fields.Integer('Índice de cores', default=0, groups="hr.group_hr_user", tracking=True)
     barcode = fields.Char(string="ID do crachá", help="ID usado para identificação do funcionário.",
@@ -100,23 +100,6 @@ class Employee(models.Model):
             self.bi_emission = False
             self.location_province = False
 
-    # @api.constrains('identification_id')
-    # def _check_identification_id(self):
-    #     pattern = compile(r'^[0-9]*[A-Za-z]{2}[0-9]*$')
-    #     pattern = re.compile(r'^[0-9][A-Za-z]{2}[0-9]$')
-    #     for record in self:
-    #         if not record.identification_id:
-    #             continue
-    #         if not isinstance(record.identification_id, str) or not pattern.match(record.identification_id) or len(
-    #                 record.identification_id) > 16:
-    #             raise ValidationError(
-    #                 "O Número de Identificação só pode conter até duas letras e deve incluir números."
-    #             )
-
-    # @api.constrains('identification_id')
-    # def _check_identification_id(self):
-    #     pattern = r'^[0-9]*[A-Za-z]{2}[0-9]*$'
-
     @api.constrains('work_phone', 'mobile_phone', 'work_email', 'name')
     def _check_phone_and_email(self):
         angola_phone_pattern = re.compile(r'^\d{9}$')
@@ -135,11 +118,6 @@ class Employee(models.Model):
                     "O número do  Telémovel do Emprego de Angola deve conter exatamente 9 dígitos e apenas números.")
             if record.work_email and not email_pattern.match(record.work_email):
                 raise ValidationError("O e-mail de trabalho deve ser um endereço de e-mail válido.")
-
-            # else:
-            #     # Validação para números estrangeiros (aqui você pode definir um padrão diferente)
-            #     if not re.match(r'^\+?\d{10,15}$', record.work_phone):  # Exemplo: + seguido de 10 a 15 dígitos
-            #         raise ValidationError("O número de telefone estrangeiro deve ser válido e pode conter de 10 a 15 dígitos, com ou sem o símbolo +.")
 
     @api.onchange('is_governing_body')
     def onchange_is_governing_body(self):

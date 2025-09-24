@@ -11,7 +11,7 @@
                 <field name="note" position="replace" />
                 <xpath expr="//form/header/button[@name='action_payslip_draft']" position="replace">
                     <button string="Set to Draft" name="action_payslip_draft" type="object"
-                        states="cancel,done" />
+                         invisible="state not in ['cancel','done']" />
                 </xpath>
                 <xpath expr="//notebook" position="after">
                     <group>
@@ -74,19 +74,25 @@
             <field name="name">ao.hr.payroll.run.inherit.form</field>
             <field name="model">hr.payslip.run</field>
             <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form" />
+
             <field name="arch" type="xml">
+
                 <xpath expr="//button[@name='%(hr_payroll.action_hr_payslip_by_employees)d']"
                     position="attributes">
                     <attribute name="context">{'default_structure_type_id': structure_type_id}</attribute>
                 </xpath>
-                <xpath expr="//field[@name='credit_note']" position="before">
+
+                <xpath expr="//field[@name='company_id']" position="before">
                     <field name="structure_type_id" string="Payroll Type" required="1"
                         options="{'no_create': True, 'no_open': True}" />
+
                     <field name="salary_map_xls"
                         invisible ="salary_map_xls==False"/>
+
                     <field name="payment_map_xls"
                         invisible ="payment_map_xls==False"/>
                 </xpath>
+
             </field>
         </record>
 
@@ -107,15 +113,11 @@
                 <field name="name" position="after">
                     <field name="structure_type_id" />
                     <!-- <field name="company_id"/>-->
-                </field>
-                <field name="credit_note" position="after">
-                    <field name="irt_amount_total" sum="Total IRT" />
+                      <field name="irt_amount_total" sum="Total IRT" />
                     <field name="ss_amount_total" sum="Total SS	" />
                     <field name="budget" sum="Budget" />
-
-
-                    <!-- <field name="company_id"/>-->
                 </field>
+                
             </field>
         </record>
 

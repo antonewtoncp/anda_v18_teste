@@ -2,7 +2,7 @@ import time
 from odoo import fields, models, api
 from datetime import datetime
 from dateutil import relativedelta
-from odoo.exceptions import ValidationError, Warning
+from odoo.exceptions import ValidationError
 
 class HrEmployeeHistoryWizard(models.TransientModel):
     _name = 'hr.employee.history.wizard'

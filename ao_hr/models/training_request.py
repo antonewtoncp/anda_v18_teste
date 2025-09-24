@@ -1,5 +1,5 @@
 from odoo import fields, models, api, _
-from odoo.exceptions import ValidationError, Warning
+from odoo.exceptions import ValidationError
 
 
 class TrainingRequest(models.Model):
@@ -56,7 +56,7 @@ class TrainingRequest(models.Model):
         if self.env.user.employee_id.id == self.employee_id.id:
             self.employee_sign_date = fields.datetime.today()
         else:
-            raise Warning(_('Only Employee can sign this training request!'))
+            raise ValidationError(_('Only Employee can sign this training request!'))
 
     def department_boss_approve(self):
         self.department_boss = True

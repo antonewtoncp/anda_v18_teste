@@ -23,7 +23,7 @@ Angolan Payroll Rules.
         "data/rules_remuneration_data.xml",
         "data/holidays_data.xml",
         "data/base_inss_irt_data.xml",
-        "data/work_type_entry.xml",
+        #"data/work_type_entry.xml",
     ],
     "depends": [
         "hr_payroll",

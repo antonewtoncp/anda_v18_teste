@@ -13,15 +13,15 @@
                     <group>
                         <field name="slip_filter_by"/>
                     </group>
-                    <group attrs="{'invisible':[('slip_filter_by', '!=', 'payslip_batch')]}">
+                    <group invisible="slip_filter_by!='payslip_batch'">
                         <field name="hr_payslip_run_id" options="{'no_quick_create': True, 'no_create_edit': True}"
-                               attrs="{'required':[('slip_filter_by', '=', 'payslip_batch')]}"/>
+                               required="slip_filter_by=='payslip_batch'"/>
                     </group>
-                    <group attrs="{'invisible':[('slip_filter_by', '!=', 'payslip_date')]}">
+                    <group invisible="slip_filter_by=='payslip_date'">
                         <field name="start_date"
-                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
+                               required="slip_filter_by=='payslip_date'"/>
                         <field name="end_date"
-                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
+                               required="slip_filter_by=='payslip_date'"/>
                     </group>
                     <footer>
                         <button name="print_report" string="Print INSS Map"
