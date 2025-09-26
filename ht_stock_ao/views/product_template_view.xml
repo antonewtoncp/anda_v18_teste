@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_product_template_inherit_view" model="ir.ui.view">
+            <field name="name">product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="priority" eval="8"/>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <!-- Tornar o campo 'sale_ok' invisível se o produto for consumível (is_storable=False) -->
+                <xpath expr="//div[@name='options']//field[@name='sale_ok']" position="attributes">
+                    <attribute name="invisible">is_storable==False</attribute>
+                </xpath>
+                <xpath expr="//div[@name='options']//label[@for='sale_ok']" position="attributes">
+                    <attribute name="invisible">is_storable==False</attribute>
+                </xpath>
+
+                <!-- Ajustar o domínio de 'categ_id' com base no valor de 'is_storable' -->
+                <xpath expr="//field[@name='categ_id']" position="attributes">
+                    <!-- Não definimos o domínio aqui, pois ele é controlado dinamicamente no Python -->
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+<!--
+<odoo>
+    <data>
+        <record id="view_product_template_inherit_view" model="ir.ui.view">
+            <field name="name">product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="priority" eval="8"/>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']//field[@name='sale_ok']" position="attributes">
+                    <attribute name="invisible">detailed_type=='consu'</attribute>
+                </xpath>
+                <xpath expr="//div[@name='options']//label[@for='sale_ok']" position="attributes">
+                    <attribute name="invisible">detailed_type=='consu'</attribute>
+                </xpath>
+                <xpath expr="//field[@name='categ_id']" position="attributes">
+                    <attribute name="domain">[('type', '=', detailed_type)]</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>-->

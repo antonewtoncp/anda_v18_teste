@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_saf_t_ao_form" model="ir.ui.view">
+            <field name="name">saf_t.ao.form</field>
+            <field name="model">saf_t.ao</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false">
+                    <header>
+                        <button name="button_validate" string="Validate With XSD" type="object"
+                                class="oe_highlight"/>
+                        <button name="button_download" string="Download" type="object"
+                                class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group string="Information File">
+                            <group>
+                                <field name="name"/>
+                                <field name="file_type"/>
+                                <field name="fiscal_year"/>
+                                <field name="start_date"/>
+                            </group>
+                            <group>
+                                <field name="end_date"/>
+                                <field name="user_id"/>
+                                <field name="header_comment" string="Header Comment"/>
+                                <field name="create_date"/>
+                            </group>
+
+                            <!--                            <div-->
+                            <!--                                style="background-color: #337ab7; color:white">-->
+                            <!--                            <p class="text-center" style="font-weight: bold;">Standard Audit File for Tax-->
+                            <!--                            </p>-->
+                            <!--                            <p class="oe_account_font_help text-center">Tipos de Ficheiros</p>-->
+                            <!--                            <p class="oe_account_font_help oe_account_font_title"-->
+                            <!--                               style="color: grey;">Contabilidade Integrada com faturação.-->
+                            <!--                            </p>-->
+                            <!--                            <p class="oe_account_font_help oe_account_font_content">-->
+                            <!--                                Contabilidade.-->
+                            <!--                            </p>-->
+                            <!--                            <p class="oe_account_font_help oe_account_font_content">Faturação.</p>-->
+                            <!--                            <p class="oe_account_font_help oe_account_font_title">Recibos.</p>-->
+                            <!--                            <p class="oe_account_font_help oe_account_font_title">-->
+                            <!--                                Aquisição de bens e serviços.-->
+                            <!--                            </p>-->
+                            <!--                            <p class="oe_account_font_help oe_account_font_title">P-->
+                            <!--                                Aquisição de bens e serviços integrada com afaturação.-->
+                            <!--                            </p>-->
+                            <!--                            <p class="oe_account_font_help text-center">Conceito</p>-->
+                            <!--                            <p class="oe_account_font_help oe_account_font_title" align="justify">-->
+                            <!--                                SAF-T (AO) (Standard Audit File for Tax Purposes – Angola version) é-->
+                            <!--                                um ficheiro-->
+                            <!--                                normalizado (em-->
+                            <!--                                formato XML) com o objectivo de permitir uma exportação fácil, em-->
+                            <!--                                qualquer altura, de um-->
+                            <!--                                conjunto-->
+                            <!--                                predefinido de registos contabilísticos e de facturação ou-->
+                            <!--                                equiparados, num formato-->
+                            <!--                                legível-->
+                            <!--                                e comum,-->
+                            <!--                                independente do programa utilizado, sem afectar a estrutura interna-->
+                            <!--                                da base de dados do-->
+                            <!--                                programa ou a-->
+                            <!--                                sua funcionalidade. A adopção deste modelo proporciona às empresas-->
+                            <!--                                uma ferramenta que-->
+                            <!--                                permite-->
+                            <!--                                satisfazer os requisitos de obtenção de informação dos serviços de-->
+                            <!--                                inspecção,-->
+                            <!--                                simplificando-->
+                            <!--                                procedimentos e impulsionando a utilização de novas tecnologias.-->
+                            <!--                            </p>-->
+                            <!--                        </div>-->
+
+                        </group>
+
+                        <notebook>
+                            <page string="XML File" invisible="1">
+                                <field name="text"/>
+                            </page>
+                            <page string="Model 8 Submitted">
+                                <group col="4">
+                                    <field name="audit_file_version"/>
+                                    <field name="product_company_tax_id"/>
+                                    <field name="product_id"/>
+                                    <field name="software_validation_number"/>
+                                    <field name="Product_version"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_saf_t_ao_tree" model="ir.ui.view">
+            <field name="name">saf_t.ao.tree</field>
+            <field name="model">saf_t.ao</field>
+            <field name="arch" type="xml">
+                <list create="false" edit="false">
+                    <field name="name"/>
+                    <field name="fiscal_year"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="file_type"/>
+                    <field name="company_id"/>
+                    <field name="user_id" string="Responsible"/>
+                    <field name="state"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_saf_t_ao_search" model="ir.ui.view">
+            <field name="name">saf_t.ao.search</field>
+            <field name="model">saf_t.ao</field>
+            <field name="arch" type="xml">
+                <search string="SAF-T file">
+                    <field name="header_comment"/>
+                    <field name="audit_file_version"/>
+                    <field name="create_date"/>
+                    <field name="company_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="fiscal_year"/>
+                    <field name="file_type"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                    <filter name="draft" string="Draft" domain="[('state','=','new')]"/>
+                    <filter name="sent" string="Sent" domain="[('state','=','sent')]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="Data_Start" string="Date Start" domain="[]"
+                                context="{'group_by':'start_date'}"
+                                help="Group Files for date end"/>
+                        <filter name="Data_End" string="Date End" domain="[]"
+                                context="{'group_by':'end_date'}"
+                                help="Group Files for state"/>
+                        <filter name="State" string="State" domain="[]"
+                                context="{'group_by':'state'}"/>
+                        <filter name="Company" string="Company" domain="[]"
+                                context="{'group_by':'company_id'}"/>
+                        <filter name="File XML Type" string="File XML Type" domain="[]"
+                                context="{'group_by':'file_type'}" help="Files for File XML Type"/>
+                    </group>
+                    <separator/>
+                    <!--<filter name="P" string="Facturação parcial"domain="[('file_type','=','P')]"/>-->
+                    <filter name="I" string="Contablidade integrada com facturação"
+                            domain="[('file_type','=','I')]"/>
+                    <filter name="C" string="Contablidade" domain="[('file_type','=','C')]"/>
+                    <filter name="F" string="Facturação" domain="[('file_type','=','F')]"/>
+                    <!--<filter name="S" string="Autofacturação" domain="[('file_type','=','S')]"/>-->
+                    <filter name="R" string="Recibos"
+                            domain="[('file_type','=','R')]"/>
+                    <filter name="A" string="Aquisição de bens e serviços"
+                            domain="[('file_type','=','A')]"/>
+                    <filter name="Q" string="Aquisição de bens e serviços integrada com a facturação"
+                            domain="[('file_type','=','Q')]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="act_open_saf_t_ao" model="ir.actions.act_window">
+            <field name="name">File</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">saf_t.ao</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <!--        <record id="act_open_saf_t_ao_act_window" model="ir.actions.act_window">-->
+        <!--            <field name="name">File</field>-->
+        <!--            <field name="type">ir.actions.act_window</field>-->
+        <!--            <field name="res_model">saf_t.ao</field>-->
+        <!--            <field name="view_mode">tree,form</field>-->
+        <!--            <field name="help" type="html">-->
+        <!--                <p class="oe_view_nocontent_create">-->
+
+        <!--                </p>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <!--        <menuitem id="menu_saf_t_ao_file" name="Files SAF - T AO" parent="account.menu_finance_entries_actions"-->
+        <!--                  action="act_open_saf_t_ao_act_window"-->
+        <!--                  sequence="21"/>-->
+    </data>
+</odoo>

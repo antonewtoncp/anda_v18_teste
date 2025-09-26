@@ -13,6 +13,10 @@
     "website": "http://compllexus.com",
     "depends": ["base", "calendar"],
     "data": [
+        "data/banks.xml",
+        "data/country_state.xml",
+        "data/country_state_county.xml",
+        "data/res.lang.csv",
         "views/banks_view.xml",
         "views/res_partner_view.xml",
         "views/calendar_event_view.xml",

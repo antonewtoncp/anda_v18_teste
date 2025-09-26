@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="res_partner_cons_final" model="res.partner">
+            <field name="name">Consumidor Final</field>
+            <field name="street">Desconhecido</field>
+            <field name="city">Desconhecido</field>
+            <field name="vat">999999999999999</field>
+            <field name="ref">CF</field>
+            <field name="customer_rank" eval="1"/>
+        </record>
+    </data>
+</odoo>

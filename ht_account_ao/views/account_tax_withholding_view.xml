@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_withhold_form" model="ir.ui.view">
+            <field name="name">account.tax.withholding.form</field>
+            <field name="model">account.tax.withholding</field>
+            <field name="arch" type="xml">
+                <form string="Withhold">
+                    <header>
+                        <button class="oe_highlight" invisible="state not in ['receive']" name="receive_withhold" string="Receive" type="object"/>
+                        <button class="oe_highlight" invisible="state not in ['cancel']" name="set_draft_withhold" string="Set to draft" type="object"/>
+                        <button class="oe_highlight" invisible="state not in ['draft']" name="approve_withhold" string="Approve" type="object"/>
+                        <button class="oe_highlight" invisible="dar_number==False and dli_number==False or state not in ['receive']" name="send_dli_dar" string="Send by Email" type="object"/>
+                        <button class="oe_highlight" invisible="state not in ['receive','send']" name="cancel_withhold" string="Cancel" type="object"/>
+                        <button class="oe_highlight" invisible="state not in ['sent','received']" name="post" string="Post" type="object"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="partner_id" required="1"/>
+                                <field name="vat" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="tax_date" readonly="state!='draft'"/>
+                                <field name="type" readonly="state!='draft'" widget="radio"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Invoice Info">
+                                <group>
+                                    <group>
+                                        <field domain="[('state', '=', 'paid'),('partner_id','=',partner_id)]" name="invoice_id" readonly="1"/>
+                                        <field name="invoice_date" readonly="1"/>
+                                        <field name="invoice_amount" readonly="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="tax_id" readonly="1"/>
+                                        <field name="amount_taxed" readonly="1"/>
+                                        <field name="tax_amount" readonly="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="DLI/DAR">
+                                <group>
+                                    <group>
+                                        <label for="dar_number" groups="base.group_user"/>
+                                        <div groups="base.group_user" name="dar_number">
+                                            <field class="oe_inline" name="dar_number"/>
+                                        </div>
+                                        <field name="dli_number"/>
+                                    </group>
+                                    <group>
+                                        <field name="dar_document"/>
+                                        <field name="dli_document"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Other Info">
+                                <group>
+                                    <group>
+                                        <field name="company_id" readonly="1"/>
+                                        <field name="company_currency_id" readonly="1"/>
+                                        <field name="src_move" readonly="1" required="0"/>
+                                        <field name="user_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="journal_id" readonly="1" required="0"/>
+                                        <field name="close_move" readonly="1"/>
+                                        <field name="done_date" readonly="1"/>
+                                        <field name="communication"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field groups="base.group_user" name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form></field>
+        </record>
+        <record id="account_withhold_tree_view" model="ir.ui.view">
+            <field name="name">Account Withhold Tree</field>
+            <field name="model">account.tax.withholding</field>
+            <field name="arch" type="xml">
+                <tree string="Transfer Orders">
+                    <field name="name"/>
+                    <field name="tax_date"/>
+                    <field name="partner_id"/>
+                    <field name="vat"/>
+                    <field name="dar_number"/>
+                    <field name="dli_number"/>
+                    <field name="invoice_id"/>
+                    <field name="invoice_amount"/>
+                    <field name="amount_taxed"/>
+                    <field name="tax_amount"/>
+                    <field name="state"/>
+                </tree></field>
+        </record>
+        <!-- Search view Buildings -->
+        <record id="account_withholding_search_view" model="ir.ui.view">
+            <field name="name">Search View withhold</field>
+            <field name="model">account.tax.withholding</field>
+            <field name="arch" type="xml">
+                <search string="Search Withhold">
+                    <field filter_domain="[('name','ilike',self)]" name="name" string="Ref"/>
+                    <field name="partner_id"/>
+                    <field name="dar_number"/>
+                    <field name="dli_number"/>
+                    <field name="invoice_id"/>
+                    <separator/>
+                    <filter domain="[('create_uid','=',uid)]" help="My Withhold" name="my_withhold"/>
+                    <filter domain="[('type','=','receive')]" help="To receive" name="to_receive"/>
+                    <filter domain="[('type','=','send')]" help="To send" name="to_send"/>
+                    <group expand="0" string="Group By">
+                        <filter context="{'group_by':'partner_id'}" domain="[]" name="partner" string="Partner"/>
+                        <filter context="{'group_by':'dli_number'}" domain="[]" name="dli" string="DLI"/>
+                        <filter context="{'group_by':'dar_number'}" domain="[]" name="dar" string="DAR"/>
+                        <filter context="{'group_by':'tax_id'}" domain="[]" name="tax" string="Tax"/>
+                        <filter context="{'group_by':'done_date'}" domain="[]" name="done" string="Done date"/>
+                        <filter context="{'group_by':'tax_date'}" domain="[]" name="tax_date" string="Tax date"/>
+                    </group>
+                </search></field>
+        </record>
+        <record id="action_withhold_tree_view" model="ir.actions.act_window">
+            <field name="name">Withhold</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.tax.withholding</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="act_open_withhold_send_view" model="ir.actions.act_window">
+            <field name="name">Withhold</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.tax.withholding</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type', '=', 'send')]</field>
+            <field name="context">{'default_type':'send'}</field>
+        </record>
+        <record id="act_open_withhold_receive_view" model="ir.actions.act_window">
+            <field name="name">Withhold</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.tax.withholding</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('type', '=', 'receive')]</field>
+            <field name="context">{'default_type':'receive'}</field>
+        </record>
+        <menuitem id="menu_account_withhold" name="Withholdings" parent="account.menu_finance_entries" sequence="3"/>
+        <menuitem action="act_open_withhold_send_view" id="account_withhold_send_menu" name="To send to Supplier" parent="menu_account_withhold"/>
+        <menuitem action="act_open_withhold_receive_view" id="account_withhold_receive_menu" name="To Receive From Customer" parent="menu_account_withhold"/>
+    </data>
+</odoo>

@@ -1,0 +1,143 @@
+<odoo>
+    <data>
+        <!-- Report action definition -->
+        <record id="action_article_resume_report" model="ir.actions.report">
+            <field name="name">Resumo do Artigo</field>
+            <field name="model">article.resume.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ht_stock_ao.article_resume_report</field>
+            <field name="report_file">ht_stock_ao.article_resume_report</field>
+        </record>
+
+        <!-- Template for the article resume report -->
+        <template id="article_resume_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                        <div class="header" style="color: #0B74CE">
+                            <div class="row b_color">
+                                <div class="col-8">
+                                    <b><span class="text-left" t-field="o.company_id"/></b>
+                                </div>
+                                <div class="col-4" style="font-size:10px;">
+                                    <ul class="list-inline text-right">
+                                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                        |
+                                        Pag. <span class="page"/>/<span class="topage"/>
+                                    </ul>
+                                </div>
+                            </div>
+                            <br/>
+                            <hr style="display: block; height: 1px; border: 0; border-top: 3px solid #0B74CE; margin: 0; padding: 0;"/>
+                            <div class="row mt16">
+                                <div class="col-6">
+                                    <div align="left">
+                                        <b class="b_color">
+                                            Resumo do Artigo
+                                            (<span t-field="o.start_date"/> até <span t-field="o.end_date"/>)
+                                        </b>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div align="right"><b class="b_color">Valores em <span t-esc="o.company_id.currency_id.symbol"/></b></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="page">
+                            <style type="text/css">
+                                * {
+                                padding-bottom: 0 !important; padding-top: 0 !important;
+                                margin-bottom: 0 !important; margin-top:0 !important;
+                                font-size: 12px !important;
+                                }
+                                hr {
+                                display: block; height: 1px;
+                                border: 0; border-top: 3px solid black;
+                                margin: 0; padding: 0;
+                                }
+                                .b_color{
+                                color: #0B74CE;
+                                }
+                                table {
+                                border-spacing: 3px;
+                                border-top: 3px solid black;
+                                border-collapse:collapse;
+                                }
+                                td, th {
+                                border-bottom: 1px solid #B2BABB !important;
+                                }
+                            </style>
+
+                            <table class="table table-condensed" style="font-size:10px;">
+                                <thead>
+                                    <tr style="font-weight:bold; color: black;">
+                                        <th class="text-center">Referência do Artigo</th>
+                                        <th class="text-center">Descrição do Artigo</th>
+                                        <th class="text-center">Quantidade Disponível</th>
+                                        <!--<th class="text-center">Quantidade Armazenada</th>-->
+                                        <th class="text-center">Quantidade Vendida</th>
+                                        <th class="text-center">Vendas</th>
+                                        <th class="text-center">Compras</th>
+                                        <th class="text-center">Margem Bruta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">
+                                            <span t-field="o.product_id.default_code"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="o.product_id.name"/>
+                                        </td>
+                                        <!-- Quantidade Disponível -->
+                                        <td class="text-center">
+                                            <span t-field="o.product_id.qty_available" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+
+                                        <!--&lt;!&ndash; Quantidade Armazenada &ndash;&gt;
+                                        <td class="text-center">
+                                            <span t-field="o.product_id.virtual_available" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>-->
+                                        <!-- Quantidade Vendida -->
+                                        <td class="text-center">
+                                            <t t-set="quantity_sold" t-value="0" />
+                                            <t t-foreach="o.env['sale.order.line'].search([('product_id', '=', o.product_id.id), ('state', 'in', ['sale', 'done'])])" t-as="sale_line">
+                                                <!-- Sum the product_uom_qty of each matching sale order line -->
+                                                <t t-set="quantity_sold" t-value="quantity_sold + (sale_line.product_uom_qty or 0)" />
+                                            </t>
+                                            <!-- Display the total quantity sold -->
+                                            <span t-esc="quantity_sold" t-options='{"widget": "float", "precision": 2}'/>
+
+                                        </td>
+
+                                            <!-- Display the total de Vendas  -->
+
+                                        <td class="text-center">
+                                            <t t-set="total_sales" t-value="o.product_id.qty_available * o.product_id.list_price"/>
+                                            <span t-esc="total_sales" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+
+                                              <!-- Display the total de Compras   -->
+
+                                        <td class="text-center">
+                                            <t t-set="total_purchase" t-value="o.product_id.purchased_product_qty * o.product_id.standard_price"/>
+                                            <span t-esc="total_purchase" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+
+                                          <!-- Display the Margem Bruta   -->
+
+                                        <td class="text-center">
+                                            <t t-set="margin" t-value="total_sales - total_purchase"/>
+                                            <span t-esc="margin" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,8 @@
+"id","name","country_id","name@de","name@fr","name@it","name@nl","name@zh_CN"
+"tax_group_tva","Total Imposto","base.ao","","","","",""
+"tax_group_tva_0","IVA","base.ao","","","","",""
+"tax_group_tva_3","IVA 3%","base.ao","","","","",""
+"tax_group_tva_14","IVA 14%","base.ao","","","","",""
+"tax_group_tva_7","IVA 7%","base.ao","","","","",""
+"tax_group_rf","Retenção","base.ao","","","","",""
+

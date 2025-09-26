@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="cp_account_report_ao.cash_flow_dir">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                       <div style="color: #0B74CE;">
+                            <div class="row b_color">
+                                <div class="col-8">
+                                    <b>
+                                        <span class="text-left" t-field="o.company_id"/>
+                                    </b>
+                                </div>
+                                <div class="col-4" style="font-size:10px;">
+                                    <ul class="list-inline text-right">
+                                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime(&apos;%Y-%m-%d %H:%M&apos;)"/>
+                                        |
+                                    Pag. <span class="page" /> / <span class="topage" />
+                                       <!--<span t-esc="o.get_page_number(page)"/> -->
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <br/>
+                            <hr style="display: block; height: 1px; border: 0; border-top: 3px solid #0B74CE; margin: 0; padding: 0;"/>
+                            <div class="row mt16">
+                                <div class="col-6">
+                                    <div align="left">
+                                        <b class="b_color">
+                                            Demonstração de Fluxo de Caixa
+                                        (
+                                            <span t-field="o.date_from"/>
+                                            até
+                                            <span t-field="o.date_to"/>
+                                            )
+                                        </b>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div align="right">
+                                        <b class="b_color">
+                                            Valores em
+                                            <span t-esc="o.company_id.currency_id.symbol"/>
+                                        </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="page">
+                            <style>
+                                body {
+                                font-family: Arial, sans-serif;
+                                }
+
+                                table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin: 20px 0;
+                                font-size: 0.9em;
+                                min-width: 400px;
+                                }
+
+                                table thead tr {
+                                background-color: #009879;
+                                color: #ffffff;
+                                text-align: left;
+                                font-weight: bold;
+                                }
+
+                                table th, table td {
+                                padding: 4px 5px;
+                                }
+
+                                td.child_design {
+                                padding-left:30px;
+                                }
+
+
+                                td.child_design.subtotal {
+                                font-weight: bold;
+                                }
+
+                                table tbody tr {
+                                border-bottom: 1px solid #dddddd;
+                                }
+
+
+                                table tbody tr:nth-of-type(even) {
+                                background-color: #f3f3f3;
+                                }
+
+                                table tbody tr:nth-of-type(odd) {
+                                background-color: #ffffff;
+                                }
+
+                                table tbody tr:last-of-type {
+                                border-bottom: 2px solid #009879;
+                                }
+
+                                table tbody tr:hover {
+                                background-color: #f1f1f1;
+                                }
+                                strong {
+                                font-weight: bold;
+                                }
+                            </style>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Designação</th>
+                                        <th>Notas</th>
+                                        <th>Exercícios
+                                            (<t t-esc="o.date_from.year"/>)
+                                        </th>
+                                        <t t-if="o.enable_filter">
+                                            <th>Exercícios (<t t-esc="o.date_from.year-1"/>)
+                                            </th>
+                                        </t>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>Fluxo de caixa das actividades operacionais:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <t t-if="o.enable_filter">
+                                            <td></td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Recebimento de Clientes</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="receive_client" t-value="o.get_account_balance(31)"/>
+                                            <t t-esc="receive_client" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="receive_client_prev"
+                                                   t-value="o.get_account_balance_previous_years(31)"/>
+                                                <t t-esc="receive_client_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Pagamentos à fornecedores</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="payment_suppliers" t-value="o.get_account_balance(32)"/>
+                                            <t t-esc="payment_suppliers"  t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="payment_suppliers_prev"
+                                                   t-value="o.get_account_balance_previous_years(32)"/>
+                                                <t t-esc="payment_suppliers_prev"  t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Pagamento ao Pessoal</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="payment_personal" t-value="o.get_account_balance(36)"/>
+                                            <t t-esc="payment_personal" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="payment_personal_prev"
+                                                   t-value="o.get_account_balance_previous_years(36)"/>
+                                                <t t-esc="payment_personal_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design subtotal">Caixa gerada pelas operações:</td>
+                                        <td></td>
+                                        <td>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Pagamento/recebimento do imposto sobre o rendimento
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="receive_payment" t-value="o.get_account_balance(34)"/>
+                                            <t t-esc="receive_payment" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="receive_payment_prev"
+                                                   t-value="o.get_account_balance_previous_years(34)"/>
+                                                <t t-esc="receive_payment_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Outros recebimentos ou pagamentos</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="other_payment_receive" t-value="o.get_account_balance(37)"/>
+                                            <t t-esc="other_payment_receive" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="other_payment_receive_prev"
+                                                   t-value="o.get_account_balance_previous_years(37)"/>
+                                                <t t-esc="other_payment_receive_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Reajuste de caixa e seus equivalentes</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="box_equi" t-value="o.get_account_balance(37)"/>
+                                            <t t-esc="box_equi" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="box_equi_prev"
+                                                   t-value="o.get_account_balance_previous_years(37)"/>
+                                                <t t-esc="box_equi_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design subtotal">Subtotal</td>
+                                        <td></td>
+                                        <td>
+                                         <t t-set="subtotal" t-value="payment_suppliers + payment_personal + receive_payment + other_payment_receive + box_equi"/>
+                                            <t t-esc="subtotal" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="subtotal_prev"
+                                                   t-value="round((receive_client_prev+payment_suppliers_prev+payment_personal_prev
+                                               +receive_payment_prev+other_payment_receive_prev+box_equi_prev),2)"/>
+                                                <t t-esc="subtotal_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <strong>Fluxo de caixa das actividades de investimento:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <t t-if="o.enable_filter">
+                                            <td></td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design subtotal">Recebimentos provenientes de:</td>
+                                        <td></td>
+                                        <td>
+
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design child_design">Imobilizações corpóreas</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="imb_corp" t-value="o.get_account_balance(11)"/>
+                                            <t t-esc="imb_corp" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="imb_corp_prev"
+                                                   t-value="o.get_account_balance_previous_years(11)"/>
+                                                <t t-esc="imb_corp_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Imobilizações incorpóreas</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="imb_incorp" t-value="o.get_account_balance(12)"/>
+                                            <t t-esc="imb_incorp" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="imb_incorp_prev"
+                                                   t-value="o.get_account_balance_previous_years(12)"/>
+                                                <t t-esc="imb_incorp_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Investimentos financeiros</td>
+                                        <td>45</td>
+                                        <td>
+                                            <t t-set="investiment_finance" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="investiment_finance" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="investiment_finance_prev"
+                                                   t-value="o.get_account_balance_previous_years(12)"/>
+                                                <t t-esc="investiment_finance_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Subsídios a investimento</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="investment_subsidies" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="investment_subsidies" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="investment_subsidies_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="investment_subsidies_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Juros e proveitos similares</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="similar_benefits" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="similar_benefits" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="similar_benefits_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="similar_benefits_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Dividendos ou lucros recebidos</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="profits_received" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="profits_received" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="profits_received_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="profits_received_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design subtotal">Subtotal</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="subtotal_flux_box_investiment"
+                                               t-value="round((imb_corp+imb_incorp+investiment_finance+investment_subsidies+
+                                               similar_benefits+profits_received),2)"/>
+                                            <t t-esc="subtotal_flux_box_investiment" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="subtotal_flux_box_investiment_prev"
+                                                   t-value="round((imb_corp_prev+imb_incorp_prev+investiment_finance_prev
+                                               +investment_subsidies_prev+similar_benefits_prev+profits_received_prev),2)"/>
+                                                <t t-esc="subtotal_flux_box_investiment_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design subtotal">Pagamentos respeitantes a:</td>
+                                        <td></td>
+                                        <td>
+
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design child_design">Imobilizações corpóreas</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="imb_corp_pay" t-value="o.get_account_balance(11)"/>
+                                            <t t-esc="imb_corp_pay" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="imb_corp_pay_prev"
+                                                   t-value="o.get_account_balance_previous_years(11)"/>
+                                                <t t-esc="imb_corp_pay_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Imobilizações incorpóreas</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="imb_incorp_pay" t-value="o.get_account_balance(12)"/>
+                                            <t t-esc="imb_incorp_pay" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="imb_incorp_pay_prev"
+                                                   t-value="o.get_account_balance_previous_years(12)"/>
+                                                <t t-esc="imb_incorp_pay_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Investimentos financeiros</td>
+                                        <td>45</td>
+                                        <td>
+                                            <t t-set="investiment_finance_pay" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="investiment_finance_pay" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="investiment_finance_pay_prev"
+                                                   t-value="o.get_account_balance_previous_years(12)"/>
+                                                <t t-esc="investiment_finance_pay_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design subtotal">Subtotal</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="subtotal_pay"
+                                               t-value="investiment_finance_pay+imb_incorp_pay+imb_corp_pay"/>
+                                            <t t-esc="subtotal_pay" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="subtotal_pay_prev"
+                                                   t-value="round((investiment_finance_pay_prev+imb_incorp_pay_prev+imb_corp_pay_prev),2)"/>
+                                                <t t-esc="subtotal_pay_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <strong>Fluxos de caixa antes da rúbrica extraordinária:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <t t-if="o.enable_filter">
+                                            <td></td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design">Caixa líquida usada nas actividades de investimento
+                                        </td>
+                                        <td>45</td>
+                                        <td>
+                                            <t t-set="investiment_box_liquid" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="investiment_box_liquid" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="investiment_box_liquid_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="investiment_box_liquid_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design subtotal">Subtotal</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="subtotal_extra"
+                                               t-value="investiment_box_liquid"/>
+                                            <t t-esc="subtotal_extra" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="subtotal_extra_prev"
+                                                   t-value="investiment_box_liquid_prev"/>
+                                                <t t-esc="subtotal_extra_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <strong>Fluxo de caixa das actividades de financiamento:</strong>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <t t-if="o.enable_filter">
+                                            <td></td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design subtotal">Recebimentos provenientes de:</td>
+                                        <td></td>
+                                        <td>
+
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design">Aumentos de capital, prestações suplementares
+                                            e vendas de acções ou quotas próprias
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="high_capital" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="high_capital" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="high_capital_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="high_capital_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Cobertura de prejuízos
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="loss_coverage" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="loss_coverage" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="loss_coverage_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="loss_coverage_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Empréstimos obtidos
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="loan_obtained" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="loan_obtained" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="loan_obtained_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="loan_obtained_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Subsídios à exploração e doações
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="subsidies_donations" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="subsidies_donations" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="subsidies_donations_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="subsidies_donations_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design subtotal">Subtotal</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="subtotal_received"
+                                               t-value="round((subsidies_donations+loan_obtained+loss_coverage+high_capital),2)"/>
+                                            <t t-esc="subtotal_received" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="subtotal_received_prev"
+                                                   t-value="round((subsidies_donations_prev+loan_obtained_prev+loss_coverage_prev+high_capital_prev),2)"/>
+                                                <t t-esc="subtotal_received_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design subtotal">Pagamentos respeitantes a:</td>
+                                        <td></td>
+                                        <td>
+
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Reduções de capital e prest. suplemento
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="redution_capital" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="redution_capital"/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="redution_capital_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="redution_capital_prev"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Compras de acções ou quotas própria
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="purchases_shares" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="purchases_shares" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="purchases_shares_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="purchases_shares_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Dividendos ou lucros pagos
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="profits_paid" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="profits_paid" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="profits_paid_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="profits_paid_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Empréstimos obtidos
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="loans_obtained" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="loans_obtained" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="loans_obtained_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="loans_obtained_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Amortiz. de contratos de locação finan.
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="contract_amortizations" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="contract_amortizations" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="contract_amortizations_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="contract_amortizations_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design">Juros e custos similares pagos
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                           <!-- <t t-set="interest_similar " t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="interest_similar"/>-->
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <!--<t t-set="interest_similar_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="interest_similar_prev"/>-->
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="child_design subtotal">Subtotal</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="subtotal_payment" t-value="0"/>
+                                            <t t-esc="subtotal_payment"/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="subtotal_payment_prev"
+                                                   t-value="0"/>
+                                                <t t-esc="subtotal_payment_prev"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <strong>Fluxos de caixa antes da rubrica extraordinária:
+                                            </strong>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <t t-if="o.enable_filter">
+                                            <td></td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Caixa liquida usada nas actividades de financiamento
+                                        </td>
+                                        <td>43,47</td>
+                                        <td>
+                                            <t t-set="liquid_cash" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="liquid_cash" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="liquid_cash_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="liquid_cash_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Aumento líquido de caixa e seus equivalentes
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="net_increase" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="net_increase" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="net_increase_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="net_increase_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Caixa e seus equivalentes no início do período
+                                        </td>
+                                        <td>43,47</td>
+                                        <td>
+                                            <t t-set="cash_cash_equivalents_begin" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="cash_cash_equivalents_begin" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="cash_cash_equivalents_begin_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="cash_cash_equivalents_begin_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design">Caixa e seus equivalentes no fim do período
+                                        </td>
+                                        <td>43,47</td>
+                                        <td>
+                                            <t t-set="cash_cash_equivalents_end" t-value="o.get_account_balance(0)"/>
+                                            <t t-esc="cash_cash_equivalents_end" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="cash_cash_equivalents_end_prev"
+                                                   t-value="o.get_account_balance_previous_years(0)"/>
+                                                <t t-esc="cash_cash_equivalents_end_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <td class="child_design subtotal">Subtotal</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="subtotal_payment" t-value="0"/>
+                                            <t t-esc="subtotal_payment" t-options='{"widget": "float", "precision": 2}'/>
+                                        </td>
+                                        <t t-if="o.enable_filter">
+                                            <td>
+                                                <t t-set="subtotal_payment_prev"
+                                                   t-value="0"/>
+                                                <t t-esc="subtotal_payment_prev" t-options='{"widget": "float", "precision": 2}'/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

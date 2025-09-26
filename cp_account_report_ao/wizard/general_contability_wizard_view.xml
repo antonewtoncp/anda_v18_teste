@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="report_general_contability_wizard_form_view" model="ir.ui.view">
+            <field name="name">general.contability.report.form</field>
+            <field name="model">general.contability.report</field>
+            <field name="arch" type="xml">
+                <form string="Auditorio de Diários ">
+                    <sheet>
+                        <group>
+                            <field name="company_id" options="{'no_open': True, 'no_create': True}"
+                                   groups="base.group_multi_currency"/>
+                            <field name="accounting_year" required="1"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="start_date" required="1"/>
+                                <field name="state" required="1" widget="radio"/>
+                            </group>
+                            <group>
+                                <field name="end_date" required="1"/>
+                            </group>
+                            <group>
+                                <field name="journals_ids" options="{'no_create': True}"
+                                  widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <span groups="base.group_user">
+                            <button name="button_to_get_pdf" type="object"
+                                    string="print" class="oe_highlight"/>
+                            ou
+                            <button string="Cancel" special="cancel"  class="btn btn-danger"/>
+                        </span>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="open_report_general_contability_act_window" model="ir.actions.act_window">
+            <field name="name">Auditoria de Diários </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">general.contability.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem id="menu_report_general_contability"
+                  sequence="4"
+                  name="Auditoria de Diários"
+                  parent="account_pdf_reports_menu"
+                  action="open_report_general_contability_act_window"/>
+    </data>
+</odoo>

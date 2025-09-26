@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_saf__ao_wizard,access.saft.ao.wizard,model_saft_ao_wizard,,1,1,1,1
+access_admin_saf_t_ao,saf_t.ao,model_saf_t_ao,,1,1,1,1
+

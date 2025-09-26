@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_extract_wizard_view_form" model="ir.ui.view">
+            <field name="name">account.extract.wizard_view_form</field>
+            <field name="model">account.extract.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Account Extract">
+                    <div class="oe_title">
+                        <h1>
+                            Extracto de Movimento de Conta
+                        </h1>
+                    </div>
+                    <group col="2">
+                        <field name="filter_by" required="1" default_focus="1" widget="radio" options="{'horizontal':True}"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="target_move" widget="radio"/>
+                            <!--<field name="by_account" invisible="filter_by!='account'" /> -->
+                            <field name="specific_account" invisible="filter_by!='account'" />
+                        </group>
+                        <group>
+                            <field name="date_from" required="1"/>
+                            <field name="date_to" required="1"/>
+                            <field name="account_from" invisible="filter_by!='account' or specific_account!=False" />
+                            <field name="account_to" invisible="filter_by!='account' or specific_account!=False" />
+                            <field name="account_ids" invisible="filter_by!='account' or specific_account!=True" required="filter_by=='account' or specific_account!=True" domain="[ ('nature', '=', 'M')]" options="{'no_create': True, 'no_create_edit': True}" widget="many2many_tags"/>
+                            <field name="cost_center" options="{'no_create': True, 'no_create_edit': True}" invisible="filter_by!='cost_center' or by_account!=True" required="filter_by=='cost_center' and by_account==True " />
+
+                            <field name="cash_flow" options="{'no_create': True, 'no_create_edit': True}" invisible="filter_by!='cash_flow' or by_account!=True" required="filter_by=='cash_flow' and by_account==True" />
+
+                            <field name="iva_plan" options="{'no_create': True, 'no_create_edit': True}" invisible="filter_by!='iva_plan' or by_account!=True" required="filter_by=='iva_plan' and by_account==True" />
+
+                            <field name="fiscal_plan" options="{'no_create': True, 'no_create_edit': True}" invisible="filter_by!='fiscal_plan' or by_account!=True" required="filter_by=='fiscal_plan' and by_account==True" />
+                        </group>
+                    </group>
+                    <footer>
+                        <span groups="base.group_user">
+                            <button name="print_report" type="object" string="Imprimir PDF" class="oe_highlight"/>
+                            <button name="print_xls_report" type="object" string="Imprimir Excel" class="oe_highlight me-2 ms-2"/>
+                            <button string="Cancelar" special="cancel"/>
+                        </span>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="open_account_extract_action" model="ir.actions.act_window">
+            <field name="name">Extrato de Contas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.extract.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_account_extract_report" name="Extrato de Contas" parent="account_pdf_reports_menu" sequence="5" action="open_account_extract_action"/>
+
+    </data>
+</odoo>

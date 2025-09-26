@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_general_contability_ao">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <div class="header" style="color: #0B74CE">
+                            <div class="row b_color">
+                                <div class="col-8">
+                                    <b><span class="text-right" t-esc="company_id"/></b>
+                                </div>
+                                <div class="col-4" style="font-size:10px;">
+                                    <ul class="list-inline text-right">
+                                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                        |
+                                        Pag. <span class="page"/>/<span class="topage"/>
+                                    </ul>
+                                </div>
+                            </div>
+                            <br/>
+                            <hr style="display: block; height: 1px;
+                            border: 0; border-top: 3px solid #0B74CE;
+                            margin: 0; padding: 0;"/>
+                            <div class="row mt16">
+                                <div class="col-6">
+                                    <div align="left">
+                                        <b class="b_color">
+                                                Contabilidade Geral
+                                            (
+                                            <span t-esc="start_date"/>
+                                            até
+                                            <span t-esc="end_date"/>
+                                            )
+                                        </b>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div align="right"><b class="b_color">Valores em <span t-esc="currency"/></b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4 text-left"
+                                     style="font-size:10px; margin-left:15px; padding:0px !important; border-top: 1px solid #0B74CE;">
+                                    <span>Lançamento:</span>
+                                    <span><t t-if="state">
+                                <t t-esc="state"/>
+                                    </t>
+                                    </span><br></br><br></br>
+                                    <span>Diários:</span>
+                                    <span><t t-esc="journals_name"/></span>
+                                </div>
+                                <div class="col-4"
+                                     style="font-size:10px; margin-left:10px; padding:0px !important; border-top: 1px solid #0B74CE;">
+                                    <span>Data Contab.: </span>
+                                    <span t-esc="end_date"/>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                            </div>
+                        </div>
+                    <hr style="display: block; height: 1px;
+                            border: 0; border-top: 3px solid #0B74CE;
+                            margin: 0; padding: 0;"/>
+
+                    <div class="page">
+                        <style>
+                                * {padding-bottom: 0 !important;
+                                padding-top: 0 !important;
+                                margin-bottom: 0 !important;margin-top:0 !important; }
+                                hr {
+                                display: block; height: 1px;
+                                border: 0; border-top: 1px solid #0B74CE;
+                                margin: 0; padding: 0;
+                                }
+                                .b_color{
+                                color: #0B74CE;
+                                }
+
+                                table {
+                                border-spacing: 3px;
+                                border-top: 3px solid black;
+                                border-collapse:collapse;
+                                }
+
+                                td {
+                                border-bottom:0 !important;
+                                border-top: 1px solid #B2BABB !important;
+                                }
+
+                                th {
+                                border-top:0 !important;
+                                border-bottom: 1px solid #B2BABB !important;
+                                }
+
+                                table, tr, th, td {
+                                padding:0px !important;
+                                border-collapse: separate;
+                                padding:1px;
+                                }
+
+                                .border_top_th{
+                                border-top: 1px solid black !important;
+                                }
+                                tr.border-top-tr th {
+                                border-bottom: 1px solid #ff000d;
+                                }
+                            </style>
+
+                    <br/>
+                    <t t-if="query">
+                        <table  class="table table-condensed" style="font-size:12px;">
+                            <thead>
+                                <tr>
+                                    <th>Conta </th>
+                                    <th>Descrição</th>
+                                    <th>Débito</th>
+                                    <th>Crédito</th>
+                                    <th>Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="query" t-as="i">
+                                    <td>
+                                        <span t-esc="i['code']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="i['ac_name']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="currency"/>
+                                        <span t-esc="i['debit']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="currency"/>
+                                        <span t-esc="i['credit']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="currency"/>
+                                        <span t-esc="i['balance']"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align:center;">
+                                        <b>Total</b>
+                                    </td>
+                                    <td>
+                                        <b>
+                                            <span t-esc="currency"/>
+                                            <span t-esc="total_debit"/>
+                                        </b>
+                                    </td>
+                                    <td>
+                                        <b>
+                                            <span t-esc="currency"/>
+                                            <span t-esc="total_credit"/>
+                                        </b>
+                                    </td>
+                                    <td>
+                                        <b>
+                                            <span t-esc="currency"/>
+                                            <span t-esc="balance"/>
+                                        </b>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                     </div>
+                    <div class="footer">
+                            <div align="center" style="font-size:9px">
+                                <b>© COMPLLEXUS</b>
+                            </div>
+                        </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

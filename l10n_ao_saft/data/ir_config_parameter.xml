@@ -1,0 +1,28 @@
+<odoo>
+  <data noupdate="1">
+    <record id="param_agt_url" model="ir.config_parameter">
+      <field name="key">l10n_ao_einvoice.agt_test_url</field>
+      <field name="value">https://exemplo.teste.agt.gov.ao/api/invoice</field>
+    </record>
+    <record id="param_consult_agt_url" model="ir.config_parameter">
+      <field name="key">l10n_ao_einvoice.agt_consult_url</field>
+      <field name="value">https://exemplo.teste.agt.gov.ao/api/invoice</field>
+    </record>
+    <record id="param_agt_token" model="ir.config_parameter">
+      <field name="key">l10n_ao_einvoice.agt_token</field>
+      <field name="value"/>
+    </record>
+    <record id="param_signature" model="ir.config_parameter">
+      <field name="key">l10n_ao_einvoice.signature</field>
+      <field name="value"/>
+    </record>
+    <record id="param_creation_date" model="ir.config_parameter">
+      <field name="key">l10n_ao_einvoice.creationDate</field>
+      <field name="value">2025-09-18</field>
+    </record>
+    <record id="param_secret_key" model="ir.config_parameter">
+      <field name="key">l10n_ao_einvoice.secretKey</field>
+      <field name="value"/>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_transfer_order_calendar" model="ir.ui.view">
+            <field name="name">Transfer Order Calendar</field>
+            <field name="model">account.transfer.order</field>
+            <field name="arch" type="xml">
+                <calendar color="order_bank_id" date_start="order_date" string="Invoices">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="description"/>
+                    <field name="amount"/>
+                </calendar></field>
+        </record>
+        <record id="view_transfer_order_kanban" model="ir.ui.view">
+            <field name="name">Transfer Order kanban</field>
+            <field name="model">account.transfer.order</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                    <field name="order_date"/>
+                    <field name="state"/>
+                    <field name="currency_id"/>
+                    <field name="order_bank_name"/>
+                    <field name="description"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <strong>
+                                            <span>
+                                                <t t-out="record.partner_id.value"/>
+                                            </span>
+                                        </strong>
+                                    </div>
+                                    <!--    <div class="col-xs-3 pull-right text-right">
+                                            <strong>
+                                                <field name="record.amount" widget="monetary"/>
+                                            </strong>
+                                        </div>-->
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3 text-muted">
+                                        <span>
+                                            <t t-out="record.number.value"/>
+                                            <t t-out="record.invoice_date.value"/>
+                                        </span>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <span t-attf-class="pull-right text-right label #{['draft', 'cancel'].indexOf(record.state.raw_value) > -1 ? 'label-default' : ['none'].indexOf(record.state.raw_value) > -1 ? 'label-danger' : ['proforma', 'proforma2', 'open'].indexOf(record.state.raw_value) > -1 ? 'label-warning' : ['paid'].indexOf(record.state.raw_value) > -1 ? 'label-success' : 'label-primary'}">
+                                            <t t-out="record.state.value"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban></field>
+        </record>
+        <record id="view_account_transfer_order_form" model="ir.ui.view">
+            <field name="name">Transfer Order Form</field>
+            <field name="model">account.transfer.order</field>
+            <field name="arch" type="xml">
+                <form string="Register Payment">
+                    <header>
+                        <button class="oe_highlight" groups="account.group_account_user, account.group_account_invoice" invisible="state not in ['draft']" name="confirm_order" string="Confirm" type="object"/>
+                        <button class="oe_highlight" groups="account.group_account_manager" invisible="state not in ['confirm']" name="approve_order" string="Approve" type="object"/>
+                        <button class="oe_highlight" invisible="state not in ['approved']" name="done_order" string="Done" type="object"/>
+                        <button class="oe_highlight" groups="account.group_account_user, account.group_account_invoice" invisible="state not in ['confirm','approved']" name="cancel_order" string="Cancel" type="object"/>
+                        <button class="oe_highlight" invisible="state not in ['cancel']" name="draft_order" string="Set to Draft" type="object"/>
+                        <field name="state" statusbar_visible="draft,confirm,approved,done" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title" invisible="state=='draft'">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="transfer_type" readonly="state=='draft'" widget="radio"/>
+                            </group>
+                            <group>
+                                <field name="order_date" readonly="state!='draft'"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field invisible="1" name="company_id"/>
+                                <field invisible="transfer_type!='payment'" name="partner_type" readonly="state!='draft'" required="transfer_type!='transfer'" widget="selection"/>
+                                <field name="order_bank_id" readonly="state!='draft'" widget="selection"/>
+                                <field name="order_bank_name" readonly="1"/>
+                                <label for="amount" readonly="state!='draft'"/>
+                                <div class="o_row" name="amount_div">
+                                    <field name="amount" readonly="state !='draft'" widget="monetary"/>
+                                    <field invisible="1 " name="currency_id"/>
+                                </div>
+                                <field name="amount_text" readonly="1"/>
+                            </group>
+                            <group>
+                                <field invisible="transfer_type!='payment'" name="partner_id" options="{'create': false, 'create_edit': false}" readonly="state!='draft'" required="transfer_type=='payment'"/>
+                                <field invisible="transfer_type=='payment'" name="dest_bank_id" readonly="state!='draft'" required="transfer_type=='transfer'" widget="selection"/>
+                                <field invisible="transfer_type=='payment'" name="dest_bank_name" readonly="1" required="transfer_type=='transfer'"/>
+                                <field domain="[('partner_id','=',partner_id)]" invisible="transfer_type=='payment'" name="partner_bank_id" readonly="state!='draft'" required="transfer_type=='transfer'" widget="selection"/>
+                                <field invisible="transfer_type!='payment'" name="partner_bank_name" readonly="1" required="transfer_type=='payment'"/>
+                            </group>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page invisible="transfer_type!='payment'" string="Invoices">
+                                    <field context="{'default_transfer_order_id': active_id}" mode="tree,kanban" name="invoice_lines" widget="one2many_list">
+                                        <tree decoration-warning="alloc_amount > invoice_mount_wth and wth_amount > 0" editable="top">
+                                            <field domain="[('partner_id','=', parent.partner_id),('state','=','open'),('type','in',['in_invoice','out_refund'])]" name="invoice_id" options="{'create': false, 'create_edit': false}"/>
+                                            <field name="invoice_amount"/>
+                                            <field name="wth_amount"/>
+                                            <field name="invoice_mount_wth"/>
+                                            <field name="alloc_amount"/>
+                                        </tree></field>
+                                </page>
+                                <page string="Note">
+                                    <field name="note"/>
+                                </page>
+                                <page string="Other Information">
+                                    <group>
+                                        <group>
+                                            <field invisible="state!='done'" name="payment_id" readonly="1"/>
+                                            <field name="user_id" readonly="1"/>
+                                            <field name="approved_by" readonly="1"/>
+                                        </group>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field groups="base.group_user" name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form></field>
+        </record>
+        <!-- Search view Buildings -->
+        <record id="view_account_transfer_order_search" model="ir.ui.view">
+            <field name="name">Search View Transfer Order</field>
+            <field name="model">account.transfer.order</field>
+            <field name="arch" type="xml">
+                <search string="Search Transfer Order">
+                    <field filter_domain="[('name','ilike',self)]" name="name" string="Number"/>
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <filter domain="[('partner_id','=', self)]" name="partner" string="Partner"/>
+                    <separator/>
+                    <filter domain="[('dest_bank_id','=',('1'))]" name="order_bank_id" string="Order Bank"/>
+                    <separator/>
+                    <filter domain="[('balcony','>',('0'))]" name="dest_bank_id" string="Dest. Bank"/>
+                    <separator/>
+                    <filter domain="[('bedrooms','=',('2'))]" name="2bed" string="2 Bedrooms"/>
+                    <separator/>
+                    <filter domain="[('bedrooms','=',('3'))]" name="3bed" string="3 Bedrooms"/>
+                    <separator/>
+                    <filter domain="[('user_id','=',uid)]" help="My Transfers" name="filter_by_mytransfer"/>
+                    <group expand="0" string="Group By">
+                        <filter context="{'group_by':'partner_id'}" domain="[]" name="filter_partner" string="Partner"/>
+                        <filter context="{'group_by':'order_bank_id'}" domain="[]" name="filter_by_order" string="Order Account"/>
+                        <filter context="{'group_by':'dest_bank_id'}" domain="[]" name="filter_by_transfer" string="Transfer Account"/>
+                        <filter context="{'group_by':'partner_bank_id'}" domain="[]" name="filter_by_payment" string="Payment Account"/>
+                        <filter context="{'group_by':'transfer_type'}" domain="[]" name="filter_by_type" string="Type"/>
+                        <filter context="{'group_by':'state'}" domain="[]" name="filter_by_stage" string="Stage"/>
+                        <filter context="{'group_by':'user_id'}" name="user" string="Owner"/>
+                        <filter context="{'group_by':'order_date'}" name="filter_by_date" string="Date"/>
+                        <!--<filter string="Date Order Month" context="{'group_by':'order_date:month'}"/>-->
+                    </group>
+                </search></field>
+        </record>
+        <record id="view_account_transfer_order_pay_tree" model="ir.ui.view">
+            <field name="name">Account transfer Area Tree</field>
+            <field name="model">account.transfer.order</field>
+            <field name="arch" type="xml">
+                <tree string="Transfer Orders">
+                    <field name="name"/>
+                    <field name="transfer_type"/>
+                    <field name="partner_id"/>
+                    <field name="order_date"/>
+                    <field name="order_bank_id"/>
+                    <field name="partner_bank_id"/>
+                    <field name="amount"/>
+                    <field name="state"/>
+                </tree></field>
+        </record>
+        <record id="view_account_transfer_order_int_tree" model="ir.ui.view">
+            <field name="name">Account transfer Area Tree</field>
+            <field name="model">account.transfer.order</field>
+            <field name="arch" type="xml">
+                <tree string="Transfer Orders">
+                    <field name="name"/>
+                    <field name="transfer_type"/>
+                    <field name="partner_id"/>
+                    <field name="order_date"/>
+                    <field name="order_bank_id"/>
+                    <field name="dest_bank_id"/>
+                    <field name="amount"/>
+                    <field name="state"/>
+                </tree></field>
+        </record>
+        <record id="act_open_transfer_order_view" model="ir.actions.act_window">
+            <field name="name">Transfer Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.transfer.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">calendar,tree,form,kanban</field>
+        </record>
+        <record id="act_open_transfer_order_pay_tree_view" model="ir.actions.act_window">
+            <field name="name">Payment Transfer</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.transfer.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,calendar,tree,form</field>
+            <field name="view_id" ref="view_account_transfer_order_pay_tree"/>
+            <field name="domain">[('transfer_type', '=', 'payment')]</field>
+            <field name="context">{'default_transfer_type':'payment'}</field>
+        </record>
+        <record id="act_open_transfer_order_int_tree_view" model="ir.actions.act_window">
+            <field name="name">Intenal Transfer</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.transfer.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,calendar,tree,form</field>
+            <field name="view_id" ref="view_account_transfer_order_int_tree"/>
+            <field name="domain">[('transfer_type', '=', 'transfer')]</field>
+            <field name="context">{'default_transfer_type':'transfer'}</field>
+        </record>
+        <!--groups="transfer_order_group_user"-->
+        <!-- <menuitem id="account_transfer_menu" name="Bank Transfers"
+                   parent="account.menu_finance"
+                   sequence="3"/>
+         <menuitem id="account_transfer_order_menu" name="Transfer Orders"
+                   parent="account_transfer_menu" action="act_open_transfer_order_view"
+                   sequence="3"/>
+         <menuitem id="account_transfer_order_pay_menu" name="Payment Transfer"
+                   parent="account_transfer_menu" action="act_open_transfer_order_pay_tree_view"
+                   sequence="5"/>
+         <menuitem id="account_transfer_order_int_menu" name="Internal Transfer"
+                   parent="account_transfer_menu" action="act_open_transfer_order_int_tree_view"
+                   sequence="4"/>-->
+    </data>
+</odoo>

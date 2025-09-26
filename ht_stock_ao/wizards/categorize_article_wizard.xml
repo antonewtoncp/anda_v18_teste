@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+
+
+    <record id="wizard_caterize_article_view_form" model="ir.ui.view">
+        <field name="name">wizard.caterize.article.view.form</field>
+        <field name="model">wizard.categorize.article</field>
+        <field name="arch" type="xml">
+            <form string="Categorizar Artigos">
+                <sheet>
+                    <group>
+                        <field name="category_id" />
+                        <field name="product_ids" widget="many2many_tags" />
+                    </group>
+                </sheet>
+                <footer>
+                    <span groups="base.group_user">
+                        <button name="categorize_article" type="object" string="Categorizar Artigos" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel"/>
+                    </span>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="categorize_article_wizard_action" model="ir.actions.act_window">
+        <field name="name">Categorizar Artigos</field>
+        <field name="res_model">wizard.categorize.article</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_categorize_articles" name="Categorizar Artigos" action="categorize_article_wizard_action" parent="stock.menu_stock_inventory_control"/>
+
+</odoo>

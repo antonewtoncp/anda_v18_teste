@@ -102,9 +102,11 @@
             <!-- Bancos + toggles -->
             <xpath expr="//page[@name='personal_information']/group/group[4]" position="before">
                 <group string="Dados da conta bancária">
+                    
                     <field name="bank_bank" required="payment_method=='bank'" string="Banco"
                            options="{'no_quick_create': True, 'no_create_edit' : True}"/>
                     <field name="bank_account" string="conta bancária"/>
+
                     <field name="bank_iban" string="IBAN" invisible="is_foreign" required="payment_method=='bank'"/>
                     <field name="payment_method" groups="hr_payroll.group_hr_payroll_user" string="Metodo de pagamento" widget="radio" required="1"/>
                 </group>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_account_extract_ao">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                        <div class="header" style="color: #0B74CE">
+                            <div class="row b_color">
+                                <div class="col-8">
+                                    <b><span class="text-left" t-field="o.company_id"/></b>
+                                </div>
+                                <div class="col-4" style="font-size:10px;">
+                                    <ul class="list-inline text-right">
+                                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/> |
+                                        Pag.<span class="page"/>/<span class="topage"/>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr style="border-top: 3px solid #0B74CE; margin: 0; padding: 0;"/>
+                            <div class="row mt16">
+                                <div class="col-6">
+                                    <div align="left">
+                                        <b class="b_color">
+                                            Extracto de Conta
+                                            <t t-if="o.specific_account and o.account_ids">
+                                                <span t-esc="' - ' + ', '.join(o.account_ids.mapped('code'))"/>
+                                            </t>
+                                            <t t-elif="o.account_from and o.account_to">
+                                                <span t-esc="' - De ' + o.account_from.code + ' até ' + o.account_to.code"/>
+                                            </t>
+                                            <t t-set="data_inicio" t-value="o.date_from.strftime('%d/%m/%Y')"/>
+                                            <t t-set="data_fim" t-value="o.date_to.strftime('%d/%m/%Y')"/>
+                                            <span t-esc="' (' + data_inicio + ' até ' + data_fim + ')'"/>
+                                        </b>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div align="right">
+                                        <b class="b_color">
+                                            Valores em <span t-esc="o.company_id.currency_id.symbol"/>
+                                        </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="page">
+                            <style>
+                                * {padding: 10px !important; margin: 0 !important;}
+                                table {
+                                    border-collapse: collapse;
+                                    width: 100%;
+                                    font-size: 10px;
+                                }
+                                th, td {
+                                    border-top: 1px solid #B2BABB;
+                                    padding: 2px 4px;
+                                }
+                                th {
+                                    border-bottom: 1px solid #B2BABB;
+                                    background-color: #f8f8f8;
+                                    text-align: left;
+                                }
+                                td.text-right {text-align: right;}
+                                .account-header {
+                                    background-color: #f0f0f0;
+                                    font-weight: bold;
+                                    padding: 4px;
+                                    border-top: 2px solid #0B74CE;
+                                }
+                                .total-row {
+                                    font-weight: bold;
+                                    background-color: #f9f9f9;
+                                }
+                                .grand-total {
+                                    font-weight: bold;
+                                    background-color: #e0e0e0;
+                                }
+                                /* Ajustes de layout */
+                                th.nowrap, td.nowrap { white-space: nowrap; }
+                                td.nowrap { padding-right: 12px; }
+                                td.desc { padding-left: 12px; }
+                                .initial-balance { font-weight: bold; background-color: #fafafa; }
+                            </style>
+
+                            <t t-set="all_movements" t-value="o.get_account_move_line()"/>
+                            <t t-if="not all_movements">
+                                <div class="alert alert-warning">
+                                    Nenhum movimento encontrado para os critérios selecionados.
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <table>
+                                    <colgroup>
+                                        <col style="width: 18%"/>
+                                        <col style="width: 44%"/>
+                                        <col style="width: 13%"/>
+                                        <col style="width: 13%"/>
+                                        <col style="width: 12%"/>
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th class="nowrap">Data</th>
+                                            <th>Descrição</th>
+                                            <th class="text-right">Débito</th>
+                                            <th class="text-right">Crédito</th>
+                                            <th class="text-right">Saldo Doc.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="current_account" t-value="False"/>
+                                        <t t-set="account_total_debit" t-value="0.0"/>
+                                        <t t-set="account_total_credit" t-value="0.0"/>
+                                        <t t-set="account_balance" t-value="0.0"/>
+                                        
+                                        <t t-foreach="all_movements" t-as="move" t-foreach-index="idx">
+                                            <t t-if="current_account != move.get('account_id', False)">
+                                                <!-- Cabeçalho nova conta -->
+                                                <tr>
+                                                    <td colspan="5" class="account-header">
+                                                        <t t-esc="move.get('account_code', '') + ' - ' + move.get('account_name', '')"/>
+                                                    </td>
+                                                </tr>
+                                                <t t-set="current_account" t-value="move.get('account_id')"/>
+                                                <t t-set="account_total_debit" t-value="0.0"/>
+                                                <t t-set="account_total_credit" t-value="0.0"/>
+                                                <t t-set="account_balance" t-value="0.0"/>
+                                                <!-- Saldo inicial da conta (não compõe os totais) -->
+                                                <tr class="initial-balance">
+                                                    <td class="nowrap"><span t-esc="o.date_from.strftime('%Y-%m-%d')"/></td>
+                                                    <td>SALDO INICIAL</td>
+                                                    <td class="text-right"></td>
+                                                    <td class="text-right"></td>
+                                                    <td class="text-right"><span t-esc="o.amount_format(move.get('previous_balance', 0.0))"/></td>
+                                                </tr>
+                                            </t>
+
+                                            <!-- Linha do movimento -->
+                                            <tr>
+                                                <td class="nowrap"><span t-esc="move.get('date', '')"/></td>
+                                                <td class="desc"><span t-esc="move.get('description', '')"/></td>
+                                                <td class="text-right">
+                                                    <span t-esc="o.amount_format(move.get('debit', 0.0))"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="o.amount_format(move.get('credit', 0.0))"/>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="o.amount_format(move.get('balance', 0.0))"/>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Atualizar totais da conta -->
+                                            <t t-set="account_total_debit" t-value="account_total_debit + (move.get('debit') or 0.0)"/>
+                                            <t t-set="account_total_credit" t-value="account_total_credit + (move.get('credit') or 0.0)"/>
+                                            <t t-set="account_balance" t-value="account_balance + (move.get('balance') or 0.0)"/>
+
+                                            <!-- Se o próximo movimento mudar de conta (ou for o último), imprimir o total da conta aqui -->
+                                            <t t-set="is_last_of_account" t-value="move_last or (all_movements[move_index + 1].get('account_id') != move.get('account_id'))"/>
+                                            <t t-if="is_last_of_account">
+                                                <tr class="total-row">
+                                                    <td colspan="2" class="text-right"><b>Total da Conta</b></td>
+                                                    <td class="text-right">
+                                                        <span t-esc="o.amount_format(account_total_debit)"/>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-esc="o.amount_format(account_total_credit)"/>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-esc="o.amount_format(account_balance)"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </t>
+
+                                        <!-- Total da última conta: agora já coberto pelo bloco acima ao detectar fim da lista/conta -->
+
+                                        <!-- Total Geral -->
+                                        <tr class="grand-total">
+                                            <td colspan="2" class="text-right"><b>Total Geral</b></td>
+                                            <td class="text-right">
+                                                <span t-esc="o.amount_format(o.debit)"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="o.amount_format(o.credit)"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="o.amount_format(o.balance)"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

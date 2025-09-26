@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_res_company_inherit_form" model="ir.ui.view">
+            <field name="name">res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+             <field name="street" position="replace">
+                    <field name="street" placeholder="Rua..." required="1" class="o_address_street"  />
+                </field>
+                <field name="zip" position="replace">
+                    <field name="zip" required="1"  placeholder="Código Postal" class="o_address_zip"/>
+                </field>
+
+                <field name="city" position="replace">
+                    <field name="city" required="1" placeholder="Cidade" class="o_address_city"/>
+                </field>
+                <field name="state_id" position="replace">
+                    <field name="state_id" required="1" placeholder="Estado" options="{&quot;no_open&quot;: True}"/>
+                </field>
+                <field name="country_id" position="replace">
+                    <field name="country_id" required="1"  placeholder="País" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                </field>
+
+                <field name="company_registry" position="replace">
+                    <field name="company_registry" required="1" />
+                </field>
+                <field name="vat" position="replace">
+                    <field name="vat" required="1" />
+                </field>
+                <xpath expr="//notebook" position="inside">
+                    <page name="agt" string="AGT">
+                        <group>
+                            <group>
+                                <field name="agt_cert_number" placeholder="0000/AGT/2022" />
+                                <field name="agt_product_name" placeholder="Software name..." />
+                                <field name="agt_product_version" placeholder="Software version..." />
+                            </group>
+                            <group>
+
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

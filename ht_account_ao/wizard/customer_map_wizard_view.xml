@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="custumer_map_wizard_form_view" model="ir.ui.view">
+            <field name="name">customer.map.wizard.form</field>
+            <field name="model">customer.map.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Mapa de Clientes">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                MAPA DE CLIENTES
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="company_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="start_date"/>
+                            </group>
+                            <group>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <span groups="base.group_user">
+
+
+                           <button name="print" type="object"
+                                    string="Imprimir PDF" class="oe_highlight"/>
+
+                                <!--<button name="print_xlsx_report" type="object"
+                                    string="Imprimir XLSX" class="oe_highlight" style="margin-left:10px"/>-->
+                                 <button string="Cancelar" special="cancel" class="btn btn-danger" style="margin-left:10px" />
+                        </span>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_customer_map_wizard_act_window" model="ir.actions.act_window">
+            <field name="name">Mapa de Clientes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">customer.map.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Mapa de Clientes" id="customer_map_menu"
+                  parent="account.account_reports_management_menu"
+                  sequence="7"
+                  action="open_customer_map_wizard_act_window"/>
+
+    </data>
+</odoo>

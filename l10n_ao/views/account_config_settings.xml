@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_account_settings_form" model="ir.ui.view">
+            <field name="name">res.config.settings.form</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//block[@id='invoicing_settings']" position="after">
+                    <h2>Plano de Contas Angolano</h2>
+                    <div class="row mt16 o_settings_container" id="default_user_rights">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                Prefixo do código
+                                <div class="text-muted">
+                                    Prefixo para a criação automática de contas para os parceiros
+                                </div>
+                                <div class="row mt16">
+                                    <label string="Recebimento" for="partner_receivable_code_prefix" class="col-md-3 o_light_label"/>
+                                    <field name="partner_receivable_code_prefix" required="automatic_partner_account==True" readonly="0" groups="base.group_no_one"/>
+                                </div>
+                                <div class="row">
+                                    <label string="Pagamento" for="partner_payable_code_prefix" class="col-md-3 o_light_label"/>
+                                    <field name="partner_payable_code_prefix" required="automatic_partner_account==True" readonly="0" groups="base.group_no_one"/>
+                                </div>
+                                <div class="row">
+                                    <label string="Recebimento de Estrangeiro" for="fpartner_receivable_code_prefix" class="col-md-3 o_light_label"/>
+                                    <field name="fpartner_receivable_code_prefix" required="automatic_partner_account==True" readonly="0" groups="base.group_no_one"/>
+                                </div>
+
+                                <div class="row">
+                                    <label string="Pagamento de Estrangeiro" for="fpartner_payable_code_prefix" class="col-md-3 o_light_label"/>
+
+                                    <field name="fpartner_payable_code_prefix" required="automatic_partner_account==True" readonly="0" groups="base.group_no_one"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="automatic_partner_account" readonly="0" groups="base.group_no_one"/>
+                            </div>
+                            <div class="o_setting_right_pane" name="l10n_eu_service_right_pane">
+                                <label for="automatic_partner_account"/>
+                                <div class="text-muted">
+                                    Permitir a criação de contas de parceiros automaticamente
+                                </div>
+                            </div>
+                            <div class="o_setting_left_pane">
+                                <field name="control_account_nature" readonly="0" groups="base.group_no_one"/>
+                            </div>
+                            <div class="o_setting_right_pane" name="l10n_eu_service_right_pane">
+                                <label for="control_account_nature"/>
+                                <div class="text-muted">
+                                    Controlar a Natureza das contas (Integradoras e Movimentos)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

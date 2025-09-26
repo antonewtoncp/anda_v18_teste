@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record forcecreate="True" id="create_sequence_saft" model="ir.config_parameter">
+            <field name="key">cp.satf.sequence.invoice</field>
+            <field name="value">1</field>
+        </record>
+    </data>
+</odoo>

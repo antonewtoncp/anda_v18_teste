@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="clos_year_wizard_action" model="ir.actions.act_window">
+            <field name="name">Fecho do Ano em Exercício</field>
+            <field name="res_model">closeyear.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+        <record id="clos_year_wizard_view_form" model="ir.ui.view">
+            <field name="name">clos.wizard.view.form</field>
+            <field name="model">closeyear.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Fecho do Ano em Exercício">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="year" string="Ano Fiscal"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="make_close_year" type="object" string="Fecho do Ano" class="oe_highlight"/>
+                        <button string="Cancelar" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="access_closeyear_wizard" model="ir.model.access">
+            <field name="name">access.closeyear.wizard</field>
+            <field name="model_id" ref="model_closeyear_wizard"/>
+        </record>
+
+        <record id="access_closeyear_wizard" model="ir.model.access">
+            <field name="name">access.closeyear.wizard</field>
+            <field name="model_id" ref="model_closeyear_wizard"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+
+        <menuitem id="clos_year_menu" name="Fecho do Ano em Exercício" action="clos_year_wizard_action"
+            parent="account.menu_finance_entries" sequence="62"/>
+    </data>
+
+</odoo>

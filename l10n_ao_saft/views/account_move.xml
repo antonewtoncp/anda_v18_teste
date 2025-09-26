@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="account_move_view_form" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <!--<xpath expr="//header" position="inside">
+                    <button name="invoices_resign" type="object" string="ASN" groups="account.group_account_invoice"/>
+                </xpath>-->
+                 <!--<xpath expr="//button[@name='button_draft']" position="attributes">
+                    <attribute groups="account.group_account_invoice" name="attrs">{'invisible': [('show_reset_to_draft_button', '=', True)]}</attribute>
+                </xpath>-->
+                <xpath expr="//button[@name='button_draft']" position="replace">
+                    <attribute groups="account.group_account_invoice" invisible="not show_reset_to_draft_button"></attribute>
+                </xpath>
+
+                <xpath expr="//button[@name='action_reverse']" position="after">
+                    <button name="action_send_einvoice_to_agt" string="Enviar Factura Eletrónica/ AGT" type="object"
+                        class="btn-primary" groups="account.group_account_invoice"
+                        invisible="move_type not in ('out_invoice','in_invoice') or state != 'posted' or invoice_status != 'not_sent'"/>
+                    
+                    <button name="action_consult_einvoice_to_agt" string="Consultar Factura Eletrónica/ AGT" type="object"
+                        class="btn-primary" groups="account.group_account_invoice"
+                        invisible="move_type not in ('out_invoice','in_invoice') or state != 'posted' or invoice_status != 'sent'"/>
+
+                    <!-- <button name="action_avoid" string="Factura Eletrónica Validada pela AGT" type="object"
+                        class="btn-green" groups="account.group_account_invoice" readonly="1"
+                        invisible="move_type not in ('out_invoice','in_invoice') or state != 'posted' or invoice_status != 'accepted'"/>
+                -->
+                </xpath>
+                <!-- Melhor abordagem: usar statinfo ao invés de botão para mostrar informação -->
+                <xpath expr="//sheet/widget[@name='web_ribbon']" position="after">
+                    <widget name="web_ribbon"
+                        title="Validada pela AGT"
+                        bg_color="bg-success"
+                        invisible="move_type not in ('out_invoice','in_invoice') or state != 'posted' or invoice_status != 'accepted'"
+                    />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
